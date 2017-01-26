@@ -1,0 +1,24 @@
+Sudo 
+
+Login
+	//Search approriate table for existing email address
+	If ( someEMail(page) == someEMail(DB) ) {
+
+		// look & compare the password
+		If (passwords are equal) {
+			Return Can login
+		} else { // pass
+			Return Invalid Credentials
+		}
+	} else { // no email exist
+		// Return Invalid Credentials
+	}
+
+Register
+	// search DB for existing email
+	if ( someEmail(page) != someEMail(DB) ) {
+		// if found, no known user
+		Invalid user name. No user exists
+	} else { // no userName exists with that email. OK to register
+		// insert data into table to register
+	}
