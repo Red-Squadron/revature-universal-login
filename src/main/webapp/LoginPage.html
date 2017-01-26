@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app='login'>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Page</title>
+<!-- Angular import -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+<script src='module.js'></script>
+<script src='loginCTRL.js'></script>
+<script src='registerCTRL.js'></script>
+</head>
+<body class="container-fluid">
+
+	<label>Login</label>
+	<form name="loginForm" ng-controller='loginCtrl' novalidate>
+		<input name="username" ng-model="userName" type="email" placeholder="email" ng-required>
+		<input name="password" ng-model="passPhrase" type="password" ng-required placeholder="password"><br>
+		<button type="button" ng-click="loginForm.$valid && 
+				validateLogin(userName, passPhrase)">Login</button>
+	</form>
+	
+	<label>Register</label>
+	<form name="registerForm" ng-controller='registerCtrl' novalidate>
+		<input name="username" ng-model="userName" type="email" placeholder="email" ng-required>email<br>
+		<input name="first name" ng-model="firstName" type="text" placeholder="first name" ng-required>first name<br>
+		<input name="last name" ng-model="lastName" type="text" placeholder="last name" ng-required>last name<br>
+		<input name="last name" ng-model="middleName" type="text" placeholder="middle name">middle name<br>
+		<input name="password" ng-model="passPhrase" type="password" placeholder="password" ng-required>password<br>
+		<input name="passwordConfirm" ng-model="passPhraseConfirm" type="password" placeholder="confirm password" ng-required>confirm password<br>
+		
+		<button type="button" ng-click="registerUser(userName, firstName, lastName, middleName, passPhrase)">Register</button>
+	</form>
+</body>
+</html>
