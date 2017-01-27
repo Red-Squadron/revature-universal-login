@@ -1,4 +1,6 @@
-package libfunctions;
+
+
+import java.util.HashMap;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +22,7 @@ public class SessionManagement {
 	
 	public SessionManagement getSessionManager(){
 		if(manager==null)
-			manager = SessionManagement();
+			manager = new SessionManagement();
 		return manager;
 	}
 	
