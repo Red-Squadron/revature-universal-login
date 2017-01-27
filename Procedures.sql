@@ -22,7 +22,7 @@ close c;
 if a = 0 then
 insert into userRegistration values (uEmail, fName, mName, lName,
 pNumber, passwrd);
-insert into passwordHistory values (uEmail, passwrd);
+insert into passwordHistory values (uEmail, passwrd, current_timestamp);
 dbms_output.put_line('success');
 else
 dbms_output.put_line('fail');
@@ -40,11 +40,14 @@ end;
 --/
 
 --checks for duplicate previous passwords
+--if more than 3 pwds exist, will delete the earliest
 create or replace procedure passwd_checker
 (uEmail in varchar2, passwrd in varchar)
 is
 ps passwordHistory.pastPass%type;
 a number;
+phistcount number;
+delstamp passwordHistory.add_stamp%type;
 cursor c is
 select pastPass from passwordHistory;
 begin
@@ -61,10 +64,15 @@ end loop;
 close c;
 if a = 0 then
 update userRegistration set passwd = passwrd where userEmail = uEmail;
-insert into passwordHistory values (uEmail, passwrd);
+insert into passwordHistory values (uEmail, passwrd, current_timestamp);
 dbms_output.put_line('success');
 else
 dbms_output.put_line('fail');
+end if;
+select count(*) into phistcount from passwordHistory where userEmail = uEmail;
+if phistcount > 3 then
+select min(add_stamp) into delstamp from passwordHistory;
+delete from passwordHistory where userEmail = uEmail and add_stamp = delstamp;
 end if;
 end;
 /
@@ -74,6 +82,6 @@ end;
 --declare
 --uEmail varchar2(75); passwrd varchar(50);
 --begin
---passwd_checker('newuser@email.com', 'passwd');
+--passwd_checker('newuser@email.com', 'passwpd');
 --end;
 --/
