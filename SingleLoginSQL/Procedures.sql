@@ -1,7 +1,8 @@
 --insert user info into regstration
+--take permission level from check_user_existence procedure
 create or replace procedure add_new_user
 (uEmail in varchar2, fName in varchar2, mName in varchar2,
-lName in varchar2, pNumber in number, passwrd in varchar2, a out number)
+lName in varchar2, pNumber in number, passwrd in varchar2, permis in varchar2, a out number)
 is
 ema userRegistration.userEmail%type;
 cursor c is
@@ -21,7 +22,7 @@ end loop;
 close c;
 if a = 1 then
 insert into userRegistration values (uEmail, fName, mName, lName,
-pNumber, passwrd);
+pNumber, passwrd, permis);
 insert into passwordHistory values (uEmail, passwrd, current_timestamp);
 dbms_output.put_line('success');
 else
@@ -36,7 +37,8 @@ end;
 --lName varchar2(30); pNumber number(10); passwrd varchar2(30);
 --a number;
 --begin
---add_new_user('newuser@email.com', 'thisguy', null, 'isawesome', 1234567890, 'password', :a);
+--add_new_user('newuser@email.com', 'thisguy', null, 'isawesome', 1234567890, 'password',
+--'associate', :a);
 --end;
 --/
 
