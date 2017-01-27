@@ -5,7 +5,8 @@ firstName varchar(30),
 middleName varchar(30),
 lastName varchar(30) not null,
 phoneNumber number(10),
-passwd varchar(75) not null
+passwd varchar(75) not null,
+permissions varchar2(25) not null
 );
 
 create table passwordHistory(
