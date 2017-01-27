@@ -1,14 +1,11 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,10 +15,7 @@ public class RegisterServlet {
 	private static final long serialVersionUID = 1L;
     
 	static Connection conn;
-	static Statement stmt;
-	static ResultSet rs;
 	static PreparedStatement pstmt;
-	static PrintWriter pw;
 	static CallableStatement cstmt;
 	static String database;
 	static String password;
@@ -44,34 +38,43 @@ public class RegisterServlet {
 			 * parse json to variables
 			 * replace the get parameters with the variables
 			 * */
+			// init
 			
-			pw = response.getWriter();
-			response.setContentType("text/html");
+				// set database variables
+				database = null;
+				password = null;
 			
-			String email = request.getParameter("userEmail");
-			String fname = request.getParameter("firstname");
-			String mname = request.getParameter("middlename");
-			String lname = request.getParameter("lastname");
-			String phone = request.getParameter("phoneNumber");
-			String pass = request.getParameter("password");
+				// set prepared statement variables from request
+				String email = request.getParameter("userEmail");
+				String fname = request.getParameter("firstname");
+				String mname = request.getParameter("middlename");
+				String lname = request.getParameter("lastname");
+				int phone = Integer.parseInt(request.getParameter("phoneNumber")); // cast to int
+				String pass = request.getParameter("password");
 			
+			// make connection
 			Class.forName("oracle.jdbc.OracleDriver");
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", database, password);
-			String SQL = "call database.add_user(?, ?, ?, ?, ?, ?)";
-			cstmt = conn.prepareCall(SQL);
-			cstmt.setString(1, email);
-			cstmt.setString(2, fname);
-			cstmt.setString(3, mname);
-			cstmt.setString(4, lname);
-			cstmt.setString(5, phone);
-			cstmt.setString(6, pass);
-			cstmt.execute();
 			
-			//rs.close();
-			//stmt.close();
-			cstmt.close();
-			conn.close();
+			// make callable statement
+				String SQL = "{call add_new_user(?, ?, ?, ?, ?, ?)}";
+				cstmt = conn.prepareCall(SQL);
+				
+				// set vars
+				cstmt.setString(1, email);
+				cstmt.setString(2, fname);
+				cstmt.setString(3, mname);
+				cstmt.setString(4, lname);
+				cstmt.setInt(5, phone);
+				cstmt.setString(6, pass);
+
+				// execute
+				cstmt.execute();
 			
+			// only need one
+				//cstmt.close();
+				conn.close();
+				
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
