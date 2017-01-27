@@ -11,9 +11,9 @@ public class UserDAO {
 	private static UserDAO singleton = null;
 
 	private UserDAO() {
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String username = "username";
-		String pass = "password";
+		String url = "jdbc:oracle:thin:@ruldb.chueiwozbnfz.us-east-1.rds.amazonaws.com:1521:RULORCL";
+		String username = "ruladmin";
+		String pass = "ruladminpasskey1611";
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 
@@ -64,7 +64,7 @@ public class UserDAO {
 			registerUser.setString(4, lname);
 			registerUser.setInt(5, phone);
 			registerUser.setString(6, pass);
-			registerUser.setString(7, permissions);
+			registerUser.setString(7, permission);
 			registerUser.registerOutParameter(8, Types.INTEGER);
 			registerUser.executeUpdate();
 			
@@ -127,7 +127,7 @@ public class UserDAO {
 			checkUser.setString(1, email);
 			checkUser.setString(2, fname);
 			checkUser.setString(3, mname);
-			checkUser.registerOutParameter(4, Types.VARCHAR);
+			checkUser.registerOutParameter(4, Types.VARCHAR); // permission
 			checkUser.registerOutParameter(5, Types.INTEGER);
 			checkUser.executeUpdate();
 
