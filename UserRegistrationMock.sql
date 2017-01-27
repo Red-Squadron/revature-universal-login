@@ -11,6 +11,7 @@ passwd varchar(75) not null
 create table passwordHistory(
 userEmail varchar(75) not null,
 pastPass varchar(75) not null,
+add_stamp timestamp with time zone,
 constraint fk_userEmailPassHist foreign key (userEmail)
 references userRegistration(userEmail)
 );
