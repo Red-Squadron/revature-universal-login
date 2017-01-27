@@ -61,7 +61,11 @@ public class UserDAO {
 			registerUser.setInt(5, phone);
 			registerUser.setString(6, pass);
 			
-			return checkLogin.getBoolean(1);
+			if (registerUser.getInt(1) == 1) {
+				return true;
+			} else {
+				return false;
+			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
