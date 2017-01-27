@@ -3,15 +3,17 @@ create or replace procedure add_new_user
 (uEmail in varchar2, fName in varchar2, mName in varchar2,
 lName in varchar2, pNumber in number, passwrd in varchar2, a out number)
 is
-em userRegistration.userEmail%type;
+ema userRegistration.userEmail%type;
 cursor c is
 select userEmail from userRegistration;
 begin
 a := 0;
 open c;
 loop
-fetch c into em;
-if uEmail not like em then
+fetch c into ema;
+if uEmail like ema then
+a := 0;
+else
 a := 1;
 end if;
 exit when c%notfound;
