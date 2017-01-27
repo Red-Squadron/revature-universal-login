@@ -10,42 +10,19 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class SessionManagement {
 
-	/**
-	 * Master request handler for session management functions.
-	 * @param req HTTPS request. If not HTTPS, connection rejected. May disable this check for initial testing.
-	 * @param res HTTPS response.
-	 * @return boolean value representing whether handling operations were successfully performed.
-	 */
-	public static boolean requestHandler(HttpServletRequest req, HttpServletResponse res){
-		Cookie rev = null;
-		
-		//Rejects HTTP requests. Only accepts HTTPS
-		if(!req.isSecure())
-			return false;
-		
-		
-		Cookie[] cookies = req.getCookies();
-		
-		for(Cookie c : cookies){
-			if(c.getName().equals("Revature"))
-				{rev = c;
-				break;
-				}
-		}
-		
-		
-		
-		return true;
+	private HashMap<String, RULUser> authmap;
+	
+	private SessionManagement manager;
+	
+	private SessionManagement(){
+		authmap = new HashMap<String, RULUser>();
 	}
 	
-	
-	
-	
-	//authenticate cookie
-	
-	//create cookie
-	
-	//
+	public SessionManagement getSessionManager(){
+		if(manager==null)
+			manager = SessionManagement();
+		return manager;
+	}
 	
 	
 	
