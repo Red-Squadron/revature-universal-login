@@ -1,0 +1,39 @@
+/* This style sheet applies to the entire login page */
+
+* {
+	text-align: center;
+	font-family: 'Questrial', sans-serif;
+	font-family: 'Fira Sans Extra Condensed', sans-serif;
+	font-family: 'Open Sans', sans-serif;
+	font-family: 'Titillium Web', sans-serif;
+}
+
+nav {
+	padding-top: 2%;
+}
+
+#navLeft {
+	text-align: left;
+}
+
+#navRight {
+	text-align: right;
+}
+
+input {
+	margin-bottom: 10px;
+}
+
+/* Placeholders have different css values depending on the browser */
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	text-align: left;
+}
+::-moz-placeholder { /* Firefox 19+ */
+	text-align: left;
+}
+:-ms-input-placeholder { /* IE 10+ */
+	text-align: left;
+}
+:-moz-placeholder { /* Firefox 18- */
+	text-align: left;
+}
