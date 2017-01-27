@@ -28,19 +28,16 @@ public class RegisterServlet {
 	
     public RegisterServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		//doGet(request, response);
 		try {		
 			/*
@@ -60,7 +57,7 @@ public class RegisterServlet {
 			
 			Class.forName("oracle.jdbc.OracleDriver");
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", database, password);
-			String SQL = "{call database.add_user(?, ?, ?, ?, ?, ?)}";
+			String SQL = "call database.add_user(?, ?, ?, ?, ?, ?)";
 			cstmt = conn.prepareCall(SQL);
 			cstmt.setString(1, email);
 			cstmt.setString(2, fname);
