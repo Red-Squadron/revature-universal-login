@@ -12,14 +12,18 @@ input {
 
 nav {
 	padding-top: 2%;
+	padding-bottom: 2%;
+	float: top
 }
 
 #navLeft {
 	text-align: left;
+	float: left;
 }
 
 #navRight {
 	text-align: right;
+	float: right
 }
 
 #registerBtn {
@@ -47,13 +51,12 @@ nav {
 }
 
 #loginForm {
-
+	padding-top: 5%
 }
 
 footer {
 	text-align: right;
 	color: #888888;
-
 }
 
 /* Placeholders have different css values depending on the browser */

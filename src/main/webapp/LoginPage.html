@@ -10,73 +10,73 @@
 <link href="css/main.css" rel=stylesheet>
 </head>
 
-<body>
-<div class="container-fluid">
-	<nav>
-		<div class="col-sm-6" id="navLeft">
-			<a href="https://revature.com/">
-				<img src="https://3g4d13k75x47q7v53surz1gi-wpengine.netdna-ssl.com/wp-content/themes/revature/imgs/logo.png"/>
-			</a>
-		</div>
-		<div class="col-sm-6" id="navRight" ng-controller='registerCtrl'>
-			<!-- Pop up for registration form field -->
-			<button type="button" id="registerBtn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#register">
-				Not a member? Register here!
-			</button>
-			<div id="register" class="modal fade" role="dialog">
-			  <div class="modal-dialog">
-			
-			    <!-- Modal content-->
-			    <div class="modal-content">
-			    	<div class="modal-body">
-						<form name="registerForm">
-							<input name="username" ng-model="userName" type="email" placeholder="email" required/>
-							<br>
-							<input name="first name" ng-model="firstName" type="text" placeholder="first name" required/>
-							<br>
-							<input name="last name" ng-model="lastName" type="text" placeholder="last name" required/>
-							<br>
-							<input name="last name" ng-model="middleName" type="text" placeholder="middle name"/>
-							<br>
-							<input name="password" ng-model="passPhrase" type="password" placeholder="password" required/>
-							<br>
-							<input name="passwordConfirm" ng-model="passPhraseConfirm" type="password" placeholder="confirm password" required/>
-							<br>
-							<button type="submit" ng-click="registerUser(userName, firstName, lastName, middleName, passPhrase)">Register</button>
-						</form>
-			      	</div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
-			      </div>
-			    </div>
-			
-			  </div>
-			</div>
-		</div>
-	</nav>
+<body class="container-fluid">
+<nav>
+	<div class="col-md-6" id="navLeft">
+		<a href="https://revature.com/">
+			<img src="https://3g4d13k75x47q7v53surz1gi-wpengine.netdna-ssl.com/wp-content/themes/revature/imgs/logo.png"/>
+		</a>
+	</div>
+	<div class="col-md-6" id="navRight" ng-controller='registerCtrl'>
+		<!-- Pop up for registration form field -->
+		<button type="button" id="registerBtn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#register">
+			Not a member? Register here!
+		</button>
+		<div id="register" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		    	<div class="modal-body">
+					<form id="registrationForm">
+						<input name="username" ng-model="userName" type="email" placeholder="email" required/>
+						<br>
+						<input name="first name" ng-model="firstName" type="text" placeholder="first name" required/>
+						<br>
+						<input name="last name" ng-model="lastName" type="text" placeholder="last name" required/>
+						<br>
+						<input name="last name" ng-model="middleName" type="text" placeholder="middle name"/>
+						<br>
+						<input name="password" ng-model="passPhrase" type="password" placeholder="password" required/>
+						<br>
+						<input name="passwordConfirm" ng-model="passPhraseConfirm" type="password" placeholder="confirm password" required/>
+						<br>
+						<button type="submit" ng-click="registerUser(userName, firstName, lastName, middleName, passPhrase)">Register</button>
+					</form>
+		      	</div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
 		
-	<div class="col-md-12">	
-		<br>
-		<form id="loginForm" ng-controller='loginCtrl'>
+		  </div>
+		</div>
+	</div>
+</nav>
+	
+<div class="col-md-12">	
+	<br>
+	<form id="loginForm" ng-controller='loginCtrl'>
+		<div class="form-group">
 			<input type="email" name="username" ng-model="userName" placeholder="email" required autofocus>
 			<br>
 			<input type="password" name="password" ng-model="passPhrase" placeholder="password" required>
 			<br>
 			<button type="submit" ng-click="validateLogin(userName, passPhrase)">Login</button>
-		</form>
-	</div>
-	
-	<footer class="col-md-12">
-		<i>©2017 All Rights Reserved.</i>
-	</footer>
-	
-	<div class="scripts">
-		<!-- Angular import -->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
-		<script src='js/module.js'></script>
-		<script src='js/loginCTRL.js'></script>
-		<script src='js/registerCTRL.js'></script>
-	</div>
+		</div>
+	</form>
+</div>
+
+<footer class="col-md-12">
+	<i>©2017 All Rights Reserved.</i>
+</footer>
+
+<div class="scripts">
+	<!-- Angular import -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+	<script src='js/module.js'></script>
+	<script src='js/loginCTRL.js'></script>
+	<script src='js/registerCTRL.js'></script>
 </div>
 
 </body>
