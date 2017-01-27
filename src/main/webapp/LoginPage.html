@@ -2,33 +2,69 @@
 <html ng-app='login'>
 <head>
 <meta charset="ISO-8859-1">
-<title>Login Page</title>
+<title>Login</title>
+<!-- Style Imports -->
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed|Open+Sans|Questrial|Titillium+Web" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><link href="css/main.css" rel=stylesheet>
 <!-- Angular import -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
 <script src='module.js'></script>
 <script src='loginCTRL.js'></script>
 <script src='registerCTRL.js'></script>
 </head>
-<body class="container-fluid">
 
-	<label>Login</label>
+<body class="container-fluid">
+<nav>
+	<div class="col-sm-6" id="navLeft">
+		<img src="https://3g4d13k75x47q7v53surz1gi-wpengine.netdna-ssl.com/wp-content/themes/revature/imgs/logo.png"/>
+	</div>
+	<div class="col-sm-6" id="navRight">
+		<!-- Pop up for registration form field -->
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#register">Not a member? Register here!</button>
+		<div id="register" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+		
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		    	<div class="modal-body">
+							        	<form name="registerForm" ng-controller='registerCtrl' novalidate>
+						<input name="username" ng-model="userName" type="email" placeholder="email" ng-required/>
+						<br>
+						<input name="first name" ng-model="firstName" type="text" placeholder="first name" ng-required/>
+						<br>
+						<input name="last name" ng-model="lastName" type="text" placeholder="last name" ng-required/>
+						<br>
+						<input name="last name" ng-model="middleName" type="text" placeholder="middle name"/>
+						<br>
+						<input name="password" ng-model="passPhrase" type="password" placeholder="password" ng-required/>
+						<br>
+						<input name="passwordConfirm" ng-model="passPhraseConfirm" type="password" placeholder="confirm password" ng-required/>
+						<br>
+						<button type="button" ng-click="registerUser(userName, firstName, lastName, middleName, passPhrase)">Register</button>
+					</form>
+		      	</div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		
+		  </div>
+		</div>
+	</div>
+</nav>
+	
+<div class="col-md-12">	
+	<br>
 	<form name="loginForm" ng-controller='loginCtrl' novalidate>
 		<input name="username" ng-model="userName" type="email" placeholder="email" ng-required>
-		<input name="password" ng-model="passPhrase" type="password" ng-required placeholder="password"><br>
-		<button type="button" ng-click="loginForm.$valid && 
-				validateLogin(userName, passPhrase)">Login</button>
+		<br>
+		<input name="password" ng-model="passPhrase" type="password" ng-required placeholder="password">
+		<br>
+		<button type="button" ng-click="loginForm.$valid && validateLogin(userName, passPhrase)">Login</button>
 	</form>
-	
-	<label>Register</label>
-	<form name="registerForm" ng-controller='registerCtrl' novalidate>
-		<input name="username" ng-model="userName" type="email" placeholder="email" ng-required>email<br>
-		<input name="first name" ng-model="firstName" type="text" placeholder="first name" ng-required>first name<br>
-		<input name="last name" ng-model="lastName" type="text" placeholder="last name" ng-required>last name<br>
-		<input name="last name" ng-model="middleName" type="text" placeholder="middle name">middle name<br>
-		<input name="password" ng-model="passPhrase" type="password" placeholder="password" ng-required>password<br>
-		<input name="passwordConfirm" ng-model="passPhraseConfirm" type="password" placeholder="confirm password" ng-required>confirm password<br>
-		
-		<button type="button" ng-click="registerUser(userName, firstName, lastName, middleName, passPhrase)">Register</button>
-	</form>
+</div>
+
 </body>
 </html>
