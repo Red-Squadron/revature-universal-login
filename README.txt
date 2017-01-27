@@ -11,3 +11,5 @@ git checkout -h [branchname]
 to merge branch
 git merge
 **/
+
+Editing README to test slack integration
