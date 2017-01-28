@@ -4,45 +4,44 @@
 <meta charset="ISO-8859-1">
 <title>Login</title>
 <!-- Style Imports -->
-<link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed|Open+Sans|Questrial|Titillium+Web" rel="stylesheet">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><link href="css/main.css" rel=stylesheet>
-<!-- Angular import -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
-<script src='module.js'></script>
-<script src='loginCTRL.js'></script>
-<script src='registerCTRL.js'></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/main.css" rel=stylesheet>
 </head>
 
 <body class="container-fluid">
 <nav>
-	<div class="col-sm-6" id="navLeft">
-		<img src="https://3g4d13k75x47q7v53surz1gi-wpengine.netdna-ssl.com/wp-content/themes/revature/imgs/logo.png"/>
+	<div class="col-md-6" id="navLeft">
+		<a href="https://revature.com/">
+			<img src="https://3g4d13k75x47q7v53surz1gi-wpengine.netdna-ssl.com/wp-content/themes/revature/imgs/logo.png"/>
+		</a>
 	</div>
-	<div class="col-sm-6" id="navRight">
+	<div class="col-md-6" id="navRight" ng-controller='registerCtrl'>
 		<!-- Pop up for registration form field -->
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#register">Not a member? Register here!</button>
+		<button type="button" id="registerBtn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#register">
+			Not a member? Register here!
+		</button>
 		<div id="register" class="modal fade" role="dialog">
 		  <div class="modal-dialog">
-		
+
 		    <!-- Modal content-->
 		    <div class="modal-content">
 		    	<div class="modal-body">
-							        	<form name="registerForm" ng-controller='registerCtrl' novalidate>
-						<input name="username" ng-model="userName" type="email" placeholder="email" ng-required/>
+					<form id="registrationForm">
+						<input name="username" ng-model="userName" type="email" placeholder="email" required/>
 						<br>
-						<input name="first name" ng-model="firstName" type="text" placeholder="first name" ng-required/>
+						<input name="first name" ng-model="firstName" type="text" placeholder="first name" required/>
 						<br>
-						<input name="last name" ng-model="lastName" type="text" placeholder="last name" ng-required/>
+						<input name="last name" ng-model="lastName" type="text" placeholder="last name" required/>
 						<br>
 						<input name="last name" ng-model="middleName" type="text" placeholder="middle name"/>
 						<br>
-						<input name="password" ng-model="passPhrase" type="password" placeholder="password" ng-required/>
+						<input name="password" ng-model="passPhrase" type="password" placeholder="password" required/>
 						<br>
-						<input name="passwordConfirm" ng-model="passPhraseConfirm" type="password" placeholder="confirm password" ng-required/>
+						<input name="passwordConfirm" ng-model="passPhraseConfirm" type="password" placeholder="confirm password" required/>
 						<br>
-						<button type="button" ng-click="registerUser(userName, firstName, lastName, middleName, passPhrase)">Register</button>
+						<button type="submit" ng-click="registerUser(userName, firstName, lastName, middleName, passPhrase)">Register</button>
 					</form>
 		      	</div>
 		      <div class="modal-footer">
@@ -57,13 +56,27 @@
 	
 <div class="col-md-12">	
 	<br>
-	<form name="loginForm" ng-controller='loginCtrl' novalidate>
-		<input name="username" ng-model="userName" type="email" placeholder="email" ng-required>
-		<br>
-		<input name="password" ng-model="passPhrase" type="password" ng-required placeholder="password">
-		<br>
-		<button type="button" ng-click="loginForm.$valid && validateLogin(userName, passPhrase)">Login</button>
+	<form id="loginForm" ng-controller='loginCtrl'>
+		<div class="form-group">
+			<input type="email" name="username" ng-model="userName" placeholder="email" required autofocus>
+			<br>
+			<input type="password" name="password" ng-model="passPhrase" placeholder="password" required>
+			<br>
+			<button type="submit" ng-click="validateLogin(userName, passPhrase)">Login</button>
+		</div>
 	</form>
+</div>
+
+<footer class="col-md-12">
+	<i>©2017 All Rights Reserved.</i>
+</footer>
+
+<div class="scripts">
+	<!-- Angular import -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+	<script src='js/module.js'></script>
+	<script src='js/loginCTRL.js'></script>
+	<script src='js/registerCTRL.js'></script>
 </div>
 
 </body>

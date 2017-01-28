@@ -3,7 +3,7 @@
  * {userName: String, passphrase: String, firstName: String, middleName:<String,undefined;>}
  */
 module
-.controller('loginCtrl', function($scope, $http) {
+.controller('registerCtrl', function($scope, $http) {
 	$scope.registerUser = function(userName, passPhrase, firstName, lastName, middleName) {
 		newUser = {};
 		newUser.userName = userName;
@@ -17,5 +17,14 @@ module
 //				celebrate
 			}
 		})
+		
+		$scope.hovering = false;
+		
+		$scope.changeColor = function(bgColor, textColor){
+			$scope.rb = {
+					background : bgColor,
+					color : textColor
+			}
+		}
 	};
 });

@@ -2,26 +2,62 @@
 
 * {
 	text-align: center;
-	font-family: 'Questrial', sans-serif;
-	font-family: 'Fira Sans Extra Condensed', sans-serif;
-	font-family: 'Open Sans', sans-serif;
-	font-family: 'Titillium Web', sans-serif;
-}
-
-nav {
-	padding-top: 2%;
-}
-
-#navLeft {
-	text-align: left;
-}
-
-#navRight {
-	text-align: right;
+	font-family: 'futura-pt';
 }
 
 input {
 	margin-bottom: 10px;
+	text-align: left;
+}
+
+nav {
+	padding-top: 2%;
+	padding-bottom: 2%;
+	float: top;
+	border: black solid;
+}
+
+#navLeft {
+	text-align: left;
+	float: left;
+}
+
+#navRight {
+	text-align: right;
+	float: right;
+}
+
+#registerBtn {
+	background-color:#f26925;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:3px solid #f26925;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:15px;
+	padding: 12px 30px;
+	text-decoration:none;
+	font-weight:600;
+	}
+	
+#registerBtn:hover {
+	background-color:#ffffff;
+	color:#f26925;
+}
+
+#registerBtn:focus {
+	outline: none;
+}
+
+#loginForm {
+	padding-top: 5%;
+}
+
+footer {
+	text-align: right;
+	color: #888888;
 }
 
 /* Placeholders have different css values depending on the browser */
