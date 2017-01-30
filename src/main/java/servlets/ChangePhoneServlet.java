@@ -33,7 +33,7 @@ public class ChangePhoneServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserDAO uDao = UserDAO.getUserDAO();
-		if(uDao.updatePhone(request.getParameter("userEmail"), Integer.parseInt(request.getParameter("phoneNumber")))){
+		if(uDao.updatePhone(request.getParameter("userEmail"), request.getParameter("phoneNumber"))){
 			System.out.println("Phone Change Success!");
 		} else {
 			System.out.println("Phone Change Failed!");
