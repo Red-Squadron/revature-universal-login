@@ -11,17 +11,22 @@ public class SessionManagement {
 
 	private HashMap<String, RULUser> authmap;
 	
-	private SessionManagement manager;
+	private static SessionManagement manager;
 	
 	private SessionManagement(){
 		authmap = new HashMap<String, RULUser>();
 	}
 	
-	public SessionManagement getSessionManager(){
+	/**
+	 * Returns singleton instance of SessionManagement.
+	 * @return the SessionManagement object.
+	 */
+	public static SessionManagement getSessionManager(){
 		if(manager==null)
 			manager = new SessionManagement();
 		return manager;
 	}
+	
 	/**
 	 * TODO: Decide on and implement the method for generating authorization tokens.
 	 * Method for creating an active session. Returns the authtoken associated with that session.
@@ -37,30 +42,19 @@ public class SessionManagement {
 	}
 	
 	/**
-	 * 
+	 * Return the user's session, throws an exception if there's a problem with the user's session.
 	 * @param authtoken
 	 * @return
 	 */
 	public RULUser getSession(String authtoken) throws Exception{
+		if(authmap.containsKey(authtoken))
+			if(authmap.get(authtoken).timeOut()){
+				authmap.remove(authtoken);
+				throw new Exception("Session has timed out.");
+			}
 		if(!authmap.containsKey(authtoken))
 			throw new Exception("AuthToken does not match an existing session.");
 		return authmap.get(authtoken);
-	}
-	
-	/**
-	 * Returns True if the authToken is associated with a legitimate user session, returns false if the authtoken is invalid.
-	 * @param authToken
-	 * @return
-	 */
-	public boolean authenticate(String authToken){
-		if(authmap.containsKey(authToken)){
-			RULUser user = authmap.get(authToken);
-			if(user.timeOut()){
-				authmap.remove(authToken);
-				return false;}
-			return true;
-		}
-		return false;
 	}
 	
 	/**
@@ -74,6 +68,4 @@ public class SessionManagement {
 		});
 		System.gc();
 	}
-	
-	
 }
