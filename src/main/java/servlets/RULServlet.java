@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import services.AuthenticationService;
+import services.ChangeUserInfoService;
+import services.ChangeUserPasswordService;
 import services.LoginService;
 import services.RegistrationService;
 
@@ -68,9 +70,11 @@ public class RULServlet extends HttpServlet {
 					break;
 				case "authenticate": AuthenticationService.authenticate(request.getParameter("authTkn"));
 					break;
-				case "cui": 
+				case "changeUserInfo": ChangeUserInfoService.changeUserInfo(
+								request.getParameter("authTkn"), request.getParameter("password"));
 					break;
-				case "cup": 
+				case "changeUserPassword": ChangeUserPasswordService.changeUserPassword(
+							request.getParameter("userEmail"), request.getParameter("password"));
 					break;
 			}
 		}catch(Exception e){
