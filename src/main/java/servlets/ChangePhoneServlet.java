@@ -53,13 +53,9 @@ public class ChangePhoneServlet extends HttpServlet {
 		StringTokenizer tkn = new StringTokenizer(in, ":");
 
 		if(uDao.updatePhone(tkn.nextToken(), tkn.nextToken())){
-
-		if(uDao.updatePhone(request.getParameter("userEmail"), request.getParameter("phoneNumber"))){
-
 			System.out.println("Phone Change Success!");
 		} else {
 			System.out.println("Phone Change Failed!");
 		}
 	}
-
 }

@@ -5,6 +5,12 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
+  	<servlet-name>RULServlet</servlet-name>
+  	<display-name>RULServlet</display-name>
+  	<description></description>
+  	<servlet-class>servlets.RULServlet</servlet-class>
+  </servlet>
+  <servlet>
   	<servlet-name>AuthenticationServlet</servlet-name>
   	<display-name>AuthenticationServlet</display-name>
   	<description></description>
@@ -46,7 +52,7 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>LoginServlet</servlet-name>
-  	<url-pattern>/LoginServlet</url-pattern>
+  	<url-pattern>/LoginServlet/*</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>RegisterServlet</servlet-name>
@@ -67,5 +73,9 @@
   <servlet-mapping>
   	<servlet-name>PasswordValidationServlet</servlet-name>
   	<url-pattern>/PasswordValidationServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RULServlet</servlet-name>
+  	<url-pattern>/RULServlet/*</url-pattern>
   </servlet-mapping>
 </web-app>
