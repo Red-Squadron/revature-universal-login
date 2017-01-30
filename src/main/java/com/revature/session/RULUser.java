@@ -1,3 +1,5 @@
+package com.revature.session;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 
