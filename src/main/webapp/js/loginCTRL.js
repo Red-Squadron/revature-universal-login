@@ -6,13 +6,12 @@
 module
 .controller('loginCtrl', function($scope, $http) {
 	$scope.validateLogin = function(userName, passPhrase) {
-		var validateString = "";
-		validateString += userName;
-		validateString += ":";
-		validateString += passPhrase;
+		var validateString = {};
+		validateString.userName = userName;
+		validateString.password = passPhrase;
 		
 		// If the email address does not contain '@' then nothing will happen
-		$http.post("LoginServlet/login", validateString).success(function(userInfo) {
+		$http.post("RULServlet/login", validateString).success(function(userInfo) {
 			if(userInfo.valid === "true") {
 				$scope.user.authLvl = userInfo.authLvl;
 				$scope.user.userName = userInfo.userName;
