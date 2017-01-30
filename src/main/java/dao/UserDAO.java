@@ -77,11 +77,11 @@ public class UserDAO {
 	 * @param firstName Provide first name.
 	 * @param middleName Provide middle name.
 	 * @param lastName Provide last name.
-	 * @param phone Provide phone number.
+	 * @param phone Provide phone number as String.
 	 * @param password Provide current password.
 	 * @return true if registration is successful, false if registration is not successful.
 	 */
-	public boolean registerUser(String email, String firstName, String middleName, String lastName, int phone, String password) {
+	public boolean registerUser(String email, String firstName, String middleName, String lastName, String phone, String password) {
 		
 		String permission = checkUserExistence(email, firstName, lastName);
 		if (permission == "")
@@ -94,7 +94,7 @@ public class UserDAO {
 			registerUser.setString(2, firstName);
 			registerUser.setString(3, middleName);
 			registerUser.setString(4, lastName);
-			registerUser.setInt(5, phone);
+			registerUser.setString(5, phone);
 			registerUser.setString(6, password);
 			registerUser.setString(7, permission);
 			registerUser.registerOutParameter(8, Types.INTEGER);
@@ -140,15 +140,15 @@ public class UserDAO {
 	/**
 	 * Updates the current phone number associated with given email.
 	 * @param email Provide unique email.
-	 * @param number Provide new phone number.
+	 * @param number Provide new phone number as String.
 	 * @return true if phone number is updated, false if phone number is not updated.
 	 */
-	public boolean updatePhone(String email, int number) {
+	public boolean updatePhone(String email, String number) {
 		try {
 			CallableStatement updatePhone = conn.prepareCall("{call update_phone(?,?,?)}");
 
 			updatePhone.setString(1, email);
-			updatePhone.setInt(2, number);
+			updatePhone.setString(2, number);
 			updatePhone.registerOutParameter(3, Types.INTEGER);
 			updatePhone.executeUpdate();
 
