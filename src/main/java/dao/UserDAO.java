@@ -86,7 +86,7 @@ public class UserDAO {
 		String permission = checkUserExistence(email, firstName, lastName);
 		if (permission.equals(""))
 			return false;
-		System.out.println("pass check with permission "+permission);
+		
 		try{
 			CallableStatement registerUser = conn.prepareCall("{call add_new_user(?, ?, ?, ?, ?, ?, ?, ?)}");
 			
@@ -98,11 +98,8 @@ public class UserDAO {
 			registerUser.setString(6, password);
 			registerUser.setString(7, permission);
 			registerUser.registerOutParameter(8, Types.INTEGER);
-			System.out.println("before execute");
-			System.out.println(email+" "+firstName+" "+middleName+" "+lastName+" "+phone+" "+password+" "+permission);
 			registerUser.executeUpdate();
 			
-			System.out.println("passed execute with " + registerUser.getInt(8));
 			if (registerUser.getInt(8) == 1) {
 				return true;
 			} else {
@@ -203,7 +200,7 @@ public class UserDAO {
 	 */
 	public boolean deleteRegisteredUser(String email){
 		try {
-			CallableStatement deleteUser = conn.prepareCall("{call check_user_existence(?)}");
+			CallableStatement deleteUser = conn.prepareCall("{call delete_user_registration(?,?)}");
 			
 			deleteUser.setString(1, email);
 			deleteUser.registerOutParameter(2, Types.INTEGER);

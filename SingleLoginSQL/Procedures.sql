@@ -156,10 +156,10 @@ end;
 
 --deletes item from user registration table and password history
 create or replace procedure delete_user_registration
-(uEmail in varchar2, a out varchar2)
+(uEmail in varchar2, a out number)
 is
 begin
-a := 'true';
+a := 1;
 delete from passwordHistory where userEmail = uEmail;
 delete from userRegistration where userEmail = uEmail;
 end;

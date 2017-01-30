@@ -13,15 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import dao.UserDAO;
 
 /**
- * Servlet implementation class ChangePhoneServlet
+ * Servlet implementation class PasswordValidationServlet
  */
-public class ChangePhoneServlet extends HttpServlet {
+public class PasswordValidationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ChangePhoneServlet() {
+    public PasswordValidationServlet() {
         super();
     }
 
@@ -37,7 +37,6 @@ public class ChangePhoneServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserDAO uDao = UserDAO.getUserDAO();
-
 		InputStream is = request.getInputStream();
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		byte[] buf = new byte[32];
@@ -51,14 +50,11 @@ public class ChangePhoneServlet extends HttpServlet {
 		String in = new String(os.toByteArray(), "UTF-8");
 		
 		StringTokenizer tkn = new StringTokenizer(in, ":");
-
-		if(uDao.updatePhone(tkn.nextToken(), tkn.nextToken())){
-
-		if(uDao.updatePhone(request.getParameter("userEmail"), request.getParameter("phoneNumber"))){
-
-			System.out.println("Phone Change Success!");
+		
+		if(uDao.validateLogin(tkn.nextToken(), tkn.nextToken())){
+			System.out.println("Password Validated!");
 		} else {
-			System.out.println("Phone Change Failed!");
+			System.out.println("Password Validation Failed!");
 		}
 	}
 

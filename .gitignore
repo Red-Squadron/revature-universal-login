@@ -34,3 +34,6 @@ hs_err_pid*
 .settings/
 
 log/
+
+test-output/
+testng.iml
