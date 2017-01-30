@@ -9,19 +9,19 @@ public class DaoTest {
 	@Test
 	public void testSingletonCreation() {
 		UserDAO dao2 = UserDAO.getUserDAO();
-		Assert.assertTrue(dao == dao2);
+		Assert.assertEquals(dao, dao2);
 	}
 
-	@Test
+	@Test(dependsOnMethods = { "testSingletonCreation" })
 	public void testCheckUserExistence() {
 		String email = "davidgr@email.com";
 		String firstName = "david";
 		String lastName = "green";
 		String permission = dao.checkUserExistence(email, firstName, lastName);
-		Assert.assertTrue(permission == "associate" || permission == "trainer" || permission == "admin");
+		Assert.assertTrue(permission.equals("associate") || permission.equals("trainer") || permission.equals("admin"));
 	}
 	
-	@Test
+	@Test(dependsOnMethods = { "testCheckUserExistence" })
 	public void testRegisterUser() {
 		String email = "davidgr@email.com"; 
 		String firstName = "david";
@@ -32,25 +32,31 @@ public class DaoTest {
 		Assert.assertTrue(dao.registerUser(email, firstName, middleName, lastName, phone, password));
 	}
 	
-	@Test
+	@Test(dependsOnMethods = { "testRegisterUser" })
 	public void testValidateLogin() {
 		String email = "davidgr@email.com";
 		String password = "dbg";
 		Assert.assertTrue(dao.validateLogin(email, password));
 	}
 	
-	@Test
+	@Test(dependsOnMethods = { "testValidateLogin" })
 	public void testUpdatePassword() {
 		String email = "davidgr@email.com";
 		String password = "dbg1!";
 		Assert.assertTrue(dao.updatePassword(email, password));
 	}
 	
-	@Test
+	@Test(dependsOnMethods = { "testUpdatePassword" })
 	public void testUpdatePhone() {
 		String email = "davidgr@email.com";
 		String number = "1231231234";
 		Assert.assertTrue(dao.updatePhone(email, number));
+	}
+	
+	@Test(dependsOnMethods = { "testUpdatePhone" })
+	public void testDeleteUser() {
+		String email = "davidgr@email.com";
+		Assert.assertTrue(dao.deleteRegisteredUser(email));
 	}
 
 	@BeforeSuite
