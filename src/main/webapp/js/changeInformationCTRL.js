@@ -7,16 +7,25 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 	$scope.successMessage = "";
 	
 	$scope.formChangePassword = function(){
-		console.log("Button Pressed");
 		$scope.incorrectPassword = "";
 		$scope.badFormat = "";
 		$scope.notEqual = "";
 		$scope.successMessage = "";
 		
-		if(false){ //Check current password
+		/*var validatePassword = false;
+		var valObj = {
+				userEmail:"???",
+				password:$scope.currentPasswordModel
+		};
+		var valJSON = $.toJson(valObj);
+		
+		$http.post("PasswordValidationServlet", valJSON).success(function(){
+			validatePassword = true;
+		})*/
+		
+		if(false){
 			$scope.incorrectPassword = "Incorrect password!";
-		}
-		if($scope.firstPasswordModel !== $scope.secondPasswordModel){
+		} else if($scope.firstPasswordModel !== $scope.secondPasswordModel){
 			$scope.notEqual = "Passwords not equal!";
 		} else if($scope.firstPasswordModel.length < 8){
 			$scope.badFormat = "Password must be at least eight characters!";
@@ -31,9 +40,16 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		} else if(!containsSpecial($scope.firstPasswordModel)){
 			$scope.badFormat = "Password must contain at least one special character!";
 		} else {
-			/*$http.post("", $scope.firstPasswordModel).success(function(){
+			/*var passwordObj = {
+					userEmail:"???",
+					password:$scope.firstPasswordModel
+			};
+			var passwordJSON = $.toJson(passwordObj);
+			
+			$http.post("ChangePasswordServlet", passwordJSON).success(function(){
 				
 			})*/
+			
 			$scope.successMessage = "Password successfully changed!";
 		}
 	};
@@ -45,9 +61,16 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		if(false){//CHECK PHONE NUMBER AGAINST VALIDATIONS
 			$scope.phoneBadFormat = "Invalid phone number! Use ########## format."
 		} else {
-			/*$http.post("", $scope.phoneChangeModel).success(function(){
+			/*var phoneObj = {
+					userEmail:"???",
+					phone:$scope.phoneChangeModel
+			};
+			var phoneJSON = $.toJson(phoneObj);
+			
+			$http.post("ChangePhoneServlet", phoneJSON).success(function(){
 				
 			})*/
+			
 			$scope.successMessage = "Phone number successfully changed!";
 		}
 	};

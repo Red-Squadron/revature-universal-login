@@ -16,6 +16,12 @@
   	<description></description>
   	<servlet-class>servlets.ChangePhoneServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>PasswordValidationServlet</servlet-name>
+  	<display-name>PasswordValidationServlet</display-name>
+  	<description></description>
+  	<servlet-class>servlets.PasswordValidationServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ChangePasswordServlet</servlet-name>
   	<url-pattern>/ChangePasswordServlet</url-pattern>
@@ -23,5 +29,9 @@
   <servlet-mapping>
   	<servlet-name>ChangePhoneServlet</servlet-name>
   	<url-pattern>/ChangePhoneServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>PasswordValidationServlet</servlet-name>
+  	<url-pattern>/PasswordValidationServlet</url-pattern>
   </servlet-mapping>
 </web-app>

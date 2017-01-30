@@ -11,7 +11,7 @@
 				<h2>Change Password:</h2>
 				<form class="form-group">
 					<label for="currentPassword">Enter Current Password:</label>
-					<input type="password" class="form-control" id="currentPassword">
+					<input type="password" class="form-control" ng-model="currentPasswordModel" id="currentPassword">
 					<div id="currentPasswordDiv">{{incorrectPassword}}</div>
 					<label for="firstPassword">Enter New Password:</label>
 					<input type="password" class="form-control" ng-model="firstPasswordModel" id="firstPasswordChange">
