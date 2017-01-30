@@ -38,7 +38,7 @@ public class UserDAO {
 	 * Creates only one instance of DAO.
 	 * @return UserDAO object.
 	 */
-	public UserDAO getUserDAO() {
+	public static UserDAO getUserDAO() {
 		if (singleton == null)
 			singleton = new UserDAO();
 		return singleton;

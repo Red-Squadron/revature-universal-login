@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.UserDAO;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -50,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 		
 		StringTokenizer tkn = new StringTokenizer(in, ":");
 		
-		UserDAO dao = getUserDAO();
+		UserDAO dao = UserDAO.getUserDAO();
 		Boolean isValid = dao.validateLogin(tkn.nextToken(), tkn.nextToken());
 		
 		response.setContentType("text/html");
