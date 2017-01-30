@@ -37,7 +37,9 @@ public class ChangePasswordServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserDAO uDao = UserDAO.getUserDAO();
-		if(uDao.updatePassword(request.getParameter("userEmail"), request.getParameter("password"))){
+		String[] str = request.getParameter("").split(":");
+		
+		if(uDao.updatePassword(str[0], str[1])){
 			System.out.println("Update Password Success!");
 		} else {
 			System.out.println("Update Password Failed!");
