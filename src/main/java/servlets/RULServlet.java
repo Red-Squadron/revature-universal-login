@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import services.AuthenticationService;
 import services.LoginService;
+import services.RegistrationService;
 
 /**
  * Servlet implementation class RULServlet
@@ -60,7 +61,10 @@ public class RULServlet extends HttpServlet {
 				case "login": responseString = Boolean.toString(LoginService.login(
 										request.getParameter("userName"), request.getParameter("password")));
 					break;
-				case "register": 
+				case "register": responseString = RegistrationService.register(
+							request.getParameter("userEmail"), request.getParameter("firstname"),
+							request.getParameter("middlename"), request.getParameter("lastname"),
+							request.getParameter("phoneNumber"), request.getParameter("password"));
 					break;
 				case "authenticate": AuthenticationService.authenticate(request.getParameter("authTkn"));
 					break;

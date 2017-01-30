@@ -54,12 +54,11 @@ public class ChangePhoneServlet extends HttpServlet {
 
 		if(uDao.updatePhone(tkn.nextToken(), tkn.nextToken())){
 
-		if(uDao.updatePhone(request.getParameter("userEmail"), request.getParameter("phoneNumber"))){
+		//if(uDao.updatePhone(request.getParameter("userEmail"), request.getParameter("phoneNumber"))){
 
 			System.out.println("Phone Change Success!");
 		} else {
 			System.out.println("Phone Change Failed!");
 		}
 	}
-
 }

@@ -44,13 +44,7 @@ public class RegisterServlet {
 				database = null;
 				password = null;
 			
-				// set prepared statement variables from request
-				String email = request.getParameter("userEmail");
-				String fname = request.getParameter("firstname");
-				String mname = request.getParameter("middlename");
-				String lname = request.getParameter("lastname");
-				int phone = Integer.parseInt(request.getParameter("phoneNumber")); // cast to int
-				String pass = request.getParameter("password");
+				
 			
 			// make connection
 			Class.forName("oracle.jdbc.OracleDriver");
