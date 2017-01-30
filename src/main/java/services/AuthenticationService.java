@@ -10,7 +10,7 @@ public class AuthenticationService {
 	public static String authenticate(String authTkn){
 		SessionManagement sessMan = SessionManagement.getSessionManager();
 		RULUser userSession;
-		String userLvl = null;
+		String userLvl = "noResponse";
 		
 		try {
 			userSession = sessMan.getSession(authTkn);
