@@ -5,11 +5,35 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
+  	<servlet-name>AuthenticationServlet</servlet-name>
+  	<display-name>AuthenticationServlet</display-name>
+  	<description></description>
+  	<servlet-class>servlets.AuthenticationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AuthenticationServlet</servlet-name>
+  	<url-pattern>/AuthenticationServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>RegisterServlet</servlet-name>
+  	<display-name>RegisterServlet</display-name>
+  	<description></description>
+  	<servlet-class>servlets.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RegisterServlet</servlet-name>
+  	<url-pattern>/RegisterServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
   	<servlet-name>ChangePasswordServlet</servlet-name>
   	<display-name>ChangePasswordServlet</display-name>
   	<description></description>
   	<servlet-class>servlets.ChangePasswordServlet</servlet-class>
   </servlet>
+  <servlet-mapping>
+  	<servlet-name>ChangePhoneServlet</servlet-name>
+  	<url-pattern>/ChangePhoneServlet</url-pattern>
+  </servlet-mapping>
   <servlet>
   	<servlet-name>ChangePhoneServlet</servlet-name>
   	<display-name>ChangePhoneServlet</display-name>
