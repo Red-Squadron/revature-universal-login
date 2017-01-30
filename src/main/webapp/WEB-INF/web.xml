@@ -5,6 +5,16 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
+  	<servlet-name>AuthenticationServlet</servlet-name>
+  	<display-name>AuthenticationServlet</display-name>
+  	<description></description>
+  	<servlet-class>servlets.AuthenticationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AuthenticationServlet</servlet-name>
+  	<url-pattern>/AuthenticationServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
   	<servlet-name>ChangePasswordServlet</servlet-name>
   	<display-name>ChangePasswordServlet</display-name>
   	<description></description>
