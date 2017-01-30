@@ -35,7 +35,7 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		} else if(!containsSpecial($scope.firstPasswordModel)){
 			$scope.badFormat = "Password must contain at least one special character!";
 		} else {
-			var passwordStr = "" + ":" + $scope.firstPasswordModel;
+			var passwordStr = "???" + ":" + $scope.firstPasswordModel;
 			$http.post("ChangePasswordServlet", passwordStr).success(function(){
 				$scope.successMessage = "Password successfully changed!";
 			});
