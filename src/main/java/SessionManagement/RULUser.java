@@ -1,5 +1,3 @@
-package SessionManagement;
-
 import java.time.Duration;
 import java.time.LocalDateTime;
 
