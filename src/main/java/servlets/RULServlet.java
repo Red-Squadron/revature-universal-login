@@ -1,8 +1,6 @@
 package servlets;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
@@ -71,7 +69,7 @@ public class RULServlet extends HttpServlet {
 				case "authenticate": AuthenticationService.authenticate(request.getParameter("authTkn"));
 					break;
 				case "changeUserInfo": ChangeUserInfoService.changeUserInfo(
-								request.getParameter("authTkn"), request.getParameter("password"));
+								request.getParameter("authTkn"), "phone", request.getParameter("password"));
 					break;
 				case "changeUserPassword": ChangeUserPasswordService.changeUserPassword(
 							request.getParameter("userEmail"), request.getParameter("password"));
