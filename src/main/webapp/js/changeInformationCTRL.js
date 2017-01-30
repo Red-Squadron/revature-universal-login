@@ -12,16 +12,11 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		$scope.notEqual = "";
 		$scope.successMessage = "";
 		
-		/*var validatePassword = false;
-		var valObj = {
-				userEmail:"???",
-				password:$scope.currentPasswordModel
-		};
-		var valJSON = $.toJson(valObj);
-		
-		$http.post("PasswordValidationServlet", valJSON).success(function(){
+		var validatePassword = false;
+		var validateStr = "???" + ":" + $scope.currentPasswordModel;
+		$http.post("PasswordValidationServlet", validateStr).success(function(){
 			validatePassword = true;
-		})*/
+		});
 		
 		if(false){
 			$scope.incorrectPassword = "Incorrect password!";
@@ -40,17 +35,10 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		} else if(!containsSpecial($scope.firstPasswordModel)){
 			$scope.badFormat = "Password must contain at least one special character!";
 		} else {
-			/*var passwordObj = {
-					userEmail:"???",
-					password:$scope.firstPasswordModel
-			};
-			var passwordJSON = $.toJson(passwordObj);
-			
-			$http.post("ChangePasswordServlet", passwordJSON).success(function(){
-				
-			})*/
-			
-			$scope.successMessage = "Password successfully changed!";
+			var passwordStr = "" + ":" + $scope.firstPasswordModel;
+			$http.post("ChangePasswordServlet", passwordStr).success(function(){
+				$scope.successMessage = "Password successfully changed!";
+			});
 		}
 	};
 	
@@ -61,17 +49,10 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		if(false){//CHECK PHONE NUMBER AGAINST VALIDATIONS
 			$scope.phoneBadFormat = "Invalid phone number! Use ########## format."
 		} else {
-			/*var phoneObj = {
-					userEmail:"???",
-					phone:$scope.phoneChangeModel
-			};
-			var phoneJSON = $.toJson(phoneObj);
-			
-			$http.post("ChangePhoneServlet", phoneJSON).success(function(){
-				
-			})*/
-			
-			$scope.successMessage = "Phone number successfully changed!";
+			var phoneStr = "???" + ":" + $scope.phoneChangeModel;
+			$http.post("ChangePhoneServlet", phoneStr).success(function(){
+				$scope.successMessage = "Phone number successfully changed!";
+			});
 		}
 	};
 });
