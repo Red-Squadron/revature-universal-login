@@ -1,6 +1,10 @@
 package servlets;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.StringTokenizer;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +37,21 @@ public class ChangePhoneServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserDAO uDao = UserDAO.getUserDAO();
-		if(uDao.updatePhone(request.getParameter("userEmail"), Integer.parseInt(request.getParameter("phoneNumber")))){
+		InputStream is = request.getInputStream();
+		ByteArrayOutputStream os = new ByteArrayOutputStream();
+		byte[] buf = new byte[32];
+		int r = 0;
+		while(r >= 0)
+		{
+			r = is.read(buf);
+			if(r >= 0)
+				os.write(buf, 0, r);
+		}
+		String in = new String(os.toByteArray(), "UTF-8");
+		
+		StringTokenizer tkn = new StringTokenizer(in, ":");
+
+		if(uDao.updatePhone(tkn.nextToken(), Integer.parseInt(tkn.nextToken()))){
 			System.out.println("Phone Change Success!");
 		} else {
 			System.out.println("Phone Change Failed!");
