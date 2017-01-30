@@ -55,6 +55,7 @@ public class PasswordValidationServlet extends HttpServlet {
 			System.out.println("Password Validated!");
 		} else {
 			System.out.println("Password Validation Failed!");
+			response.sendError(0);
 		}
 	}
 
