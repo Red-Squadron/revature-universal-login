@@ -3,6 +3,7 @@ package servlets;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 import javax.servlet.ServletException;
@@ -10,19 +11,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.RULexceptions.NoSuchSessionException;
+import com.revature.RULexceptions.SessionManagementException;
+import com.revature.RULexceptions.SessionTimeOutException;
+import com.revature.session.RULUser;
+import com.revature.session.SessionManagement;
+
 import dao.UserDAO;
 
 /**
- * Servlet implementation class ChangePhoneServlet
+ * Servlet implementation class AuthenticationServlet
  */
-public class ChangePhoneServlet extends HttpServlet {
+public class AuthenticationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ChangePhoneServlet() {
+    public AuthenticationServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -36,8 +44,6 @@ public class ChangePhoneServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserDAO uDao = UserDAO.getUserDAO();
-
 		InputStream is = request.getInputStream();
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		byte[] buf = new byte[32];
@@ -48,18 +54,28 @@ public class ChangePhoneServlet extends HttpServlet {
 			if(r >= 0)
 				os.write(buf, 0, r);
 		}
-		String in = new String(os.toByteArray(), "UTF-8");
+		String authTkn = new String(os.toByteArray(), "UTF-8");
 		
-		StringTokenizer tkn = new StringTokenizer(in, ":");
-
-		if(uDao.updatePhone(tkn.nextToken(), tkn.nextToken())){
-
-		if(uDao.updatePhone(request.getParameter("userEmail"), request.getParameter("phoneNumber"))){
-
-			System.out.println("Phone Change Success!");
-		} else {
-			System.out.println("Phone Change Failed!");
+		SessionManagement sessMan = SessionManagement.getSessionManager();
+		RULUser userSession;
+		String userLvl = null;
+		
+		try {
+			userSession = sessMan.getSession(authTkn);
+			userLvl = userSession.authlevel;
+		} catch (NoSuchSessionException e) {
+			userLvl = "notLoggedIn";
+		} catch (SessionTimeOutException e) {
+			userLvl ="timedOut";
+		} catch (SessionManagementException e) {
+			userLvl = "borked";
 		}
+		
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.write(userLvl);
+		out.flush();
+		out.close();
 	}
 
 }

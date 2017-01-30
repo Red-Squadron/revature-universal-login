@@ -2,7 +2,7 @@
 --take permission level from check_user_existence procedure
 create or replace procedure add_new_user
 (uEmail in varchar2, fName in varchar2, mName in varchar2,
-lName in varchar2, pNumber in number, passwrd in varchar2, permis in varchar2, a out number)
+lName in varchar2, pNumber in varchar2, passwrd in varchar2, permis in varchar2, a out number)
 is
 ema userRegistration.userEmail%type;
 cursor c is
@@ -28,16 +28,17 @@ dbms_output.put_line('success');
 else
 dbms_output.put_line('fail');
 end if;
+dbms_output.put_line(a);
 end;
 /
 
 ----call procedure to prove it works
 --declare
 --uEmail varchar2(75); fName varchar2(30); mName varchar2(30);
---lName varchar2(30); pNumber number(10); passwrd varchar2(30);
+--lName varchar2(30); pNumber varchar2(20); passwrd varchar2(30);
 --a number;
 --begin
---add_new_user('newuser@email.com', 'thisguy', null, 'isawesome', 1234567890, 'password',
+--add_new_user('newuser@email.com', 'thisguy', null, 'isawesome', '1234567890', 'password',
 --'associate', :a);
 --end;
 --/
@@ -90,7 +91,7 @@ end;
 
 --update phone number
 create or replace procedure update_phone
-(uEmail in varchar2, phone in number, a out number)
+(uEmail in varchar2, phone in varchar2, a out number)
 is
 em userRegistration.userEmail%type;
 --a number;
@@ -113,7 +114,7 @@ end;
 
 ----call update phone function
 --declare
---uEmail varchar2(75); phone number(10); a number;
+--uEmail varchar2(75); phone varchar2(20); a number;
 --begin
 --update_phone('newuser@email.com', 2314506849, :a);
 --end;
@@ -149,5 +150,25 @@ end;
 --uEmail varchar(75); passwrd varchar(75); a number;
 --begin
 --validate_login('newuser@email.com', 'passwrd00d',:a);
+--end;
+--/
+
+
+--deletes item from user registration table and password history
+create or replace procedure delete_user_registration
+(uEmail in varchar2, a out varchar2)
+is
+begin
+a := 'true';
+delete from passwordHistory where userEmail = uEmail;
+delete from userRegistration where userEmail = uEmail;
+end;
+/
+
+----tests user deletion
+--declare
+--uEmail varchar2(75);
+--begin
+--delete_user_registration('newuser@email.com');
 --end;
 --/
