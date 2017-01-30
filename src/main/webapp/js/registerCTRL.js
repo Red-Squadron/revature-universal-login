@@ -12,7 +12,7 @@ module
 		newUser.lastName = lastName;
 		newUser.lastName = middleName;
 		
-		$http.post("RegistrationServer", newUser.toJSON).success(function(isRegistered) {
+		$http.post("RegistrationServer/login", newUser.toJSON).success(function(isRegistered) {
 			if(isRegistered === "true") {
 //				celebrate
 			}

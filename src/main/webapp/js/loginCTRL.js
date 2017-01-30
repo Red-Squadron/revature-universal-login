@@ -12,7 +12,7 @@ module
 		validateString += passPhrase;
 		
 		// If the email address does not contain '@' then nothing will happen
-		$http.post("AuthenticationServer", validateString).success(function(userInfo) {
+		$http.post("LoginServlet/login", validateString).success(function(userInfo) {
 			if(userInfo.valid === "true") {
 				$scope.user.authLvl = userInfo.authLvl;
 				$scope.user.userName = userInfo.userName;
