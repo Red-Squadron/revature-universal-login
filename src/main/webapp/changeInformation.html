@@ -2,7 +2,7 @@
 	<head>
 		<title>Change Information View</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
-		<script src="js/changeInformationCtrl.js"></script>
+		<script src="js/changeInformationCTRL.js"></script>
 	</head>
 	<body ng-app="changeInformationApp">
 		<div ng-controller="changeInformationCtrl">
@@ -10,12 +10,13 @@
 			<div>
 				<h2>Change Password:</h2>
 				<form class="form-group">
+					<label for="userEmail">Enter Email:</label>
+					<input type="email" class="form-control" ng-model="userEmailModel" id="userEmail">
 					<label for="currentPassword">Enter Current Password:</label>
 					<input type="password" class="form-control" ng-model="currentPasswordModel" id="currentPassword">
 					<div id="currentPasswordDiv">{{incorrectPassword}}</div>
 					<label for="firstPassword">Enter New Password:</label>
 					<input type="password" class="form-control" ng-model="firstPasswordModel" id="firstPasswordChange">
-					<br>
 					<label for="secondPassword">Re-Enter New Password:</label>
 					<input type="password" class="form-control" ng-model="secondPasswordModel" id="secondPasswordChange">
 					<div id="badFormatDiv">{{badFormat}}</div>

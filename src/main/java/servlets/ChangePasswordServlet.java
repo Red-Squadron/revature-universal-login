@@ -3,9 +3,6 @@ package servlets;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.util.StringTokenizer;
 
 import javax.servlet.ServletException;
@@ -58,6 +55,7 @@ public class ChangePasswordServlet extends HttpServlet {
 			System.out.println("Update Password Success!");
 		} else {
 			System.out.println("Update Password Failed!");
+			response.sendError(0);
 		}
 	}
 

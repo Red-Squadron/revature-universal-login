@@ -13,7 +13,7 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		$scope.successMessage = "";
 		
 		var validatePassword = false;
-		var validateStr = "???" + ":" + $scope.currentPasswordModel;
+		var validateStr = $scope.userEmailModel + ":" + $scope.currentPasswordModel;
 		$http.post("PasswordValidationServlet", validateStr).success(function(){
 			validatePassword = true;
 		});
@@ -35,7 +35,7 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		} else if(!containsSpecial($scope.firstPasswordModel)){
 			$scope.badFormat = "Password must contain at least one special character!";
 		} else {
-			var passwordStr = "???" + ":" + $scope.firstPasswordModel;
+			var passwordStr = $scope.userEmailModel + ":" + $scope.firstPasswordModel;
 			$http.post("ChangePasswordServlet", passwordStr).success(function(){
 				$scope.successMessage = "Password successfully changed!";
 			});
@@ -49,7 +49,7 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		if(false){//CHECK PHONE NUMBER AGAINST VALIDATIONS
 			$scope.phoneBadFormat = "Invalid phone number! Use ########## format."
 		} else {
-			var phoneStr = "???" + ":" + $scope.phoneChangeModel;
+			var phoneStr = $scope.userEmailModel + ":" + $scope.phoneChangeModel;
 			$http.post("ChangePhoneServlet", phoneStr).success(function(){
 				$scope.successMessage = "Phone number successfully changed!";
 			});
