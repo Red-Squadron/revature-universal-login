@@ -4,7 +4,7 @@ userEmail varchar(75) primary key not null,
 firstName varchar(30),
 middleName varchar(30),
 lastName varchar(30) not null,
-phoneNumber number(10),
+phoneNumber varchar(20),
 passwd varchar(75) not null,
 permissions varchar2(25) not null
 );
