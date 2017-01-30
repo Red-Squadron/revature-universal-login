@@ -6,6 +6,7 @@ import com.revature.RULexceptions.NoSuchSessionException;
 import com.revature.RULexceptions.SessionManagementException;
 import com.revature.RULexceptions.SessionTimeOutException;
 
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  * Class containing session management related methods for use by servlets.
@@ -32,15 +33,13 @@ public class SessionManagement {
 	}
 	
 	/**
-	 * TODO: Decide on and implement the method for generating authorization tokens.
 	 * Method for creating an active session. Returns the authtoken associated with that session.
 	 * @param usr
 	 * @return
 	 */
 	public String createSession(RULUser usr){
 		String authtoken;
-		authtoken = usr.authlevel+usr.emailaddress+usr.firstname+usr.lastname+usr.timeOut+usr.creation; //This will obviously need to be changed.
-		//TODO: Insert decided upon implementation here.
+		authtoken = BCrypt.hashpw(usr.emailaddress+usr.authlevel+usr.creation, BCrypt.gensalt());
 		authmap.put(authtoken, usr);
 		return authtoken;
 	}
