@@ -28,3 +28,9 @@ insert into SalesForceMock values (
 insert into SalesForceMock values (
 'oscar@email.com', 'oscar', 'grouch', 'associate'
 );
+insert into SalesForceMock values (
+'yuvi@email.com', 'yuvi', 'damodaran', 'trainer'
+);
+insert into SalesForceMock values (
+'admin@email.com', 'admin', 'admin', 'admin'
+);

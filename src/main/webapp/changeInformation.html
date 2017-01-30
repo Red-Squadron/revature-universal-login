@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>Change Information View</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+		<script src="js/changeInformationCtrl.js"></script>
+	</head>
+	<body ng-app="changeInformationApp">
+		<div ng-controller="changeInformationCtrl">
+			<h1>Change User Information:</h1>
+			<div>
+				<h2>Change Password:</h2>
+				<form class="form-group">
+					<label for="currentPassword">Enter Current Password:</label>
+					<input type="password" class="form-control" ng-model="currentPasswordModel" id="currentPassword">
+					<div id="currentPasswordDiv">{{incorrectPassword}}</div>
+					<label for="firstPassword">Enter New Password:</label>
+					<input type="password" class="form-control" ng-model="firstPasswordModel" id="firstPasswordChange">
+					<br>
+					<label for="secondPassword">Re-Enter New Password:</label>
+					<input type="password" class="form-control" ng-model="secondPasswordModel" id="secondPasswordChange">
+					<div id="badFormatDiv">{{badFormat}}</div>
+					<div id="notEqualDiv">{{notEqual}}</div>
+					<input type="button" class="btn btn-primary" ng-click="formChangePassword()" value="Submit">
+				</form>
+			</div>
+			<br>
+			<div>
+				<h2>Change Phone Number:</h2>
+				<form class="form-group">
+					<input type="tel" class="form-control" ng-model="phoneChangeModel" id="phoneChange">
+					<div id="phoneChangeDiv">{{phoneBadFormat}}</div>
+					<input type="button" class="btn btn-primary" ng-click="formChangePhoneNumber()" value="Submit">
+				</form>
+			</div>
+			<br>
+			<br>
+			<div id="successMessageDiv">{{successMessage}}</div>
+			<button class="btn btn-danger" id="changeUserInfoCancelButton">Cancel</button>
+		</div>
+	</body>
+</html>

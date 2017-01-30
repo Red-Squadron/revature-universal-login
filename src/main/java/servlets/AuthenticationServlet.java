@@ -11,16 +11,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.RULexceptions.NoSuchSessionException;
+import com.revature.RULexceptions.SessionManagementException;
+import com.revature.RULexceptions.SessionTimeOutException;
+import com.revature.session.RULUser;
+import com.revature.session.SessionManagement;
+
+import dao.UserDAO;
+
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class AuthenticationServlet
  */
-public class LoginServlet extends HttpServlet {
+public class AuthenticationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public AuthenticationServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -46,16 +54,26 @@ public class LoginServlet extends HttpServlet {
 			if(r >= 0)
 				os.write(buf, 0, r);
 		}
-		String in = new String(os.toByteArray(), "UTF-8");
+		String authTkn = new String(os.toByteArray(), "UTF-8");
 		
-		StringTokenizer tkn = new StringTokenizer(in, ":");
+		SessionManagement sessMan = SessionManagement.getSessionManager();
+		RULUser userSession;
+		String userLvl = null;
 		
-		UserDAO dao = getUserDAO();
-		Boolean isValid = dao.validateLogin(tkn.nextToken(), tkn.nextToken());
+		try {
+			userSession = sessMan.getSession(authTkn);
+			userLvl = userSession.authlevel;
+		} catch (NoSuchSessionException e) {
+			userLvl = "notLoggedIn";
+		} catch (SessionTimeOutException e) {
+			userLvl ="timedOut";
+		} catch (SessionManagementException e) {
+			userLvl = "borked";
+		}
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		out.write(isValid.toString());
+		out.write(userLvl);
 		out.flush();
 		out.close();
 	}

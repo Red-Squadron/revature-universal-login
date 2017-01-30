@@ -2,7 +2,12 @@ package com.revature.session;
 
 import java.util.HashMap;
 
+import com.revature.RULexceptions.NoSuchSessionException;
+import com.revature.RULexceptions.SessionManagementException;
+import com.revature.RULexceptions.SessionTimeOutException;
+
 import org.mindrot.jbcrypt.BCrypt;
+
 /**
  * Class containing session management related methods for use by servlets.
  * @author cavan
@@ -44,14 +49,14 @@ public class SessionManagement {
 	 * @param authtoken
 	 * @return
 	 */
-	public RULUser getSession(String authtoken) throws Exception{
+	public RULUser getSession(String authtoken) throws SessionManagementException{
 		if(authmap.containsKey(authtoken))
 			if(authmap.get(authtoken).timeOut()){
 				authmap.remove(authtoken);
-				throw new Exception("Session has timed out.");
+				throw new SessionTimeOutException();
 			}
 		if(!authmap.containsKey(authtoken))
-			throw new Exception("AuthToken does not match an existing session.");
+			throw new NoSuchSessionException();
 		return authmap.get(authtoken);
 	}
 	
