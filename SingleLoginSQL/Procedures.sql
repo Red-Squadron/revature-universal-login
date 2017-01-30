@@ -28,6 +28,7 @@ dbms_output.put_line('success');
 else
 dbms_output.put_line('fail');
 end if;
+dbms_output.put_line(a);
 end;
 /
 
@@ -149,5 +150,25 @@ end;
 --uEmail varchar(75); passwrd varchar(75); a number;
 --begin
 --validate_login('newuser@email.com', 'passwrd00d',:a);
+--end;
+--/
+
+
+--deletes item from user registration table and password history
+create or replace procedure delete_user_registration
+(uEmail in varchar2, a out varchar2)
+is
+begin
+a := 'true';
+delete from passwordHistory where userEmail = uEmail;
+delete from userRegistration where userEmail = uEmail;
+end;
+/
+
+----tests user deletion
+--declare
+--uEmail varchar2(75);
+--begin
+--delete_user_registration('newuser@email.com');
 --end;
 --/
