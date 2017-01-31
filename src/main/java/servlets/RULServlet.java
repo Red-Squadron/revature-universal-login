@@ -38,6 +38,7 @@ public class RULServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String requestedService = request.getRequestURI().substring(37);
+		System.out.println("requestedService : " + requestedService);
 		
 		switch(requestedService){
 			case "login": LoginService.login(request, response);

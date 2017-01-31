@@ -10,7 +10,7 @@ module
 		validateString += "userName=" + userName + "&password=" + passPhrase;
 		
 		// If the email address does not contain '@' then nothing will happen
-		if(validateString.userName.includes("@")){
+		if(userName.includes("@")){
 			$http({
     	        method: 'POST',
     	        url: 'RULServlet/login',

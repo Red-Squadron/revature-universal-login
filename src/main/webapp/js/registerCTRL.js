@@ -13,23 +13,28 @@ module
 		newUser.lastName = middleName;
 		newUser.passPhraseConfirm = passPhraseConfirm;
 		
-		if(newUser.passphrase !== newUser.passPhraseConfirm){
+		if(passPhrase !== passPhraseConfirm){
 			
-		} else if(newUser.passphrase.length < 8){
+		} else if(passPhrase.length < 8){
 			
-		} else if(newUser.passphrase.length > 75){
+		} else if(passPhrase.length > 75){
 			
-		} else if(newUser.passphrase === newUser.passphrase.toLowerCase()){
+		//} else if(passPhrase === passPhrase.toLowerCase()){
 			
-		} else if(newUser.passphrase === newUser.passphrase.toUpperCase()){
+		//} else if(passPhrase === passPhrase.toUpperCase()){
 			
-		} else if(!containsNumber(newUser.passphrase)){
+		} else if(!containsNumber(passPhrase)){
 			
-		} else if(!containsSpecial(newUser.passphrase)){
+		} else if(!containsSpecial(passPhrase)){
 			
 		} else {
 			var data = "userEmail="+userName+"&firstName="+firstName+"&lastName="+lastName+"&middleName="+middleName+"&phoneNumber="/*TODO phone number*/+"&password="+passPhrase;
-			$http.post("RULServlet/register", data).success(function(isRegistered) {
+			$http({
+    	        method: 'POST',
+    	        url: 'RULServlet/register',
+    	        data: data,
+    	        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+	        }).ssuccess(function(isRegistered) {
 				if(isRegistered === "true") {
 					Angular.element("modalClose").triggerHandler("click");
 				}
