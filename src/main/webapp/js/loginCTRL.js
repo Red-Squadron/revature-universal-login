@@ -10,12 +10,17 @@ module
 		validateString.userName = userName;
 		validateString.password = passPhrase;
 		
+		
 		// If the email address does not contain '@' then nothing will happen
-		$http.post("RULServlet/login", validateString).success(function(userInfo) {
-			if(userInfo.valid === "true") {
-				$scope.user.authLvl = userInfo.authLvl;
-				$scope.user.userName = userInfo.userName;
-			}
-		})
+		if(validateString.userName.includes("@")){
+			$http.post("RULServlet/login", validateString).success(function(userInfo) {
+				if(userInfo.valid === "true") {
+					$scope.user.authLvl = userInfo.authLvl;
+					$scope.user.userName = userInfo.userName;
+				}
+			})
+		} else {
+			// EMAIL DOES NOT CONTAIN AN @
+		}
 	};
 });
