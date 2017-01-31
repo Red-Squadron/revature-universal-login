@@ -41,17 +41,6 @@ public class RULServlet extends HttpServlet {
 		String responseString = "noResponse";
 		
 		String requestedService = request.getRequestURI().substring(37);
-		/*InputStream is = request.getInputStream();
-		ByteArrayOutputStream os = new ByteArrayOutputStream();
-		byte[] buf = new byte[32];
-		int r = 0;
-		while(r >= 0)
-		{
-			r = is.read(buf);
-			if(r >= 0)
-				os.write(buf, 0, r);
-		}
-		String in = new String(os.toByteArray(), "UTF-8");*/
 		
 		switch(requestedService){
 			case "login": responseString = LoginService.login(
