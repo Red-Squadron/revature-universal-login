@@ -25,15 +25,13 @@ public class RULServlet extends HttpServlet {
      */
     public RULServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -60,19 +58,40 @@ public class RULServlet extends HttpServlet {
 			switch(requestedService){
 				case "login": responseString = Boolean.toString(LoginService.login(
 										request.getParameter("userName"), request.getParameter("password")));
+					/* call validateLogin() from the DAO
+					 * request.getParameter("email/userName")
+					 * request.getParameter("password")
+					 * Validate Login
+					*/
 					break;
 				case "register": responseString = RegistrationService.register(
 							request.getParameter("userEmail"), request.getParameter("firstname"),
 							request.getParameter("middlename"), request.getParameter("lastname"),
 							request.getParameter("phoneNumber"), request.getParameter("password"));
+					/* call registerUser() from the DAO
+					 * request.getParameter("email/userName")
+					 * request.getParameter("firstName")
+					 * request.getParameter("middleName")
+					 * request.getParameter("lastName")
+					 * request.getParameter("phone")
+					 * request.getParameter("password")
+					 */
 					break;
 				case "authenticate": AuthenticationService.authenticate(request.getParameter("authTkn"));
 					break;
 				case "changeUserInfo": ChangeUserInfoService.changeUserInfo(
 								request.getParameter("authTkn"), "phone", request.getParameter("password"));
+					/* call updatePhone() from the DAO
+					 * request.getParameter("email/userName")
+					 * request.getParameter("phone")
+					 */
 					break;
 				case "changeUserPassword": ChangeUserPasswordService.changeUserPassword(
 							request.getParameter("userEmail"), request.getParameter("password"));
+					/* call updatePassword() from the DAO
+					 * request.getParameter("email/userName")
+					 * request.getParameter("password") // is this the new one only?????
+					 */
 					break;
 			}
 		}catch(Exception e){
