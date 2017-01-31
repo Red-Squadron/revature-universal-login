@@ -8,19 +8,24 @@
 		<div ng-controller="changeInformationCtrl">
 			<h1>Change User Information:</h1>
 			<div>
-				<h2>Change Password:</h2>
-				<form class="form-group">
+				<h2>Enter User Information:</h2>
+				<form class ="form-group">
 					<label for="userEmail">Enter Email:</label>
 					<input type="email" class="form-control" ng-model="userEmailModel" id="userEmail">
 					<label for="currentPassword">Enter Current Password:</label>
 					<input type="password" class="form-control" ng-model="currentPasswordModel" id="currentPassword">
 					<div id="currentPasswordDiv">{{incorrectPassword}}</div>
+				</form>
+			</div>
+			<br>
+			<div>
+				<h2>Change Password:</h2>
+				<form class="form-group">
 					<label for="firstPassword">Enter New Password:</label>
 					<input type="password" class="form-control" ng-model="firstPasswordModel" id="firstPasswordChange">
 					<label for="secondPassword">Re-Enter New Password:</label>
 					<input type="password" class="form-control" ng-model="secondPasswordModel" id="secondPasswordChange">
 					<div id="badFormatDiv">{{badFormat}}</div>
-					<div id="notEqualDiv">{{notEqual}}</div>
 					<input type="button" class="btn btn-primary" ng-click="formChangePassword()" value="Submit">
 				</form>
 			</div>
@@ -28,6 +33,7 @@
 			<div>
 				<h2>Change Phone Number:</h2>
 				<form class="form-group">
+					<label for="phoneChange">Enter New Phone Number</label>
 					<input type="tel" class="form-control" ng-model="phoneChangeModel" id="phoneChange">
 					<div id="phoneChangeDiv">{{phoneBadFormat}}</div>
 					<input type="button" class="btn btn-primary" ng-click="formChangePhoneNumber()" value="Submit">
