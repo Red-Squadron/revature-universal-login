@@ -1,9 +1,8 @@
-/* This style sheet applies to the entire login page */
+/* This style sheet applies to the entire login page and changeInfo*/
 
 * {
 	font-family: 'futura-pt', 'Cabin', sans-serif;
 }
-
 /* Nav bar */
 nav {
 	padding-top: 2%;
@@ -68,14 +67,29 @@ input:focus {
 	outline: none;
 }
 
-input:button {
+form {
 	text-align: center;
+}
+
+label {
+	text-align: left;
 }
 
 .req {
 	color: red!important;
 }
 
+icon-remove-sign {
+	color: red!important;
+}
+
+icon-remove-sign {
+	color: red!important;
+}
+
+fa-check-circle {
+	color: green!important;
+}
 
 /* Placeholders have different css values depending on the browser */
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
