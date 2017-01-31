@@ -54,6 +54,11 @@ nav {
 	padding-top: 5%;
 }
 
+input:focus {
+	border: #f26925 ridge;
+	outline: none;
+}
+
 .req {
 	color: red!important;
 }
