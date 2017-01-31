@@ -3,8 +3,12 @@ package dao;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  * Singleton Class for accessing RUL database.
@@ -52,16 +56,15 @@ public class UserDAO {
 	 */
 	public boolean validateLogin(String email, String password) {
 		try {
-			CallableStatement checkLogin = conn.prepareCall("{call validate_login(?,?,?)}");
-
+			PreparedStatement checkLogin = conn.prepareStatement("select passwd from userregistration where useremail = ?");
+			
 			checkLogin.setString(1, email);
-			checkLogin.setString(2, password);
-			checkLogin.registerOutParameter(3, Types.INTEGER);
-			checkLogin.executeUpdate();
-
-			if (checkLogin.getInt(3) == 1) {
+			ResultSet rs = checkLogin.executeQuery();
+			if(rs.next()){
+			String hashedpw = rs.getString(1);
+			if(BCrypt.checkpw(password, hashedpw))
 				return true;
-			} else {
+			} else{
 				return false;
 			}
 		} catch (SQLException e) {
@@ -95,7 +98,9 @@ public class UserDAO {
 			registerUser.setString(3, middleName);
 			registerUser.setString(4, lastName);
 			registerUser.setString(5, phone);
-			registerUser.setString(6, password);
+			//TODO Move crypto out?
+			String hash = BCrypt.hashpw(password, BCrypt.gensalt());
+			registerUser.setString(6, hash);
 			registerUser.setString(7, permission);
 			registerUser.registerOutParameter(8, Types.INTEGER);
 			registerUser.executeUpdate();
@@ -217,4 +222,6 @@ public class UserDAO {
 		
 		return false;
 	}
+	
+	
 }
