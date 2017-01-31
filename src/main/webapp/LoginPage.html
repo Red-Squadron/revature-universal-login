@@ -7,7 +7,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
 <link href="css/main.css" rel=stylesheet>
+<!-- Angular import -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+<script src='js/module.js'></script>
+<script src='js/loginCTRL.js'></script>
+<script src='js/registerCTRL.js'></script>
 </head>
 
 <body class="container-fluid">
@@ -23,33 +30,38 @@
 			Not a member? Register here!
 		</button>
 		<div id="register" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-
-		    <!-- Modal content-->
-		    <div class="modal-content">
-		    	<div class="modal-body">
-					<form id="registrationForm">
-						<input name="username" ng-model="userName" type="email" placeholder="email" required/>
-						<br>
-						<input name="first name" ng-model="firstName" type="text" placeholder="first name" required/>
-						<br>
-						<input name="last name" ng-model="lastName" type="text" placeholder="last name" required/>
-						<br>
-						<input name="last name" ng-model="middleName" type="text" placeholder="middle name"/>
-						<br>
-						<input name="password" ng-model="passPhrase" type="password" placeholder="password" required/>
-						<br>
-						<input name="passwordConfirm" ng-model="passPhraseConfirm" type="password" placeholder="confirm password" required/>
-						<br>
-						<button type="submit" ng-click="registerUser(userName, firstName, lastName, middleName, passPhrase)">Register</button>
-					</form>
-		      	</div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
-		      </div>
-		    </div>
-		
-		  </div>
+			<div class="modal-dialog">
+		    	<div class="modal-content">
+			    	<div class="modal-body">
+						<form id="registrationForm">
+							<label for="username"></i>Email<span class="req">&nbsp;*</span></label>
+							<br>
+							<input name="username" ng-model="userName" type="email" placeholder="Email" required/>
+							<br>
+							<label for="username">First Name<span class="req">&nbsp;*</span></label>
+							<br>
+							<input name="firstName" ng-model="firstName" type="text" placeholder="First Name" required/>
+							<br>
+							<label for="username">Last Name<span class="req">&nbsp;*</span></label>
+							<br>
+							<input name="lastName" ng-model="lastName" type="text" placeholder="Last Name" required/>
+							<br>
+							<label for="username">Email</label>
+							<br>
+							<input name="middleName" ng-model="middleName" type="text" placeholder="Middle Name"/>
+							<br>
+							<input name="password" ng-model="passPhrase" type="password" placeholder="Password" required/>
+							<br>
+							<input name="passwordConfirm" ng-model="passPhraseConfirm" type="password" placeholder="Re-enter Password" required/>
+							<br>
+							<button type="submit" ng-click="registerUser(userName, firstName, lastName, middleName, passPhrase)">Register</button>
+						</form>
+			      	</div>
+		    		<div class="modal-footer">
+		        		<button type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
+		     		</div>
+		    	</div>
+			</div>
 		</div>
 	</div>
 </nav>
@@ -58,26 +70,21 @@
 	<br>
 	<form id="loginForm" ng-controller='loginCtrl'>
 		<div class="form-group">
-			<input type="email" name="username" ng-model="userName" placeholder="email" required autofocus>
+			<label for="username"><i class="icon-login fa fa-user active"></i>Email<span class="req">&nbsp;*</span></label>
 			<br>
-			<input type="password" name="password" ng-model="passPhrase" placeholder="password" required>
+			<input type="email" name="username" ng-model="userName" placeholder="Email" required autofocus>
+			<br>
+			<label for="password"><i class="icon-login fa fa-lock"></i>Password<span class="req">&nbsp;*</span></label>
+			<br>
+			<input type="password" name="password" ng-model="passPhrase" placeholder="Password" required>
 			<br>
 			<button type="submit" ng-click="validateLogin(userName, passPhrase)">Login</button>
 		</div>
 	</form>
 </div>
-
 <footer class="col-md-12">
 	<i>©2017 All Rights Reserved.</i>
 </footer>
-
-<div class="scripts">
-	<!-- Angular import -->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
-	<script src='js/module.js'></script>
-	<script src='js/loginCTRL.js'></script>
-	<script src='js/registerCTRL.js'></script>
-</div>
 
 </body>
 </html>
