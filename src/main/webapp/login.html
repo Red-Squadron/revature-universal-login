@@ -18,13 +18,13 @@
 </head>
 
 <body class="container-fluid">
-<nav>
-	<div class="col-md-6" id="navLeft">
+<header class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="headerLeft">
 		<a href="https://revature.com/">
 			<img src="https://3g4d13k75x47q7v53surz1gi-wpengine.netdna-ssl.com/wp-content/themes/revature/imgs/logo.png"/>
 		</a>
 	</div>
-	<div class="col-md-6" id="navRight" ng-controller='registerCtrl'>
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="headerRight" ng-controller='registerCtrl'>
 		<!-- Pop up for registration form field -->
 		<button type="button" id="registerBtn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#register">
 			Not a member? Register here!
@@ -34,7 +34,7 @@
 		    	<div class="modal-content">
 			    	<div class="modal-body">
 						<form id="registrationForm">
-							<label for="username"></i>Email<span class="req">&nbsp;*</span></label>
+							<label for="username">Email<span class="req">&nbsp;*</span></label>
 							<br>
 							<input name="username" ng-model="userName" type="email" placeholder="Email" required/>
 							<br>
@@ -68,9 +68,9 @@
 			</div>
 		</div>
 	</div>
-</nav>
+</header>
 	
-<div class="col-md-12">	
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
 	<br>
 	<form id="loginForm" ng-controller='loginCtrl'>
 		<div class="form-group">
@@ -86,7 +86,7 @@
 		</div>
 	</form>
 </div>
-<footer class="col-md-12">
+<footer class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	<i>©2017 All Rights Reserved.</i>
 </footer>
 

@@ -1,26 +1,21 @@
-/* This style sheet applies to the entire login page */
+/* This style sheet applies to the entire login page and changeInfo*/
+
 * {
-	text-align: center;
 	font-family: 'futura-pt', 'Cabin', sans-serif;
 }
-
-input {
-	margin-bottom: 10px;
-	text-align: left;
-}
-
-nav {
+/* Nav bar */
+header {
 	padding-top: 2%;
 	padding-bottom: 2%;
 	float: top;
 }
 
-#navLeft {
+#headerLeft {
 	text-align: left;
 	float: left;
 }
 
-#navRight {
+#headerRight {
 	text-align: right;
 	float: right;
 }
@@ -49,8 +44,22 @@ nav {
 	outline: none;
 }
 
+.modal {
+	text-align: center;
+}
+
 #loginForm {
 	padding-top: 5%;
+	
+}
+
+/* Body */
+h1, h2, h3, h4, h5, h6 {
+	text-align: center;
+}
+
+input {
+	margin-bottom: 10px;
 }
 
 input:focus {
@@ -58,25 +67,50 @@ input:focus {
 	outline: none;
 }
 
+form {
+	text-align: center;
+}
+
+label {
+	text-align: left;
+}
+
 .req {
 	color: red!important;
 }
 
-footer {
-	text-align: right;
-	color: #888888;
+icon-remove-sign {
+	color: red!important;
+}
+
+.wrong {
+	color: red!important;
+}
+
+fa-check-circle {
+	color: green!important;
 }
 
 /* Placeholders have different css values depending on the browser */
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 	text-align: left;
+	padding-left: 2px;
 }
 ::-moz-placeholder { /* Firefox 19+ */
 	text-align: left;
+	padding-left: 2px;
 }
 :-ms-input-placeholder { /* IE 10+ */
 	text-align: left;
+	padding-left: 2px;
 }
 :-moz-placeholder { /* Firefox 18- */
 	text-align: left;
+	padding-left: 2px;
+}
+
+/* Footer */
+footer {
+	text-align: right;
+	color: #888888;
 }
