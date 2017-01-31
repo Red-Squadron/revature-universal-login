@@ -11,6 +11,8 @@ import java.sql.Types;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
+ * TODO Streamline and abstract functionality for password changes where possible. Additional task tags placed in suggested locations.
+ * TODO Test functionality after crypto implementation. Several additional queries are being used now.
  * Singleton Class for accessing RUL database.
  * @author David
  *
@@ -62,9 +64,13 @@ public class UserDAO {
 			ResultSet rs = checkLogin.executeQuery();
 			if(rs.next()){
 			String hashedpw = rs.getString(1);
-			if(BCrypt.checkpw(password, hashedpw))
-				return true;
+			if(BCrypt.checkpw(password, hashedpw)){
+				rs.close();
+				checkLogin.close();
+				return true;}
 			} else{
+				rs.close();
+				checkLogin.close();
 				return false;
 			}
 		} catch (SQLException e) {
@@ -98,7 +104,7 @@ public class UserDAO {
 			registerUser.setString(3, middleName);
 			registerUser.setString(4, lastName);
 			registerUser.setString(5, phone);
-			//TODO Move crypto out?
+			//TODO Move crypto out to service classes for this method?
 			String hash = BCrypt.hashpw(password, BCrypt.gensalt());
 			registerUser.setString(6, hash);
 			registerUser.setString(7, permission);
@@ -106,8 +112,10 @@ public class UserDAO {
 			registerUser.executeUpdate();
 			
 			if (registerUser.getInt(8) == 1) {
+				registerUser.close();
 				return true;
 			} else {
+				registerUser.close();
 				return false;
 			}
 		} catch(SQLException e) {
@@ -124,19 +132,58 @@ public class UserDAO {
 	 */
 	public boolean updatePassword(String email, String password) {
 		try {
-			CallableStatement checkPassword = conn.prepareCall("{call passwd_checker(?,?,?)}");
-
+			
+			PreparedStatement checkPassword = conn.prepareStatement("select passwd from userregistration where useremail=?");
 			checkPassword.setString(1, email);
-			String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
-			checkPassword.setString(2, hashed);
-			checkPassword.registerOutParameter(3, Types.INTEGER);
-			checkPassword.executeUpdate();
-
-			if (checkPassword.getInt(3) == 1) {
-				return true;
-			} else {
+			ResultSet rs = checkPassword.executeQuery();
+			rs.next();
+			String oldpass = rs.getString(1);
+			
+			//Reject same password
+			if(BCrypt.checkpw(password, oldpass)){
+				rs.close();
+				checkPassword.close();
 				return false;
 			}
+			
+			checkPassword = conn.prepareStatement("select pastpass from passwordhistory where useremail = ?");
+			checkPassword.setString(1, email);
+			rs = checkPassword.executeQuery();
+			
+			int totalpasswords = 0;
+			while(rs.next()){
+				totalpasswords++;
+				if(BCrypt.checkpw(password, rs.getString(1))){
+					rs.close();
+					checkPassword.close();
+					return false;
+				}	
+			}
+			
+			/* TODO Implement a trigger to delete the oldest value from password history (if there are too many, current max is 3) and add new value on update to userregistration table; 
+			 * much faster execution directly on table, and doesn't require all these messy JDBC statements.
+			*/
+			
+			PreparedStatement updatePassQuery = conn.prepareStatement("update userregistration set passwd = ? where useremail = ?");
+			updatePassQuery.setString(1, password);
+			updatePassQuery.setString(2, email);
+			updatePassQuery.execute();
+			updatePassQuery.close();
+			
+			//If there are more than 3 results from passhistory, delete the oldest one.
+			if(totalpasswords>=3){
+				updatePassQuery = conn.prepareStatement("delete (select * from passhistory where useremail = ? order by add_stamp asc) where row_num<=1");
+				updatePassQuery.setString(1, email);
+				updatePassQuery.execute();
+				updatePassQuery.close();
+			}
+			
+			updatePassQuery = conn.prepareStatement("insert into passhistory (useremail, pastpass, add_stamp) values (?, ?, systimestamp");
+			updatePassQuery.setString(1, email);
+			updatePassQuery.setString(2, oldpass);
+			updatePassQuery.execute();
+			updatePassQuery.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -159,8 +206,10 @@ public class UserDAO {
 			updatePhone.executeUpdate();
 
 			if (updatePhone.getInt(3) == 1) {
+				updatePhone.close();
 				return true;
 			} else {
+				updatePhone.close();
 				return false;
 			}
 		} catch (SQLException e) {
@@ -188,8 +237,11 @@ public class UserDAO {
 			checkUser.executeUpdate();
 
 			if (checkUser.getInt(5) == 1) {
-				return (String) checkUser.getString(4);
+				String retval = checkUser.getString(4);
+				checkUser.close();
+				return retval;
 			} else {
+				checkUser.close();
 				return "";
 			}
 		} catch (SQLException e) {
@@ -213,8 +265,10 @@ public class UserDAO {
 			deleteUser.executeUpdate();
 
 			if (deleteUser.getInt(2) == 1) {
+				deleteUser.close();
 				return true;
 			} else {
+				deleteUser.close();
 				return false;
 			}
 		} catch (SQLException e) {
