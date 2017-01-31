@@ -35,12 +35,8 @@
 <div class="col-md-6">
 	<h2>Change Password:</h2>
 	<form class="form-group">
-		<i hidden class="fa fa-check-circle" id="firstPasswordCheckIcon"></i>
-		<i type="hidden" class="icon-remove-sign" id="firstPasswordXIcon"></i>
 		<label for="firstPassword">Enter New Password:</label>
 		<input type="password" class="form-control" ng-model="firstPasswordModel" id="firstPasswordChange">
-		<i class="fa fa-check-circle" id="secondPasswordCheckIcon"></i>
-		<i type="hidden" class="icon-remove-sign" id="secondPasswordXIcon"></i>
 		<label for="secondPassword">Re-Enter New Password:</label>
 		<span class="wrong">{{notEqual}}</span>
 		<input type="password" class="form-control" ng-model="secondPasswordModel" id="secondPasswordChange">
