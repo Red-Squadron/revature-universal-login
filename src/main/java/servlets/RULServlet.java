@@ -68,14 +68,30 @@ public class RULServlet extends HttpServlet {
 							request.getParameter("userEmail"), request.getParameter("firstname"),
 							request.getParameter("middlename"), request.getParameter("lastname"),
 							request.getParameter("phoneNumber"), request.getParameter("password"));
+					/* call registerUser() from the DAO
+					 * request.getParameter("email/userName")
+					 * request.getParameter("firstName")
+					 * request.getParameter("middleName")
+					 * request.getParameter("lastName")
+					 * request.getParameter("phone")
+					 * request.getParameter("password")
+					 */
 					break;
 				case "authenticate": AuthenticationService.authenticate(request.getParameter("authTkn"));
 					break;
 				case "changeUserInfo": ChangeUserInfoService.changeUserInfo(
 								request.getParameter("authTkn"), "phone", request.getParameter("password"));
+					/* call updatePhone() from the DAO
+					 * request.getParameter("email/userName")
+					 * request.getParameter("phone")
+					 */
 					break;
 				case "changeUserPassword": ChangeUserPasswordService.changeUserPassword(
 							request.getParameter("userEmail"), request.getParameter("password"));
+					/* call updatePassword() from the DAO
+					 * request.getParameter("email/userName")
+					 * request.getParameter("password") // is this the new one only?????
+					 */
 					break;
 			}
 		}catch(Exception e){
