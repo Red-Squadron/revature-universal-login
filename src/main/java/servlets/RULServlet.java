@@ -43,8 +43,7 @@ public class RULServlet extends HttpServlet {
 		String requestedService = request.getRequestURI().substring(37);
 		
 		switch(requestedService){
-			case "login": responseString = LoginService.login(
-						request.getParameter("userName"), request.getParameter("password"));
+			case "login": LoginService.login(request, response);
 				break;
 			case "register": responseString = RegistrationService.register(
 						request.getParameter("userEmail"), request.getParameter("firstName"),

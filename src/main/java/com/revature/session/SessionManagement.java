@@ -24,7 +24,7 @@ public class SessionManagement {
 	
 	/**
 	 * Returns singleton instance of SessionManagement.
-	 * @return the SessionManagement object.
+	 * @return SessionManagement SessionManagement singleton.
 	 */
 	public static SessionManagement getSessionManager(){
 		if(manager==null)
@@ -34,8 +34,8 @@ public class SessionManagement {
 	
 	/**
 	 * Method for creating an active session. Returns the authtoken associated with that session.
-	 * @param usr
-	 * @return
+	 * @param RULUser User being logged in
+	 * @return String User authorization token
 	 */
 	public String createSession(RULUser usr){
 		String authtoken;
@@ -46,8 +46,8 @@ public class SessionManagement {
 	
 	/**
 	 * Return the user's session, throws an exception if there's a problem with the user's session.
-	 * @param authtoken
-	 * @return
+	 * @param String User authorization token
+	 * @return RULUser User associated with authorization token
 	 */
 	public RULUser getSession(String authtoken) throws SessionManagementException{
 		if(authmap.containsKey(authtoken))
