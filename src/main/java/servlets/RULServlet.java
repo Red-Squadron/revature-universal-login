@@ -44,20 +44,15 @@ public class RULServlet extends HttpServlet {
 		System.out.println("requestedService : " + requestedService);
 		
 		switch(requestedService){
-			case "login": //LoginService.login(request, response);
-			System.out.println("login");
+			case "login": LoginService.login(request, response);
 				break;
-			case "register": /*responseString = RegistrationService.register(
+			case "register": responseString = RegistrationService.register(
 						request.getParameter("userEmail"), request.getParameter("firstName"),
 						request.getParameter("middleName"), request.getParameter("lastName"),
-						request.getParameter("phoneNumber"), request.getParameter("password"));*/
-				System.out.println("registering : "+
-						request.getParameter("userEmail")+ request.getParameter("firstName")+
-						request.getParameter("middleName")+ request.getParameter("lastName")+
-						request.getParameter("phoneNumber")+ request.getParameter("password"));
+						request.getParameter("phoneNumber"), request.getParameter("password"));
 				break;
-			case "authenticate": //responseString = AuthenticationService.authenticate(
-						//request.getParameter("authTkn"));
+			case "authenticate": responseString = AuthenticationService.authenticate(
+						request, response);
 				break;
 			case "changeUserInfo": responseString = ChangeUserInfoService.changeUserInfo(
 						request.getParameter("authTkn"), "phone", request.getParameter("password"));
