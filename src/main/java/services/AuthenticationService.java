@@ -1,5 +1,8 @@
 package services;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,25 +17,30 @@ public class AuthenticationService {
 	 * Authenticates authorization token against active sessions.
 	 * @param authTkn token to validate.
 	 * @return user authorization level if valid, error code if invalid.
+	 * @throws IOException 
 	 */
-	public static String authenticate(HttpServletRequest request, HttpServletResponse response){
+	public static void authenticate(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		SessionManagement sessMan = SessionManagement.getSessionManager();
 		RULUser userSession;
-		String userLvl = "noResponse";
+		String responseJson = "{authTkn: noResponse}";
 		
 		try {
 			userSession = sessMan.getSession(request.getParameter("authTkn"));
-			userLvl = userSession.authlevel;
+			responseJson = userSession.authlevel;
 			userSession.refresh();
 			//TODO refresh the cookie
 		} catch (NoSuchSessionException e) {
-			userLvl = "notLoggedIn";
+			responseJson = "{authTkn: notLoggedIn}";
 		} catch (SessionTimeOutException e) {
-			userLvl ="timedOut";
+			responseJson ="{authTkn: timedOut}";
 		} catch (SessionManagementException e) {
-			userLvl = "borked";
+			responseJson = "{authTkn: borked}";
 		}
-		
-		return userLvl;
+
+		response.setContentType("json");
+		PrintWriter out = response.getWriter();
+		out.write(responseJson);
+		out.flush();
+		out.close();
 	}
 }

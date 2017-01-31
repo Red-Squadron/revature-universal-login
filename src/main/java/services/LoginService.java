@@ -28,21 +28,20 @@ public class LoginService {
 		
 		
 		if(usr == null) {
-			responseJson = "{authTkn: false}";
+			responseJson = "{valid: false}";
 		}
 		else {
 			SessionManagement sess = SessionManagement.getSessionManager();
 			String authTkn = sess.createSession(usr);
-			responseJson += authTkn;
 			//TODO generate a cookie holding the authTkn
-			responseJson += ", authLvl: " + usr.authlevel;
+			responseJson = "{valid: true, ";
+			responseJson += "authTkn: " + authTkn;
+			responseJson += ", authLvl: " + usr.authlevel + "}";
 		}
-		
-		
 		
 		response.setContentType("json");
 		PrintWriter out = response.getWriter();
-		out.write("");
+		out.write(responseJson);
 		out.flush();
 		out.close();
 	}
