@@ -56,13 +56,8 @@ public class RULServlet extends HttpServlet {
 		
 		try{
 			switch(requestedService){
-				case "login": responseString = Boolean.toString(LoginService.login(
-										request.getParameter("userName"), request.getParameter("password")));
-					/* call validateLogin() from the DAO
-					 * request.getParameter("email/userName")
-					 * request.getParameter("password")
-					 * Validate Login
-					*/
+				case "login": responseString = LoginService.login(
+										request.getParameter("userName"), request.getParameter("password"));
 					break;
 				case "register": responseString = RegistrationService.register(
 							request.getParameter("userEmail"), request.getParameter("firstname"),
