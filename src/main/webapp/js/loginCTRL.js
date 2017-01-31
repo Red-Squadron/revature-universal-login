@@ -20,6 +20,7 @@ module
     			if(userInfo.valid === "true") {
     				$scope.user.authLvl = userInfo.authLvl;
     				$scope.user.authTkn = userInfo.authTkn;
+    				//TODO cookie implementation instead of in scope
 			    }
 		    })
 		} else {

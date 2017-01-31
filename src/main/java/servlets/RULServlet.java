@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,35 +37,21 @@ public class RULServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String responseString = "noResponse";
-		System.out.println("post");
 		String requestedService = request.getRequestURI().substring(37);
 		System.out.println("requestedService : " + requestedService);
 		
 		switch(requestedService){
 			case "login": LoginService.login(request, response);
 				break;
-			case "register": responseString = RegistrationService.register(
-						request.getParameter("userEmail"), request.getParameter("firstName"),
-						request.getParameter("middleName"), request.getParameter("lastName"),
-						request.getParameter("phoneNumber"), request.getParameter("password"));
+			case "register": RegistrationService.register(request, response);
 				break;
-			case "authenticate": responseString = AuthenticationService.authenticate(
-						request, response);
+			case "authenticate": AuthenticationService.authenticate(request, response);
 				break;
-			case "changeUserInfo": responseString = ChangeUserInfoService.changeUserInfo(
-						request.getParameter("authTkn"), "phone", request.getParameter("password"));
+			case "changeUserInfo": ChangeUserInfoService.changeUserInfo(request, response);
 				break;
-			case "changeUserPassword": responseString = ChangeUserPasswordService.changeUserPassword(
-						request.getParameter("userEmail"), request.getParameter("password"));
+			case "changeUserPassword": ChangeUserPasswordService.changeUserPassword(request, response);
 				break;
 		}
-		
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.write(responseString);
-		out.flush();
-		out.close();
 	}
 
 }
