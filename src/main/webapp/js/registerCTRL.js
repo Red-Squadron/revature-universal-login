@@ -12,7 +12,7 @@ module
 		newUser.lastName = lastName;
 		newUser.lastName = middleName;
 		
-		$http.post("RegistrationServer/login", newUser).success(function(isRegistered) {
+		$http.post("RULServlet/register", newUser).success(function(isRegistered) {
 			if(isRegistered === "true") {
 				Angular.element("modalClose").triggerHandler("click");
 			}
