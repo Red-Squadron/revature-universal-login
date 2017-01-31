@@ -57,7 +57,7 @@ public class RULServlet extends HttpServlet {
 		try{
 			switch(requestedService){
 				case "login": responseString = LoginService.login(
-										request.getParameter("userName"), request.getParameter("password"));
+							request.getParameter("userName"), request.getParameter("password"));
 					break;
 				case "register": responseString = RegistrationService.register(
 							request.getParameter("userEmail"), request.getParameter("firstname"),
@@ -72,16 +72,12 @@ public class RULServlet extends HttpServlet {
 					 * request.getParameter("password")
 					 */
 					break;
-				case "authenticate": AuthenticationService.authenticate(request.getParameter("authTkn"));
+				case "authenticate": responseString = AuthenticationService.authenticate(request.getParameter("authTkn"));
 					break;
 				case "changeUserInfo": ChangeUserInfoService.changeUserInfo(
-								request.getParameter("authTkn"), "phone", request.getParameter("password"));
-					/* call updatePhone() from the DAO
-					 * request.getParameter("email/userName")
-					 * request.getParameter("phone")
-					 */
+							request.getParameter("authTkn"), "phone", request.getParameter("password"));
 					break;
-				case "changeUserPassword": ChangeUserPasswordService.changeUserPassword(
+				case "changeUserPassword": responseString = ChangeUserPasswordService.changeUserPassword(
 							request.getParameter("userEmail"), request.getParameter("password"));
 					/* call updatePassword() from the DAO
 					 * request.getParameter("email/userName")
