@@ -27,4 +27,8 @@ module
 			// EMAIL DOES NOT CONTAIN AN @
 		}
 	};
+	
+	$scope.forgotPassword = function(userName){
+		
+	}
 });
