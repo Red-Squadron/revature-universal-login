@@ -40,8 +40,7 @@ public class RULServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String responseString = "noResponse";
 		
-		String requestedService = request.getRequestURI().substring(38);
-		
+		String requestedService = request.getRequestURI().substring(37);
 		/*InputStream is = request.getInputStream();
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		byte[] buf = new byte[32];
