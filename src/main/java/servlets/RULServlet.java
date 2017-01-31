@@ -54,40 +54,24 @@ public class RULServlet extends HttpServlet {
 		}
 		String in = new String(os.toByteArray(), "UTF-8");*/
 		
-		try{
-			switch(requestedService){
-				case "login": responseString = LoginService.login(
-							request.getParameter("userName"), request.getParameter("password"));
-					break;
-				case "register": responseString = RegistrationService.register(
-							request.getParameter("userEmail"), request.getParameter("firstname"),
-							request.getParameter("middlename"), request.getParameter("lastname"),
-							request.getParameter("phoneNumber"), request.getParameter("password"));
-					/* call registerUser() from the DAO
-					 * request.getParameter("email/userName")
-					 * request.getParameter("firstName")
-					 * request.getParameter("middleName")
-					 * request.getParameter("lastName")
-					 * request.getParameter("phone")
-					 * request.getParameter("password")
-					 */
-					break;
-				case "authenticate": responseString = AuthenticationService.authenticate(request.getParameter("authTkn"));
-					break;
-				case "changeUserInfo": ChangeUserInfoService.changeUserInfo(
-							request.getParameter("authTkn"), "phone", request.getParameter("password"));
-					break;
-				case "changeUserPassword": responseString = ChangeUserPasswordService.changeUserPassword(
-							request.getParameter("userEmail"), request.getParameter("password"));
-					/* call updatePassword() from the DAO
-					 * request.getParameter("email/userName")
-					 * request.getParameter("password") // is this the new one only?????
-					 */
-					break;
-			}
-		}catch(Exception e){
-			responseString = requestedService + " " + e.getMessage();
-			
+		switch(requestedService){
+			case "login": responseString = LoginService.login(
+						request.getParameter("userName"), request.getParameter("password"));
+				break;
+			case "register": responseString = RegistrationService.register(
+						request.getParameter("userEmail"), request.getParameter("firstname"),
+						request.getParameter("middlename"), request.getParameter("lastname"),
+						request.getParameter("phoneNumber"), request.getParameter("password"));
+				break;
+			case "authenticate": responseString = AuthenticationService.authenticate(
+						request.getParameter("authTkn"));
+				break;
+			case "changeUserInfo": responseString = ChangeUserInfoService.changeUserInfo(
+						request.getParameter("authTkn"), "phone", request.getParameter("password"));
+				break;
+			case "changeUserPassword": responseString = ChangeUserPasswordService.changeUserPassword(
+						request.getParameter("userEmail"), request.getParameter("password"));
+				break;
 		}
 		
 		response.setContentType("text/html");
