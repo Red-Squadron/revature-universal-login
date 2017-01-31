@@ -1,7 +1,7 @@
 /* This style sheet applies to the entire login page and changeInfo*/
 
 * {
-	font-family: 'futura-pt', 'Cabin', sans-serif;
+	font-family: 'futura-pt', 'Questrial', sans-serif;
 }
 /* Nav bar */
 header {
@@ -33,7 +33,7 @@ header {
 	padding: 12px 30px;
 	text-decoration:none;
 	font-weight:600;
-	}
+}
 	
 #registerBtn:hover {
 	background-color:#ffffff;
@@ -48,9 +48,25 @@ header {
 	text-align: center;
 }
 
+#closeModal {
+	font-size: 2.5em;
+	padding-right: 1.5em;
+}
+
+#closeModal:focus {
+	outline: none;
+}
+
 #loginForm {
 	padding-top: 5%;
-	
+}
+
+.modal label {
+	font-size: 1em;
+}
+
+label {
+	font-size: 2em;
 }
 
 /* Body */
@@ -60,6 +76,7 @@ h1, h2, h3, h4, h5, h6 {
 
 input {
 	margin-bottom: 10px;
+	text-align: center;
 }
 
 input:focus {
@@ -71,15 +88,11 @@ form {
 	text-align: center;
 }
 
-label {
-	text-align: left;
-}
-
 .req {
 	color: red!important;
 }
 
-icon-remove-sign {
+.icon-remove-sign {
 	color: red!important;
 }
 
@@ -87,7 +100,7 @@ icon-remove-sign {
 	color: red!important;
 }
 
-fa-check-circle {
+.fa-check-circle {
 	color: green!important;
 }
 
