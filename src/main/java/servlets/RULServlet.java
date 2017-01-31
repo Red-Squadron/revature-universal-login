@@ -51,7 +51,7 @@ public class RULServlet extends HttpServlet {
 						request.getParameter("phoneNumber"), request.getParameter("password"));
 				break;
 			case "authenticate": responseString = AuthenticationService.authenticate(
-						request.getParameter("authTkn"));
+						request, response);
 				break;
 			case "changeUserInfo": responseString = ChangeUserInfoService.changeUserInfo(
 						request.getParameter("authTkn"), "phone", request.getParameter("password"));
@@ -59,8 +59,6 @@ public class RULServlet extends HttpServlet {
 			case "changeUserPassword": responseString = ChangeUserPasswordService.changeUserPassword(
 						request.getParameter("userEmail"), request.getParameter("password"));
 				break;
-			case "getPassword": responseString = GetUserPasswordService.getUserPassword(
-						request.getParameter("userEmail"));
 		}
 		
 		response.setContentType("text/html");
