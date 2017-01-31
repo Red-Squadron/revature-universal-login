@@ -33,8 +33,13 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		// Checks if the current password is correct for the user's email
 		var validatePassword = false;
 		//var validateStr = $scope.userEmailModel + ":" + $scope.currentPasswordModel;
-		var validateStr = "authTok=";//TODO
-		$http.post("RULServlet/authenticate", validateStr).success(function(){
+		var validateStr = "authTkn="+ $scope.user.authTkn;/*TODO replace this when use cookies*/ 
+		$http({
+	        method: 'POST',
+	        url: 'RULServlet/authenticate',
+	        data: validateStr,
+	        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(){
 			validatePassword = true;
 		});
 		
@@ -82,7 +87,12 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		// Checks if the current password is correct for the user's email
 		var validatePassword = false;
 		var validateStr = "userEmail=" + $scope.userEmailModel + "&password=" + $scope.currentPasswordModel;
-		$http.post("RULServlet/login", validateStr).success(function(){
+		$http({
+	        method: 'POST',
+	        url: 'RULServlet/login',
+	        data: validateStr,
+	        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(){
 			validatePassword = true;
 		});
 		
@@ -92,8 +102,16 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		} else if(false){// CHECK PHONE NUMBER AGAINST VALIDATIONS
 			$scope.phoneBadFormat = "Invalid phone number! Use ########## format."
 		} else {
-			var phoneStr = "userEmail=" + $scope.userEmailModel + "&authTok=" /*+authToken TODO*/ + "&phone=" + $scope.phoneChangeModel;
-			$http.post("RULServlet/changeUserInfo", phoneStr).success(function(){
+			var phoneStr = "userEmail=" + $scope.userEmailModel + 
+							"&authTok=" + $scope.user.authTkn/*TODO replace this when use cookies*/ + 
+							"&infoType=" + "phone"/*TODO change according to info being changed*/ +
+							"&phone=" + $scope.phoneChangeModel;
+			$http({
+		        method: 'POST',
+		        url: 'RULServlet/chengeUserInfo',
+		        data: phoneStr,
+		        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+	        }).success(function(){
 				$scope.successMessage = "Phone number successfully changed!";
 			});
 		}

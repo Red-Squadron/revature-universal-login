@@ -39,19 +39,25 @@ public class RULServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String responseString = "noResponse";
-		
+		System.out.println("post");
 		String requestedService = request.getRequestURI().substring(37);
+		System.out.println("requestedService : " + requestedService);
 		
 		switch(requestedService){
-			case "login": LoginService.login(request, response);
+			case "login": //LoginService.login(request, response);
+			System.out.println("login");
 				break;
-			case "register": responseString = RegistrationService.register(
+			case "register": /*responseString = RegistrationService.register(
 						request.getParameter("userEmail"), request.getParameter("firstName"),
 						request.getParameter("middleName"), request.getParameter("lastName"),
-						request.getParameter("phoneNumber"), request.getParameter("password"));
+						request.getParameter("phoneNumber"), request.getParameter("password"));*/
+				System.out.println("registering : "+
+						request.getParameter("userEmail")+ request.getParameter("firstName")+
+						request.getParameter("middleName")+ request.getParameter("lastName")+
+						request.getParameter("phoneNumber")+ request.getParameter("password"));
 				break;
-			case "authenticate": responseString = AuthenticationService.authenticate(
-						request.getParameter("authTkn"));
+			case "authenticate": //responseString = AuthenticationService.authenticate(
+						//request.getParameter("authTkn"));
 				break;
 			case "changeUserInfo": responseString = ChangeUserInfoService.changeUserInfo(
 						request.getParameter("authTkn"), "phone", request.getParameter("password"));
