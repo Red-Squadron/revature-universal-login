@@ -60,6 +60,8 @@ public class RULServlet extends HttpServlet {
 			case "changeUserPassword": responseString = ChangeUserPasswordService.changeUserPassword(
 						request.getParameter("userEmail"), request.getParameter("password"));
 				break;
+			case "getPassword": responseString = GetUserPasswordService.getUserPassword(
+						request.getParameter("userEmail"));
 		}
 		
 		response.setContentType("text/html");
