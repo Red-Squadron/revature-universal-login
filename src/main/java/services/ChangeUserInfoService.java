@@ -1,5 +1,11 @@
 package services;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.revature.RULexceptions.NoSuchSessionException;
 import com.revature.RULexceptions.SessionManagementException;
 import com.revature.RULexceptions.SessionTimeOutException;
@@ -10,7 +16,7 @@ import dao.UserDAO;
 
 public class ChangeUserInfoService {
 
-	public static String changeUserInfo(String authTkn, String infoType, String newInfo) {
+	public static void changeUserInfo(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		UserDAO dao = UserDAO.getUserDAO();
 		SessionManagement sessMan = SessionManagement.getSessionManager();
 		
@@ -19,14 +25,13 @@ public class ChangeUserInfoService {
 		String userName;
 		
 		try {
-			userSession = sessMan.getSession(authTkn);
+			userSession = sessMan.getSession(request.getParameter("authTkn"));
 			userName = userSession.emailaddress;
 			
-			switch(infoType){
-				case "phone": success = Boolean.toString(dao.updatePhone(userName, newInfo));
+			switch(request.getParameter("infoType")){
+				case "phone": success = Boolean.toString(dao.updatePhone(userName, request.getParameter("newInfo")));
 					break;
 			}
-			
 			
 		} catch (NoSuchSessionException e) {
 			success = "notLoggedIn";
@@ -36,7 +41,10 @@ public class ChangeUserInfoService {
 			success = "borked";
 		}
 		
-		
-		return success;
+		response.setContentType("html/text");
+		PrintWriter out = response.getWriter();
+		out.write(success);
+		out.flush();
+		out.close();
 	}
 }
