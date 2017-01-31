@@ -10,6 +10,8 @@ import java.sql.Types;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import com.revature.session.RULUser;
+
 /**
  * TODO Streamline and abstract functionality for password changes where possible. Additional task tags placed in suggested locations.
  * TODO Test functionality after crypto implementation. Several additional queries are being used now.
@@ -51,32 +53,41 @@ public class UserDAO {
 	}
 
 	/**
-	 * Validates login for a user.
+	 * Validates login for a user and create a RULUser token for authentication.
 	 * @param email Provide unique email.
 	 * @param password Provide current password.
-	 * @return true for correct input, false for no match in database.
+	 * @return RULUser object with user info if successful, returns null object if not successful
 	 */
-	public boolean validateLogin(String email, String password) {
+	public RULUser validateLogin(String email, String password) {
+		RULUser user = null;
 		try {
-			PreparedStatement checkLogin = conn.prepareStatement("select passwd from userregistration where useremail = ?");
-			
+			PreparedStatement checkLogin = conn.prepareStatement("select * from userregistration where useremail = ?");
 			checkLogin.setString(1, email);
 			ResultSet rs = checkLogin.executeQuery();
 			if(rs.next()){
-			String hashedpw = rs.getString(1);
+			String hashedpw = rs.getString("passwd");
 			if(BCrypt.checkpw(password, hashedpw)){
+				
+				//Create RULUser object for token
+				user = new RULUser();
+				user.emailaddress = rs.getString("userEmail");
+				user.firstname = rs.getString("firstName");
+				user.lastname = rs.getString("lastName");
+				user.middlename = rs.getString("middleName");
+				user.authlevel = rs.getString("permissions");
+				
 				rs.close();
 				checkLogin.close();
-				return true;}
+				return user;}
 			} else{
 				rs.close();
 				checkLogin.close();
-				return false;
+				return user;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return user;
 	}
 
 	/**
