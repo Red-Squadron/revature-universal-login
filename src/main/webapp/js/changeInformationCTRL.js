@@ -1,3 +1,8 @@
+/**
+ * Controller for change information page.
+ * Allows user to change their password and/or phone number.
+ * User must supply their email and current password to change information.
+ */
 var ciModule = angular.module('changeInformationApp', []);
 ciModule.controller('changeInformationCtrl', function($scope, $http){
 	$scope.incorrectPassword = "";
@@ -6,19 +11,34 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 	$scope.phoneBadFormat = "";
 	$scope.successMessage = "";
 	
+	/**
+	 * Function used to update a user's password
+	 * 
+	 * $scope.userEmailModel: The user's email address
+	 * $scope.currentPasswordModel: The user's current password
+	 * $scope.firstPasswordModel: The user's requested new password
+	 * $scope.secondPasswordModel: Re-entered password for confirmation
+	 * 
+	 * $scope.incorrectPassword: Shows an error message if the user's current password is incorrect
+	 * $scope.badFormat: Shows an error message if the new password does not match validations
+	 * $scope.notEqual: Shows an error message if the first and second new passwords do not match
+	 * $scope.successMessage: Shows a success message if the $http.post succeeds
+	 */
 	$scope.formChangePassword = function(){
 		$scope.incorrectPassword = "";
 		$scope.badFormat = "";
 		$scope.notEqual = "";
 		$scope.successMessage = "";
 		
+		// Checks if the current password is correct for the user's email
 		var validatePassword = false;
 		var validateStr = $scope.userEmailModel + ":" + $scope.currentPasswordModel;
 		$http.post("RULServlet/authenticate", validateStr).success(function(){
 			validatePassword = true;
 		});
 		
-		if(false){
+		// Checks if the requested password matches validations
+		if(false){ // PUT VALIDATEPASSWORD HERE WHEN WE KNOW IT WORKS
 			$scope.incorrectPassword = "Incorrect password!";
 		} else if($scope.firstPasswordModel !== $scope.secondPasswordModel){
 			$scope.notEqual = "Passwords not equal!";
@@ -42,17 +62,33 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		}
 	};
 	
+	/**
+	 * Function used to update a user's password
+	 * 
+	 * $scope.userEmailModel: The user's email address
+	 * $scope.currentPasswordModel: The user's current password
+	 * $scope.phoneChangeModel: The user's requested new phone number
+	 * 
+	 * $scope.incorrectPassword: Shows an error message if the user's current password is incorrect
+	 * $scope.phoneBadFormat: Shows an error message if the phone number does not match validations
+	 * $scope.successMessage: Shows a success message if the $http.post succeeds
+	 */
 	$scope.formChangePhoneNumber = function(){
+		$scope.incorrectPassword = "";
 		$scope.phoneBadFormat = "";
 		$scope.successMessage = "";
 		
+		// Checks if the current password is correct for the user's email
 		var validatePassword = false;
 		var validateStr = $scope.userEmailModel + ":" + $scope.currentPasswordModel;
-		$http.post("PasswordValidationServlet", validateStr).success(function(){
+		$http.post("RULServlet/login", validateStr).success(function(){
 			validatePassword = true;
 		});
 		
-		if(false){//CHECK PHONE NUMBER AGAINST VALIDATIONS
+		// Checks if the requested new phone number matches validations
+		if(false){// PUT VALIDATEPASSWORD HERE WHEN WE KNOW IT WORKS
+			$scope.incorrectPassword = "Incorrect password!";
+		} else if(false){// CHECK PHONE NUMBER AGAINST VALIDATIONS
 			$scope.phoneBadFormat = "Invalid phone number! Use ########## format."
 		} else {
 			var phoneStr = $scope.userEmailModel + ":" + $scope.phoneChangeModel;
@@ -63,6 +99,7 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 	};
 });
 
+// Checks if the passed string contains a number
 var containsNumber = function(str){
 	if(str.includes('0')){
 		return true;
@@ -89,6 +126,7 @@ var containsNumber = function(str){
 	}
 };
 
+// Checks if the passed string contains a special character
 var containsSpecial = function(str){
 	if(str.includes('-')){
 		return true;

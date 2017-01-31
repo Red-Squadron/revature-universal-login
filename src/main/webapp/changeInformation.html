@@ -23,11 +23,11 @@
 		</div>
 		<div class="col-md-12">
 			<h2>Enter User Information:</h2>
-			<form class ="form-group">
+			<form class="form-group">
 				<label for="userEmail">Enter Email:</label>
-				<input type="email" class="form-control" ng-model="userEmailModel" id="userEmail">
+				<input type="email" class="form-control" ng-model="userEmailModel" id="userEmail" required>
 				<label for="currentPassword">Enter Current Password:</label>
-				<input type="password" class="form-control" ng-model="currentPasswordModel" id="currentPassword">
+				<input type="password" class="form-control" ng-model="currentPasswordModel" id="currentPassword" required>
 				<div id="currentPasswordDiv">{{incorrectPassword}}</div>
 			</form>
 		</div>

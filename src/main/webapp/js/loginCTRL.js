@@ -9,17 +9,21 @@ module
 		var validateString = "";
 		validateString += "userName=" + userName + "&password=" + passPhrase;
 		
-		
-		$http({
-	        method: 'POST',
-	        url: 'RULServlet/login',
-	        data: validateString,
-	        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-	    }).success(function(userInfo) {
-			if(userInfo.valid === "true") {
-				$scope.user.authLvl = userInfo.authLvl;
-				$scope.user.userName = userInfo.userName;
-			}
-		})
+		// If the email address does not contain '@' then nothing will happen
+		if(validateString.userName.includes("@")){
+			$http({
+    	        method: 'POST',
+    	        url: 'RULServlet/login',
+    	        data: validateString,
+    	        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+	        }).success(function(userInfo) {
+    			if(userInfo.valid === "true") {
+    				$scope.user.authLvl = userInfo.authLvl;
+    				$scope.user.userName = userInfo.userName;
+			    }
+		    })
+		} else {
+			// EMAIL DOES NOT CONTAIN AN @
+		}
 	};
 });
