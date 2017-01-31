@@ -59,7 +59,7 @@ public class RULServlet extends HttpServlet {
 		try{
 			switch(requestedService){
 				case "login": responseString = LoginService.login(
-										request.getParameter("userName"), request.getParameter("password"));
+							request.getParameter("userName"), request.getParameter("password"));
 					break;
 				case "register": responseString = RegistrationService.register(
 							request.getParameter("userEmail"), request.getParameter("firstname"),
@@ -69,7 +69,7 @@ public class RULServlet extends HttpServlet {
 				case "authenticate": AuthenticationService.authenticate(request.getParameter("authTkn"));
 					break;
 				case "changeUserInfo": ChangeUserInfoService.changeUserInfo(
-								request.getParameter("authTkn"), "phone", request.getParameter("password"));
+							request.getParameter("authTkn"), "phone", request.getParameter("password"));
 					break;
 				case "changeUserPassword": ChangeUserPasswordService.changeUserPassword(
 							request.getParameter("userEmail"), request.getParameter("password"));
