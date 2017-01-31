@@ -28,7 +28,8 @@ module
 		} else if(!containsSpecial(newUser.passphrase)){
 			
 		} else {
-			$http.post("RULServlet/register", newUser).success(function(isRegistered) {
+			var data = "userEmail="+userName+"&firstName="+firstName+"&lastName="+lastName+"&middleName="+middleName+"&phoneNumber="/*TODO phone number*/+"&password="+passPhrase;
+			$http.post("RULServlet/register", data).success(function(isRegistered) {
 				if(isRegistered === "true") {
 					Angular.element("modalClose").triggerHandler("click");
 				}
