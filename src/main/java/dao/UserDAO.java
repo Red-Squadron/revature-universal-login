@@ -127,7 +127,8 @@ public class UserDAO {
 			CallableStatement checkPassword = conn.prepareCall("{call passwd_checker(?,?,?)}");
 
 			checkPassword.setString(1, email);
-			checkPassword.setString(2, password);
+			String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+			checkPassword.setString(2, hashed);
 			checkPassword.registerOutParameter(3, Types.INTEGER);
 			checkPassword.executeUpdate();
 
