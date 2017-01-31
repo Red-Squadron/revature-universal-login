@@ -33,7 +33,7 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		// Checks if the current password is correct for the user's email
 		var validatePassword = false;
 		var validateStr = $scope.userEmailModel + ":" + $scope.currentPasswordModel;
-		$http.post("RULServlet/login", validateStr).success(function(){
+		$http.post("RULServlet/authenticate", validateStr).success(function(){
 			validatePassword = true;
 		});
 		

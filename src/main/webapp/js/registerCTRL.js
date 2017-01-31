@@ -12,9 +12,9 @@ module
 		newUser.lastName = lastName;
 		newUser.lastName = middleName;
 		
-		$http.post("RegistrationServer/login", newUser.toJSON).success(function(isRegistered) {
+		$http.post("RULServlet/register", newUser).success(function(isRegistered) {
 			if(isRegistered === "true") {
-//				celebrate
+				Angular.element("modalClose").triggerHandler("click");
 			}
 		})
 		
