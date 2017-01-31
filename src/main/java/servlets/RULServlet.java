@@ -25,15 +25,13 @@ public class RULServlet extends HttpServlet {
      */
     public RULServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -60,6 +58,7 @@ public class RULServlet extends HttpServlet {
 			switch(requestedService){
 				case "login": responseString = Boolean.toString(LoginService.login(
 										request.getParameter("userName"), request.getParameter("password")));
+					// stuff
 					break;
 				case "register": responseString = RegistrationService.register(
 							request.getParameter("userEmail"), request.getParameter("firstname"),
