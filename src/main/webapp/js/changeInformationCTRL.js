@@ -2,12 +2,14 @@ var ciModule = angular.module('changeInformationApp', []);
 ciModule.controller('changeInformationCtrl', function($scope, $http){
 	$scope.incorrectPassword = "";
 	$scope.badFormat = "";
+	$scope.notEqual = "";
 	$scope.phoneBadFormat = "";
 	$scope.successMessage = "";
 	
 	$scope.formChangePassword = function(){
 		$scope.incorrectPassword = "";
 		$scope.badFormat = "";
+		$scope.notEqual = "";
 		$scope.successMessage = "";
 		
 		var validatePassword = false;
@@ -19,7 +21,7 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		if(false){
 			$scope.incorrectPassword = "Incorrect password!";
 		} else if($scope.firstPasswordModel !== $scope.secondPasswordModel){
-			$scope.badFormat = "Passwords not equal!";
+			$scope.notEqual = "Passwords not equal!";
 		} else if($scope.firstPasswordModel.length < 8){
 			$scope.badFormat = "Password must be at least eight characters!";
 		} else if($scope.firstPasswordModel.length > 75){
