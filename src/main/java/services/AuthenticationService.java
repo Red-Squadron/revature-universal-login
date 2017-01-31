@@ -7,6 +7,11 @@ import com.revature.session.RULUser;
 import com.revature.session.SessionManagement;
 
 public class AuthenticationService {
+	/**
+	 * Authenticates authorization token against active sessions.
+	 * @param authTkn token to validate.
+	 * @return user authorization level if valid, error code if invalid.
+	 */
 	public static String authenticate(String authTkn){
 		SessionManagement sessMan = SessionManagement.getSessionManager();
 		RULUser userSession;
