@@ -32,7 +32,8 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		
 		// Checks if the current password is correct for the user's email
 		var validatePassword = false;
-		var validateStr = $scope.userEmailModel + ":" + $scope.currentPasswordModel;
+		//var validateStr = $scope.userEmailModel + ":" + $scope.currentPasswordModel;
+		var validateStr = "authTok=";//TODO
 		$http.post("RULServlet/authenticate", validateStr).success(function(){
 			validatePassword = true;
 		});
@@ -55,7 +56,7 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		} else if(!containsSpecial($scope.firstPasswordModel)){
 			$scope.badFormat = "Password must contain at least one special character!";
 		} else {
-			var passwordStr = $scope.userEmailModel + ":" + $scope.firstPasswordModel;
+			var passwordStr = "userEmail="+$scope.userEmailModel + "&password=" + $scope.firstPasswordModel;
 			$http.post("RULServlet/changeUserPassword", passwordStr).success(function(){
 				$scope.successMessage = "Password successfully changed!";
 			});
@@ -80,7 +81,7 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		
 		// Checks if the current password is correct for the user's email
 		var validatePassword = false;
-		var validateStr = $scope.userEmailModel + ":" + $scope.currentPasswordModel;
+		var validateStr = "userEmail=" + $scope.userEmailModel + "&password=" + $scope.currentPasswordModel;
 		$http.post("RULServlet/login", validateStr).success(function(){
 			validatePassword = true;
 		});
@@ -91,7 +92,7 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		} else if(false){// CHECK PHONE NUMBER AGAINST VALIDATIONS
 			$scope.phoneBadFormat = "Invalid phone number! Use ########## format."
 		} else {
-			var phoneStr = $scope.userEmailModel + ":" + $scope.phoneChangeModel;
+			var phoneStr = "userEmail=" + $scope.userEmailModel + "&authTok=" /*+authToken TODO*/ + "&phone=" + $scope.phoneChangeModel;
 			$http.post("RULServlet/changeUserInfo", phoneStr).success(function(){
 				$scope.successMessage = "Phone number successfully changed!";
 			});

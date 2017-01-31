@@ -58,8 +58,8 @@ public class RULServlet extends HttpServlet {
 						request.getParameter("userName"), request.getParameter("password"));
 				break;
 			case "register": responseString = RegistrationService.register(
-						request.getParameter("userEmail"), request.getParameter("firstname"),
-						request.getParameter("middlename"), request.getParameter("lastname"),
+						request.getParameter("userEmail"), request.getParameter("firstName"),
+						request.getParameter("middleName"), request.getParameter("lastName"),
 						request.getParameter("phoneNumber"), request.getParameter("password"));
 				break;
 			case "authenticate": responseString = AuthenticationService.authenticate(
