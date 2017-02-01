@@ -25,23 +25,23 @@ public class LoginService {
 		RULUser usr = dao.validateLogin(request.getParameter("userName"),
 				request.getParameter("password"));
 		
-		
-		
 		if(usr == null) {
-			responseJson = "{valid: false}";
+			responseJson = "{ \"valid\": \"false\" }"; // all values need to be surrounded with double quotes
 		}
 		else {
 			SessionManagement sess = SessionManagement.getSessionManager();
 			String authTkn = sess.createSession(usr);
 			//TODO generate a cookie holding the authTkn
-			responseJson = "{valid: true, ";
-			responseJson += "authTkn: " + authTkn;
-			responseJson += ", authLvl: " + usr.authlevel + "}";
+			responseJson = "{ \"valid\": \"true\", " + 
+							"\"authTkn\": \"" + authTkn +
+							"\", \"authLvl\": \"" + usr.authlevel + "\" }";
 		}
 		
-		response.setContentType("json");
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		out.write(responseJson);
+		System.out.println("response from login "+responseJson);
 		out.flush();
 		out.close();
 	}
