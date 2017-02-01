@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app='login'>
+<head>
+<meta charset="ISO-8859-1" content="width=device-width, initial-scale=1">
+<title>Login</title>
+<!-- Style Imports -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+<link href="css/main.css" rel=stylesheet>
+<!-- Angular import -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+<script src='js/module.js'></script>
+<script src='js/loginCTRL.js'></script>
+<script src='js/registerCTRL.js'></script>
+</head>
+
+<body class="container">
+<nav>
+	<a href="https://revature.com/">
+		<img src="https://3g4d13k75x47q7v53surz1gi-wpengine.netdna-ssl.com/wp-content/themes/revature/imgs/logo.png"/>
+	</a>
+	<!-- Pop up for registration form field -->
+	<button type="button" id="registerBtn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#register">
+		Not a member? Register here!
+	</button>
+	<div id="register" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-content">
+	    	<div class="modal-body" ng-controller="registerCtrl">
+	    		<button id="closeModal" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<form id="registrationForm">
+					<label for="username">First Name<span class="req">&nbsp;*</span></label>
+					<br>
+					<input name="firstName" class="input-sm" ng-model="firstName" type="text" placeholder="First Name" required/>
+					<br>
+					<label for="username">Middle Name</label>
+					<br>
+					<input name="middleName" class="input-sm" ng-model="middleName" type="text" placeholder="Middle Name"/>
+					<br>
+					<label for="username">Last Name<span class="req">&nbsp;*</span></label>
+					<br>
+					<input name="lastName" class="input-sm" ng-model="lastName" type="text" placeholder="Last Name" required/>
+					<br>
+					<label for="phoneNumber">Phone</label>
+					<br>
+					<input name="phoneNumber" class="input-sm" ng-model="phoneNumber" type="tel" placeholder="Phone"/>
+					<br>
+					<label for="username">Email<span class="req">&nbsp;*</span></label>
+					<br>
+					<input name="username" class="input-sm" ng-model="userName" type="email" placeholder="Email" required/>
+					<br>
+					<label for="username">Password<span class="req">&nbsp;*</span></label>
+					<br>
+					<input name="password" class="input-sm" ng-model="passPhrase" type="password" placeholder="Password" required/>
+					<br>
+					<label for="username">Re-enter Password<span class="req">&nbsp;*</span></label>
+					<br>
+					<input name="passwordConfirm" class="input-sm" ng-model="passPhraseConfirm" type="password" placeholder="Re-enter Password" required/>
+					<br>
+					{{pass}}
+					<br>
+					<button type="submit" class="input-sm" ng-click="registerUser(userName, firstName, lastName, middleName, phoneNumber, passPhrase, passPhraseConfirm)">Register</button>
+				</form>
+	      	</div>
+    	</div>
+	</div>
+</nav>
+	
+<form id="loginForm" ng-controller='loginCtrl'>
+	<label for="username">Email<span class="req">&nbsp;*</span></label>
+	<br>
+	<input type="email" name="username" class="input-lg" ng-model="userName" placeholder="Email" required autofocus>
+	<br>
+	<label for="password">Password<span class="req">&nbsp;*</span></label>
+	<br>
+	<input type="password" name="password" class="input-lg" ng-model="passPhrase" placeholder="Password" required>
+	<br>
+	{{loginSuccess}}
+	<br>
+	<input type="button" class="input-lg" value="Login" ng-click="validateLogin(userName, passPhrase)">
+</form>
+<footer>
+	<i>©2017 All Rights Reserved.</i>
+</footer>
+
+</body>
+</html>

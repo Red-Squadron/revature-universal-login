@@ -105,13 +105,13 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 			var phoneStr = "userEmail=" + $scope.userEmailModel + 
 							"&authTok=" + $scope.user.authTkn/*TODO replace this when use cookies*/ + 
 							"&infoType=" + "phone"/*TODO change according to info being changed*/ +
-							"&phone=" + $scope.phoneChangeModel;
+							"&newInfo=" + $scope.phoneChangeModel;
 			$http({
 		        method: 'POST',
 		        url: 'RULServlet/chengeUserInfo',
 		        data: phoneStr,
 		        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-	        }).success(function(){
+	        }).success(function(data){ //TODO use data in response from service ChangeUserInfoService
 				$scope.successMessage = "Phone number successfully changed!";
 			});
 		}
