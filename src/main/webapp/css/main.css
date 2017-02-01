@@ -1,23 +1,17 @@
 /* This style sheet applies to the entire login page and changeInfo*/
 
 * {
-	font-family: 'futura-pt', 'Cabin', sans-serif;
+	font-family: 'futura-pt', 'Questrial', sans-serif;
 }
 /* Nav bar */
-header {
-	padding-top: 2%;
-	padding-bottom: 2%;
-	float: top;
-}
-
-#headerLeft {
-	text-align: left;
-	float: left;
-}
-
-#headerRight {
-	text-align: right;
-	float: right;
+nav {
+	display: flex;
+	flex-direction: row;
+	flex-basis: 20%;
+	justify-content: space-between;
+	align-items: center;
+	align-content: flex-end;
+	padding-top: 1.5%;
 }
 
 #registerBtn {
@@ -33,7 +27,7 @@ header {
 	padding: 12px 30px;
 	text-decoration:none;
 	font-weight:600;
-	}
+}
 	
 #registerBtn:hover {
 	background-color:#ffffff;
@@ -44,13 +38,27 @@ header {
 	outline: none;
 }
 
-.modal {
-	text-align: center;
+.modal label {
+	font-size: 1em;
 }
 
-#loginForm {
-	padding-top: 5%;
-	
+#closeModal {
+	font-size: 2.5em;
+	position: absolute;
+	top: 12px;
+	right: 25px;
+}
+
+#closeModal:focus {
+	outline: none;
+}
+
+label {
+	font-size: 2em;
+}
+
+.form-group label{
+	font-size: 1.5em;
 }
 
 /* Body */
@@ -60,6 +68,7 @@ h1, h2, h3, h4, h5, h6 {
 
 input {
 	margin-bottom: 10px;
+	text-align: left;
 }
 
 input:focus {
@@ -71,23 +80,31 @@ form {
 	text-align: center;
 }
 
-label {
-	text-align: left;
+.field {
+	text-align: center;
+	display: block;
 }
 
-.req {
+/* Left aligns the labels above the input fields */
+/*#loginForm {
+	padding-top: 2%;
+	width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: left;
+} */
+
+#loginForm {
+	padding-top: 2%;
+}
+
+.icon-remove-sign, .req, .wrong {
 	color: red!important;
 }
 
-icon-remove-sign {
-	color: red!important;
-}
-
-.wrong {
-	color: red!important;
-}
-
-fa-check-circle {
+.fa-check-circle {
 	color: green!important;
 }
 
