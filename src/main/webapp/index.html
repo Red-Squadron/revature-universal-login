@@ -19,6 +19,7 @@
 <script src='js/module.js'></script>
 <script src='js/loginCTRL.js'></script>
 <script src='js/registerCTRL.js'></script>
+<script src='js/router.js'></script>
 </head>
 
 <body class="container">
@@ -30,6 +31,16 @@
 	<button type="button" id="registerBtn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#register">
 		Not a member? Register here!
 	</button>
+	<ul>
+		<li><a href="#/index">Default Route</a></li>
+		<li><a href="#/index">Login</a></li>
+		<li><a href="#/Register">Register</a></li>
+		<li><a href="#/ProfileSettings">Make Profile Settings</a></li>
+		<li><a href="#/aaaa">NonExistent</a></li>
+	</ul>
+	<div ng-view>
+	
+	</div>
 	<div id="register" class="modal fade" role="dialog">
 		<div class="modal-dialog modal-content">
 	    	<div class="modal-body" ng-controller="registerCtrl">
