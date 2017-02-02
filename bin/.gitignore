@@ -37,6 +37,3 @@ log/
 
 test-output/
 testng.iml
-
-# OS X
-*.DS_Store
