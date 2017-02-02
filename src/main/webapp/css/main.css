@@ -3,6 +3,8 @@
 * {
 	font-family: 'futura-pt', 'Questrial', sans-serif;
 }
+
+
 /* Nav bar */
 nav {
 	display: flex;
@@ -26,7 +28,7 @@ nav {
 	font-size:15px;
 	/*padding: 12px 30px;*/
 	text-decoration:none;
-	font-weight:600;
+	
 	height: 39px;
 	line-height: 0px;
 }
@@ -71,6 +73,7 @@ h1, h2, h3, h4, h5, h6 {
 input {
 	margin-bottom: 10px;
 	text-align: left;
+	
 }
 
 input:focus {
@@ -82,18 +85,28 @@ form {
 	text-align: center;
 }
 
-/* Left aligns the labels above the input fields */
-#loginForm {
 
-.field {
-	text-align: center;
-	display: block;
+/* Login form */
+
+.sign-in-outer {
+	margin-top:; border-top: 1px solid silver; margin: 20px 16px 0 16px;
+}
+.sign-in-inner {
+	position: relative; top: -14px; background: #fff; padding: 5px 15px; font-size: 20px;
+}
+
+#login_username:focus, #login_password:focus{
+        border: 1px solid #f26925;
+        box-shadow: 5px 5px 0px #f26925;
 }
 
 
-#loginForm {
-	padding-top: 2%;
+#login-button {
+	background-color: #f26925;
+	color: white;
+	
 }
+
 
 .icon-remove-sign, .req, .wrong {
 	color: red!important;
@@ -122,7 +135,30 @@ form {
 }
 
 /* Footer */
-footer {
-	text-align: right;
-	color: #888888;
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #474c55 ;
+    text-align: center;
+    
+    color: #f26925;
+    
+    
 }
+
+#footer-links a {
+	color: white;
+}
+
+.fa{
+padding-top: 15px;
+	color: #f26925;
+	display: inline-block;
+  border-radius: 60px;
+ 
+  
+  width: 50px;
+  height: 50px;
+}
+
