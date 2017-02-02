@@ -1,4 +1,4 @@
-<!-- TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO 
+<!-- TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
 	This page needs consistent validation.
 	I'm partial to displaying js errors below the fields, but I'm not the boss of you.
 -->
@@ -53,7 +53,7 @@
 					<br>
 					<label for="username">Email<span class="req">&nbsp;*</span></label>
 					<br>
-					<input name="username" class="input-sm" ng-model="userName" type="email" placeholder="Email" required/>
+					<input id="reg_username" name="username" class="input-sm" ng-model="userName" type="email" placeholder="Email" required/>
 					<br>
 					<label for="username">Password<span class="req">&nbsp;*</span></label>
 					<br>
@@ -71,22 +71,22 @@
     	</div>
 	</div>
 </nav>
-	
+
 <form id="loginForm" ng-controller='loginCtrl'>
 	<label for="username">Email<span class="req">&nbsp;*</span></label>
 	<br>
-	<input type="email" name="username" class="input-lg" ng-model="userName" placeholder="Email" required autofocus>
+	<input type="email" id="login_username" name="username" class="input-lg" ng-model="userName" placeholder="Email" required autofocus>
 	<br>
 	<label for="password">Password<span class="req">&nbsp;*</span></label>
 	<br>
-	<input type="password" name="password" class="input-lg" ng-model="passPhrase" placeholder="Password" required>
+	<input type="password" id="login_password" name="password" class="input-lg" ng-model="passPhrase" placeholder="Password" required>
 	<br>
 	{{loginSuccess}}
 	<br>
 	<input type="button" class="input-lg" value="Login" ng-click="validateLogin(userName, passPhrase)">
 </form>
 <footer>
-	<i>©2017 All Rights Reserved.</i>
+	<i>ï¿½2017 All Rights Reserved.</i>
 </footer>
 
 </body>
