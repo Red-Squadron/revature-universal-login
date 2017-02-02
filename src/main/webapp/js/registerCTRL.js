@@ -6,24 +6,24 @@ module
 .controller('registerCtrl', function($scope, $http) {
 	$scope.pass = "Checking";
 	$scope.registerUser = function(userName, firstName, lastName, middleName, phoneNumber, passPhrase, passPhraseConfirm) {
-		
+
 		if(passPhrase !== passPhraseConfirm){
 			$scope.pass = "Passwords do not match!";
 		} else if(passPhrase.length < 8){
-			$scope.pass = "Password needs at least 8 charachters!";
-			
+			$scope.pass = "Password needs at least 8 chracters!";
+
 		/*} else if(passPhrase.length > 75){
 			$scope.pass = "Password can not exceed 75 charachters!";
-			
+
 		} else if(passPhrase === passPhrase.toLowerCase()){
 			$scope.pass = "Password needs a lowercase letter!";
-			
+
 		} else if(passPhrase === passPhrase.toUpperCase()){
 			$scope.pass = "Password needs a uppercase letter!";
-			
+
 		} else if(!containsNumber(passPhrase)){
 			$scope.pass = "Password must contain a number!";
-			
+
 		} else if(!containsSpecial(passPhrase)){
 			$scope.pass = "Password must contain a special charachter!";
 			//TODO
@@ -44,9 +44,9 @@ module
 					$scope.pass = firstName + " " +lastName+" with email: "+userName+" does not exist, please contact Revature";
 			})
 		}
-		
+
 		$scope.hovering = false;
-		
+
 		$scope.changeColor = function(bgColor, textColor){
 			$scope.rb = {
 					background : bgColor,
