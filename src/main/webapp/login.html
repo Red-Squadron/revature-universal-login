@@ -25,12 +25,12 @@
 	<div class="container">
 		<nav>
 			<a href="https://revature.com/">
-				<img src="img/revatureLogo.png" width="15"/>
+				<img src="img/revatureLogo.png" width="125" height="39"/>
 			</a>
 			
 			<!-- Pop up for registration form field -->
 			<button type="button" id="registerBtn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#register">
-				Not a member? Register here!
+				SIGN UP
 			</button>
 			<div id="register" class="modal fade" role="dialog">
 				<div class="modal-dialog modal-content">
@@ -78,8 +78,13 @@
 	<hr>
 	<div class="container">
 	<form id="loginForm" ng-controller='loginCtrl'>
+		 
 		<label for="username">Email<span class="req">&nbsp;*</span></label>
 		<br>
+		<div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">                                        
+                                    </div>
 		<input type="email" id="login_username" name="username" class="input-lg" ng-model="userName" placeholder="Email" required autofocus>
 		<br>
 		<label for="password">Password<span class="req">&nbsp;*</span></label>

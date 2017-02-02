@@ -24,9 +24,11 @@ nav {
 	cursor:pointer;
 	color:#ffffff;
 	font-size:15px;
-	padding: 12px 30px;
+	/*padding: 12px 30px;*/
 	text-decoration:none;
 	font-weight:600;
+	height: 39px;
+	line-height: 0px;
 }
 	
 #registerBtn:hover {
@@ -80,31 +82,14 @@ form {
 	text-align: center;
 }
 
-<<<<<<< HEAD
 /* Left aligns the labels above the input fields */
 #loginForm {
-=======
+
 .field {
 	text-align: center;
 	display: block;
 }
 
-/* Left aligns the labels above the input fields */
-/*#loginForm {
->>>>>>> d40b2da5d8f32f7974af5b944e9744ade4faa6d7
-	padding-top: 2%;
-	width: 40%;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-<<<<<<< HEAD
-    text-align: center;
-}
-=======
-    text-align: left;
-} */
->>>>>>> d40b2da5d8f32f7974af5b944e9744ade4faa6d7
 
 #loginForm {
 	padding-top: 2%;
