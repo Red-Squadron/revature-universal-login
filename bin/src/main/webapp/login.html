@@ -81,12 +81,12 @@
 	<br>
 	<input type="password" name="password" class="input-lg" ng-model="passPhrase" placeholder="Password" required>
 	<br>
-	{{loginSuccess}}
+	<span id="message" ng-bind="loginSuccess"></span>
 	<br>
 	<input type="button" class="input-lg" value="Login" ng-click="validateLogin(userName, passPhrase)">
 </form>
 <footer>
-	<i>©2017 All Rights Reserved.</i>
+	<i>Â©2017 All Rights Reserved.</i>
 </footer>
 
 </body>
