@@ -28,14 +28,20 @@
 			<version>0.3m</version>
 		</dependency>
 		<dependency>
-	        <groupId>org.testng</groupId>
-	        <artifactId>testng</artifactId>
-	        <version>6.10</version>
-	        <scope>test</scope>
-	    </dependency>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>6.10</version>
+        <scope>test</scope>
+    </dependency>
+			<!-- https://mvnrepository.com/artifact/cn.easyproject/ojdbc7 -->
+		<dependency>
+		    <groupId>cn.easyproject</groupId>
+		    <artifactId>ojdbc7</artifactId>
+		    <version>12.1.0.2.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>Revature_Universal_Login</finalName>
-		
+
 	</build>
 </project>
