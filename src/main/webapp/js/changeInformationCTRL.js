@@ -30,37 +30,6 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		$scope.badFormat = "";
 		$scope.notEqual = "";
 		$scope.successMessage = "";
-		console.log("Validating password...")
-		// Checks if the requested password matches validations
-		if(false){ // PUT VALIDATEPASSWORD HERE WHEN WE KNOW IT WORKS
-			$scope.incorrectPassword = "Incorrect password!";
-		} else if($scope.firstPasswordModel !== $scope.secondPasswordModel){
-			$scope.notEqual = "Passwords not equal!";
-			console.log("Passwords not equal!")
-		} else if($scope.firstPasswordModel.length < 8){
-			$scope.badFormat = "Password must be at least eight characters!";
-			console.log("Password must be at least eight characters!")
-		} else if($scope.firstPasswordModel.length > 75){
-			$scope.badFormat = "Password must be at most seventy-five characters!";
-			console.log("Password must be at most seventy-five characters!")
-		} else if($scope.firstPasswordModel === $scope.firstPasswordModel.toLowerCase()){
-			$scope.badFormat = "Password must contain at least one uppercase letter!";
-			console.log("Password must contain at least one uppercase letter!")
-		} else if($scope.firstPasswordModel === $scope.firstPasswordModel.toUpperCase()){
-			$scope.badFormat = "Password must contain at least one lowercase letter!";
-			console.log("Password must contain at least one lowercase letter!")
-		} else if(!containsNumber($scope.firstPasswordModel)){
-			$scope.badFormat = "Password must contain at least one number!";
-			console.log("Password must contain at least one number!")
-		} else if(!containsSpecial($scope.firstPasswordModel)){
-			$scope.badFormat = "Password must contain at least one special character!";
-			console.log("Password must contain at least one special character!")
-		} else {
-			var passwordStr = "userEmail="+$scope.userEmailModel + "&password=" + $scope.firstPasswordModel;
-			$http.post("RULServlet/changeUserPassword", passwordStr).success(function(){
-				$scope.successMessage = "Password successfully changed!";
-			});
-		}
 
 		// Checks if the current password is correct for the user's email
 		var validatePassword = false;
@@ -74,6 +43,30 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 				}).success(function(){
 			validatePassword = true;
 		});
+
+		// Checks if the requested password matches validations
+		if(false){ // PUT VALIDATEPASSWORD HERE WHEN WE KNOW IT WORKS
+			$scope.incorrectPassword = "Incorrect password!";
+		} else if($scope.firstPasswordModel !== $scope.secondPasswordModel){
+			$scope.notEqual = "Passwords not equal!";
+		} else if($scope.firstPasswordModel.length < 8){
+			$scope.badFormat = "Password must be at least eight characters!";
+		} else if($scope.firstPasswordModel.length > 75){
+			$scope.badFormat = "Password must be at most seventy-five characters!";
+		} else if($scope.firstPasswordModel === $scope.firstPasswordModel.toLowerCase()){
+			$scope.badFormat = "Password must contain at least one uppercase letter!";
+		} else if($scope.firstPasswordModel === $scope.firstPasswordModel.toUpperCase()){
+			$scope.badFormat = "Password must contain at least one lowercase letter!";
+		} else if(!containsNumber($scope.firstPasswordModel)){
+			$scope.badFormat = "Password must contain at least one number!";
+		} else if(!containsSpecial($scope.firstPasswordModel)){
+			$scope.badFormat = "Password must contain at least one special character!";
+		} else {
+			var passwordStr = "userEmail="+$scope.userEmailModel + "&password=" + $scope.firstPasswordModel;
+			$http.post("RULServlet/changeUserPassword", passwordStr).success(function(){
+				$scope.successMessage = "Password successfully changed!";
+			});
+		}
 	};
 
 	/**
@@ -116,6 +109,7 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 	};
 });
 
+// Checks if phone number follows ########## format
 var validatePhoneFormat = function(str) {
 	var rephone = /[0-9]{10}/;
 	return rephone.text(str);
@@ -129,94 +123,10 @@ var containsNumber = function(str){
 	} else {
 		return false;
 	}
-	// if(str.includes('0')){
-	// 	return true;
-	// } else if(str.includes('1')){
-	// 	return true;
-	// } else if(str.includes('2')){
-	// 	return true;
-	// } else if(str.includes('3')){
-	// 	return true;
-	// } else if(str.includes('4')){
-	// 	return true;
-	// } else if(str.includes('5')){
-	// 	return true;
-	// } else if(str.includes('6')){
-	// 	return true;
-	// } else if(str.includes('7')){
-	// 	return true;
-	// } else if(str.includes('8')){
-	// 	return true;
-	// } else if(str.includes('9')){
-	// 	return true;
-	// } else {
-	// 	return false;
-	// }
 };
 
 // Checks if the passed string contains a special character
 var containsSpecial = function(str){
 	var respecial = /[-=\[\]\\\;\,\.\/~!@#\$%\^&\*()\_\+{}\|:<>\?]+/;
 	return respecial.test(str);
-	// if(str.includes('-')){
-	// 	return true;
-	// } else if(str.includes('=')){
-	// 	return true;
-	// } else if(str.includes('[')){
-	// 	return true;
-	// } else if(str.includes(']')){
-	// 	return true;
-	// } else if(str.includes('\\')){
-	// 	return true;
-	// } else if(str.includes(';')){
-	// 	return true;
-	// } else if(str.includes(',')){
-	// 	return true;
-	// } else if(str.includes('.')){
-	// 	return true;
-	// } else if(str.includes('/')){
-	// 	return true;
-	// } else if(str.includes('~')){
-	// 	return true;
-	// } else if(str.includes('!')){
-	// 	return true;
-	// } else if(str.includes('@')){
-	// 	return true;
-	// } else if(str.includes('#')){
-	// 	return true;
-	// } else if(str.includes('$')){
-	// 	return true;
-	// } else if(str.includes('%')){
-	// 	return true;
-	// } else if(str.includes('^')){
-	// 	return true;
-	// } else if(str.includes('&')){
-	// 	return true;
-	// } else if(str.includes('*')){
-	// 	return true;
-	// } else if(str.includes('(')){
-	// 	return true;
-	// } else if(str.includes(')')){
-	// 	return true;
-	// } else if(str.includes('_')){
-	// 	return true;
-	// } else if(str.includes('+')){
-	// 	return true;
-	// } else if(str.includes('{')){
-	// 	return true;
-	// } else if(str.includes('}')){
-	// 	return true;
-	// } else if(str.includes('|')){
-	// 	return true;
-	// } else if(str.includes(':')){
-	// 	return true;
-	// } else if(str.includes('<')){
-	// 	return true;
-	// } else if(str.includes('>')){
-	// 	return true;
-	// } else if(str.includes('?')){
-	// 	return true;
-	// } else {
-	// 	return false;
-	// }
 };

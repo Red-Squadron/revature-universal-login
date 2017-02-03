@@ -2,17 +2,17 @@
  * Reads user input, AJAX Posts as json
  * {userName: String, passphrase: String, firstName: String, middleName:<String,undefined;>}
  */
-module
-.controller('registerCtrl', function($scope, $http) {
+module.controller('registerCtrl', function($scope, $http) {
 	$scope.pass = "Checking";
 	$scope.registerUser = function(userName, firstName, lastName, middleName, phoneNumber, passPhrase, passPhraseConfirm) {
 
 		if(passPhrase !== passPhraseConfirm){
 			$scope.pass = "Passwords do not match!";
+
 		} else if(passPhrase.length < 8){
 			$scope.pass = "Password needs at least 8 chracters!";
 
-		/*} else if(passPhrase.length > 75){
+		} else if(passPhrase.length > 75){
 			$scope.pass = "Password can not exceed 75 charachters!";
 
 		} else if(passPhrase === passPhrase.toLowerCase()){
@@ -26,8 +26,8 @@ module
 
 		} else if(!containsSpecial(passPhrase)){
 			$scope.pass = "Password must contain a special charachter!";
-			//TODO
-		*/} else {
+
+		} else {
 			$scope.pass = "start Register";
 			var data = "userEmail="+userName+"&firstName="+firstName+"&lastName="+lastName+"&middleName="+middleName+"&phoneNumber="+phoneNumber+"&password="+passPhrase;
 			$http({
@@ -65,25 +65,8 @@ module
 
 //Checks if the passed string contains a number
 var containsNumber = function(str){
-	if(str.includes('0')){
-		return true;
-	} else if(str.includes('1')){
-		return true;
-	} else if(str.includes('2')){
-		return true;
-	} else if(str.includes('3')){
-		return true;
-	} else if(str.includes('4')){
-		return true;
-	} else if(str.includes('5')){
-		return true;
-	} else if(str.includes('6')){
-		return true;
-	} else if(str.includes('7')){
-		return true;
-	} else if(str.includes('8')){
-		return true;
-	} else if(str.includes('9')){
+	var renum = /[0-9]+/;
+	if (renum.test(str)) {
 		return true;
 	} else {
 		return false;
@@ -92,65 +75,6 @@ var containsNumber = function(str){
 
 // Checks if the passed string contains a special character
 var containsSpecial = function(str){
-	if(str.includes('-')){
-		return true;
-	} else if(str.includes('=')){
-		return true;
-	} else if(str.includes('[')){
-		return true;
-	} else if(str.includes(']')){
-		return true;
-	} else if(str.includes('\\')){
-		return true;
-	} else if(str.includes(';')){
-		return true;
-	} else if(str.includes(',')){
-		return true;
-	} else if(str.includes('.')){
-		return true;
-	} else if(str.includes('/')){
-		return true;
-	} else if(str.includes('~')){
-		return true;
-	} else if(str.includes('!')){
-		return true;
-	} else if(str.includes('@')){
-		return true;
-	} else if(str.includes('#')){
-		return true;
-	} else if(str.includes('$')){
-		return true;
-	} else if(str.includes('%')){
-		return true;
-	} else if(str.includes('^')){
-		return true;
-	} else if(str.includes('&')){
-		return true;
-	} else if(str.includes('*')){
-		return true;
-	} else if(str.includes('(')){
-		return true;
-	} else if(str.includes(')')){
-		return true;
-	} else if(str.includes('_')){
-		return true;
-	} else if(str.includes('+')){
-		return true;
-	} else if(str.includes('{')){
-		return true;
-	} else if(str.includes('}')){
-		return true;
-	} else if(str.includes('|')){
-		return true;
-	} else if(str.includes(':')){
-		return true;
-	} else if(str.includes('<')){
-		return true;
-	} else if(str.includes('>')){
-		return true;
-	} else if(str.includes('?')){
-		return true;
-	} else {
-		return false;
-	}
+	var respecial = /[-=\[\]\\\;\,\.\/~!@#\$%\^&\*()\_\+{}\|:<>\?]+/;
+	return respecial.test(str);
 };
