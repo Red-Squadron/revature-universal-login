@@ -3,8 +3,9 @@
  * Expects AJAX response as json {userName: String, authLvl: String, valid: String}
  * Establishes user session
  */
-module
-.controller('loginCtrl', function($scope, $http) {
+
+
+app.controller('loginCtrl', function($scope, $http) {
 	$scope.loginSuccess = "";
 	$scope.user = "";
 	$scope.user.authLvl = "";
