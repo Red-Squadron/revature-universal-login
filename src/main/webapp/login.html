@@ -1,0 +1,14 @@
+
+<form id="loginForm" ng-controller='loginCtrl'>
+	<label for="username">Email<span class="req">&nbsp;*</span></label>
+	<br>
+	<input type="email" id="login_username" name="username" class="input-lg" ng-model="userName" placeholder="Email" required autofocus>
+	<br>
+	<label for="password">Password<span class="req">&nbsp;*</span></label>
+	<br>
+	<input type="password" id="login_password" name="password" class="input-lg" ng-model="passPhrase" placeholder="Password" required>
+	<br>
+	{{loginSuccess}}
+	<br>
+	<input type="button" class="input-lg" value="Login" ng-click="validateLogin(userName, passPhrase)">
+</form>

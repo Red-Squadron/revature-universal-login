@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html ng-app='myApp' lang='en'>
+<head>
+<meta charset="ISO-8859-1" content="width=device-width, initial-scale=1">
+<title>Welcome!</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+<link href="css/main.css" rel=stylesheet>
+
+<!-- Anglar import -->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-sanitize.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-animate.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-cookies.min.js"></script>
+<script src='route.js'></script>
+<script src='js/loginCTRL.js'></script>
+<script src='js/registerCTRL.js'></script>
+<script src='js/changeInformationCTRL.js'></script>
+</head>
+
+<body class="container">
+<nav>
+	<a href="https://revature.com/">
+		<img src="https://3g4d13k75x47q7v53surz1gi-wpengine.netdna-ssl.com/wp-content/themes/revature/imgs/logo.png"/>
+	</a> 
+	
+
+	<!-- Pop up for registration form field -->
+	
+	<a href="#register"><button type="button" id="registerBtn" class="btn btn-info btn-lg" formtarget="_blank">
+		Not a member? Register here!
+	</button></a>
+	<a href="#profiles">Change your profiles</a>
+	
+</nav>
+
+
+<div class="container-fluid">
+<!-- This is where the partial views go in -->
+<div ng-view></div>
+
+	
+</div>
+	
+
+
+<footer>
+	<i>�2017 All Rights Reserved.</i>
+</footer>
+
+</body>
+</html>
