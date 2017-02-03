@@ -29,7 +29,6 @@ module
     				//TODO cookie implementation instead of in scope
 			    } else
 			    	$scope.loginSuccess = "Wrong email/password!";
-
 		    })
 		} else {
 			// EMAIL DOES NOT CONTAIN AN @
