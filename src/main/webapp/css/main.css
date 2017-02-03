@@ -31,7 +31,7 @@ nav {
 	line-height: 0px;
 
 }
-	
+
 #registerBtn:hover {
 	background-color:#ffffff;
 	color:#f26925;
@@ -57,7 +57,8 @@ nav {
 }
 
 label {
-	font-size: 2em;
+	font-size: 1.5em;
+	font-weight: lighter;
 }
 
 .form-group label{
@@ -104,6 +105,21 @@ form {
     -webkit-border-radius:10px;
     border-radius:10px;
     border:3px solid #f26925 ;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff ;
+    font-size:15px;
+    text-decoration:none;
+    height:40px;
+    line-height: 0px;
+}
+
+#register-button {
+    background-color: #42a5f5;
+    /*-moz-border-radius:10px;
+    -webkit-border-radius:10px;*/
+    /*border-radius:10px;*/
+    border:3px solid #42a5f5 ;
     display:inline-block;
     cursor:pointer;
     color:#ffffff ;
@@ -193,4 +209,8 @@ form {
 
 #footer-brand {
     color: white;
+}
+
+.colorreg{
+	background-color: blue;
 }
