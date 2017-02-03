@@ -11,15 +11,15 @@ app.controller('changeInformationCtrl', function($scope, $http){
 	$scope.notEqual = "";
 	$scope.phoneBadFormat = "";
 	$scope.successMessage = "";
-	
+
 	/**
 	 * Function used to update a user's password
-	 * 
+	 *
 	 * $scope.userEmailModel: The user's email address
 	 * $scope.currentPasswordModel: The user's current password
 	 * $scope.firstPasswordModel: The user's requested new password
 	 * $scope.secondPasswordModel: Re-entered password for confirmation
-	 * 
+	 *
 	 * $scope.incorrectPassword: Shows an error message if the user's current password is incorrect
 	 * $scope.badFormat: Shows an error message if the new password does not match validations
 	 * $scope.notEqual: Shows an error message if the first and second new passwords do not match
@@ -30,11 +30,11 @@ app.controller('changeInformationCtrl', function($scope, $http){
 		$scope.badFormat = "";
 		$scope.notEqual = "";
 		$scope.successMessage = "";
-		
+
 		// Checks if the current password is correct for the user's email
 		var validatePassword = false;
 		//var validateStr = $scope.userEmailModel + ":" + $scope.currentPasswordModel;
-		var validateStr = "authTkn="+ $scope.user.authTkn;/*TODO replace this when use cookies*/ 
+		var validateStr = "authTkn="+ $scope.user.authTkn;/*TODO replace this when use cookies*/
 		$http({
 	        method: 'POST',
 	        url: 'RULServlet/authenticate',
@@ -43,7 +43,7 @@ app.controller('changeInformationCtrl', function($scope, $http){
         }).success(function(){
 			validatePassword = true;
 		});
-		
+
 		// Checks if the requested password matches validations
 		if(false){ // PUT VALIDATEPASSWORD HERE WHEN WE KNOW IT WORKS
 			$scope.incorrectPassword = "Incorrect password!";
@@ -68,14 +68,14 @@ app.controller('changeInformationCtrl', function($scope, $http){
 			});
 		}
 	};
-	
+
 	/**
 	 * Function used to update a user's password
-	 * 
+	 *
 	 * $scope.userEmailModel: The user's email address
 	 * $scope.currentPasswordModel: The user's current password
 	 * $scope.phoneChangeModel: The user's requested new phone number
-	 * 
+	 *
 	 * $scope.incorrectPassword: Shows an error message if the user's current password is incorrect
 	 * $scope.phoneBadFormat: Shows an error message if the phone number does not match validations
 	 * $scope.successMessage: Shows a success message if the $http.post succeeds
@@ -84,7 +84,7 @@ app.controller('changeInformationCtrl', function($scope, $http){
 		$scope.incorrectPassword = "";
 		$scope.phoneBadFormat = "";
 		$scope.successMessage = "";
-		
+
 		// Checks if the current password is correct for the user's email
 		var validatePassword = false;
 		var validateStr = "userEmail=" + $scope.userEmailModel + "&password=" + $scope.currentPasswordModel;
@@ -96,15 +96,15 @@ app.controller('changeInformationCtrl', function($scope, $http){
         }).success(function(){
 			validatePassword = true;
 		});
-		
+
 		// Checks if the requested new phone number matches validations
 		if(false){// PUT VALIDATEPASSWORD HERE WHEN WE KNOW IT WORKS
 			$scope.incorrectPassword = "Incorrect password!";
 		} else if(false){// CHECK PHONE NUMBER AGAINST VALIDATIONS
 			$scope.phoneBadFormat = "Invalid phone number! Use ########## format."
 		} else {
-			var phoneStr = "userEmail=" + $scope.userEmailModel + 
-							"&authTok=" + $scope.user.authTkn/*TODO replace this when use cookies*/ + 
+			var phoneStr = "userEmail=" + $scope.userEmailModel +
+							"&authTok=" + $scope.user.authTkn/*TODO replace this when use cookies*/ +
 							"&infoType=" + "phone"/*TODO change according to info being changed*/ +
 							"&newInfo=" + $scope.phoneChangeModel;
 			$http({
