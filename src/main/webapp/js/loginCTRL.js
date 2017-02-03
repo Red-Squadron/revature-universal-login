@@ -16,7 +16,7 @@ app.controller('loginCtrl', function($scope, $http) {
 
 		// If the email address does not contain '@' then nothing will happen
 		var regemail = /([a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+)@([a-zA-Z]+)\.([a-z]{2,})$/;
-		if(regemail.test(username)){
+		if(regemail.test(userName)){
 			$http({
     	        method: 'POST',
     	        url: 'RULServlet/login',
