@@ -3,8 +3,9 @@
  * Allows user to change their password and/or phone number.
  * User must supply their email and current password to change information.
  */
-var ciModule = angular.module('changeInformationApp', []);
-ciModule.controller('changeInformationCtrl', function($scope, $http){
+
+//error here
+app.controller('changeInformationCtrl', function($scope, $http){
 	$scope.incorrectPassword = "";
 	$scope.badFormat = "";
 	$scope.notEqual = "";
