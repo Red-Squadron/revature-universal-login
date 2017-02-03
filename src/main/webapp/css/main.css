@@ -1,9 +1,9 @@
 /* This style sheet applies to the entire login page and changeInfo*/
 
+
 * {
 	font-family: 'futura-pt', 'Questrial', sans-serif;
 }
-
 
 /* Nav bar */
 nav {
@@ -26,11 +26,12 @@ nav {
 	cursor:pointer;
 	color:#ffffff;
 	font-size:15px;
-	/*padding: 12px 30px;*/
+
 	text-decoration:none;
 	
 	height: 39px;
 	line-height: 0px;
+
 }
 	
 #registerBtn:hover {
@@ -73,7 +74,6 @@ h1, h2, h3, h4, h5, h6 {
 input {
 	margin-bottom: 10px;
 	text-align: left;
-	
 }
 
 input:focus {
@@ -84,7 +84,6 @@ input:focus {
 form {
 	text-align: center;
 }
-
 
 /* Login form */
 
@@ -105,6 +104,25 @@ form {
 	background-color: #f26925;
 	color: white;
 	
+}
+
+
+
+/* Left aligns the labels above the input fields */
+#loginForm {
+
+.field {
+	text-align: center;
+	display: block;
+ }
+}
+
+
+
+
+
+#loginForm {
+	padding-top: 2%;
 }
 
 
@@ -133,6 +151,8 @@ form {
 	text-align: left;
 	padding-left: 2px;
 }
+
+/* Footer */
 
 /* Footer */
 #footer {
