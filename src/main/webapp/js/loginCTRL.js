@@ -25,6 +25,15 @@ module
     				$scope.user.authLvl = userInfo.authLvl;
     				$scope.user.authTkn = userInfo.authTkn;
     				$scope.loginSuccess = "Successfully logged in!";
+    				
+    				
+    		//stores the information in html5  session storage, if the tab is closed then the  storage is deleted
+    				
+    				setHtmlStorage(autholevel,userInfo.authLvl)
+    				localStorage.loggedIn = $scope.user.authLvl;
+    				localStorage.loggedIn = $scope.user.authtkn;
+    				
+    				
     				//TODO cookie implementation instead of in scope
 			    } else
 			    	$scope.loginSuccess = "Wrong email/password!";
