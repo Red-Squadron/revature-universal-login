@@ -88,7 +88,7 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		// Checks if the requested new phone number matches validations
 		if(false){// PUT VALIDATEPASSWORD HERE WHEN WE KNOW IT WORKS
 			$scope.incorrectPassword = "Incorrect password!";
-		} else if($scope.phoneChangeModel){// CHECK PHONE NUMBER AGAINST VALIDATIONS
+		} else if(validatePhoneFormat($scope.phoneChangeModel)){// CHECK PHONE NUMBER AGAINST VALIDATIONS
 			$scope.phoneBadFormat = "Invalid phone number! Use ########## format."
 			console.log("Invalid phone number! Use ########## format.")
 		} else {
