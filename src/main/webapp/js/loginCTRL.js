@@ -13,9 +13,10 @@ app.controller('loginCtrl', function($scope, $http) {
 	$scope.validateLogin = function(userName, passPhrase) {
 		var validateString = "";
 		validateString += "userName=" + userName + "&password=" + passPhrase;
-		
+
 		// If the email address does not contain '@' then nothing will happen
-		//if(userName.includes("@")){ //TODO
+		var regemail = /([a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+)@([a-zA-Z]+)\.([a-z]{2,})$/;
+		if(regemail.test(username)){
 			$http({
     	        method: 'POST',
     	        url: 'RULServlet/login',
@@ -29,10 +30,10 @@ app.controller('loginCtrl', function($scope, $http) {
     				//TODO cookie implementation instead of in scope
 			    } else
 			    	$scope.loginSuccess = "Wrong email/password!";
-    			
 		    })
-		//} else {
+		} else {
 			// EMAIL DOES NOT CONTAIN AN @
-		//}
+			$scope.loginSuccess = "Invalid email!";
+		}
 	};
 });
