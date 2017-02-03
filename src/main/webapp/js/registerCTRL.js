@@ -16,10 +16,10 @@ module.controller('registerCtrl', function($scope, $http) {
 			$scope.pass = "Password can not exceed 75 charachters!";
 
 		} else if(passPhrase === passPhrase.toLowerCase()){
-			$scope.pass = "Password needs a lowercase letter!";
+			$scope.pass = "Password needs a uppercase letter!";
 
 		} else if(passPhrase === passPhrase.toUpperCase()){
-			$scope.pass = "Password needs a uppercase letter!";
+			$scope.pass = "Password needs a lowercase letter!";
 
 		} else if(!containsNumber(passPhrase)){
 			$scope.pass = "Password must contain a number!";
@@ -55,13 +55,7 @@ module.controller('registerCtrl', function($scope, $http) {
 		}
 	};
 });
-/*var contains  = function(str){
-	var re = /\d+/;
-	if(re.test(str.value)){
-		return true;
-	}
-	return false;
-}*/
+
 
 //Checks if the passed string contains a number
 var containsNumber = function(str){
