@@ -26,9 +26,7 @@ nav {
 	cursor:pointer;
 	color:#ffffff;
 	font-size:15px;
-
 	text-decoration:none;
-	
 	height: 39px;
 	line-height: 0px;
 
@@ -101,9 +99,18 @@ form {
 
 
 #login-button {
-	background-color: #f26925;
-	color: white;
-	
+    background-color:#f26925 ;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    border:3px solid #f26925 ;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff ;
+    font-size:15px;
+    text-decoration:none;
+    height:40px;
+    line-height: 0px;
 }
 
 
@@ -139,7 +146,7 @@ form {
 
 /* Chrome/Opera/Safari */
 ::-webkit-input-placeholder {
-	text-align: center;
+	text-align: left;
 	padding-left: 2px;
 }
 
@@ -166,25 +173,24 @@ form {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #474c55 ;
+    background-color: #474c55  ;
     text-align: center;
-    
-    color: #f26925;
-    
-    
+    /*color: #f26925 ;*/
 }
 
 #footer-links a {
-	color: white;
+    color: #f26925 ;
 }
 
 .fa{
-padding-top: 15px;
-	color: #f26925;
-	display: inline-block;
-  border-radius: 60px;
- 
-  
-  width: 50px;
-  height: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+#footer-brand {
+    color: white;
 }
