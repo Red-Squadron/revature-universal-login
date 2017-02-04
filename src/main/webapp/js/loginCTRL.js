@@ -42,7 +42,7 @@ app
 
             })
         } else {
-            EMAIL DOES NOT CONTAIN AN @
+            console.log("Invalid email!");
         }
     };
 });
