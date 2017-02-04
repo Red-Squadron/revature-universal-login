@@ -17,7 +17,7 @@
           <input type="password" id="login_password" name="password" class="input-lg form-control" ng-model="passPhrase" placeholder="Password" required>
       </div>
       <br>
-      {{loginSuccess}}
+      <span ng-bind="loginSuccess"></span>
 	  
       <br>
       <input id="login-button" type="button" class="input-lg" value="Login" ng-click="validateLogin(userName, passPhrase)">
