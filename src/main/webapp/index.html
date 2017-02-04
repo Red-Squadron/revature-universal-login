@@ -38,6 +38,8 @@
 			</a>
 		</nav>
 	</div>
+	
+
 	<!-- Horizonal line below nav -->
 	<hr>
 
@@ -45,30 +47,34 @@
 	<!-- This is where the partial views go in -->
 	<div ng-view></div>
 	</div>
-	
+
 	<div id="footer" >
-        <div class="row" id="footer-icons">
+	
+	    <div class="row">
+		        <a href="https://www.facebook.com/revature/" target="_blank"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a>
+		        <a href="https://twitter.com/WeAreRevature" target="_blank"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
+		        <a href="https://plus.google.com/+RevatureLife/about" target="_blank"><i class="fa fa-google-plus fa-lg" aria-hidden="true"></i></a>
+		        <a href="https://www.linkedin.com/company/revature" target="_blank"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	    </div>
+		<div class="row" id="footer-links">
+		         <a href="http://lifeatrevature.com/" target="_blank">Life@ Revature |</a>
+		         <a ng-class="{ factive: activePath=='/eeopolicy' }" href="eeopolicy"> EEO Policy |</a>
+		         <a ng-class="{ factive: activePath=='/eeopolicy' }" href="privacyPolicy"> Privacy Policy |</a>
+		         <a ng-class="{ factive: activePath=='/terms' }" href="terms"> Terms and Conditions </a>
+	    </div>
+	    <div class="row">
+	        <p>
+	                RevaturePro &copy; Copyright 2016
+	        </p>
+	    </div>
+	</div>
+	
 
-                <a href="https://www.facebook.com/revature/" target="_blank"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a>
-                <a href="https://twitter.com/WeAreRevature" target="_blank"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
-                <a href="https://plus.google.com/+RevatureLife/about" target="_blank"><i class="fa fa-google-plus fa-lg" aria-hidden="true"></i></a>
-                <a href="https://www.linkedin.com/company/revature" target="_blank"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
 
-        </div>
-        <div class="row" id="footer-links">
-
-                 <a href="http://lifeatrevature.com/" target="_blank">Life@ Revature |</a>
-                 <a ng-class="{ factive: activePath=='/eeopolicy' }" href="eeopolicy"> EEO Policy |</a>
-                 <a ng-class="{ factive: activePath=='/eeopolicy' }" href="privacyPolicy"> Privacy Policy |</a>
-                 <a ng-class="{ factive: activePath=='/terms' }" href="terms"> Terms and Conditions </a>
-
-        </div>
-        <div class="row" id="footer-brand">
-            <p>
-                    RevaturePro &copy; Copyright 2016
-            </p>
-        </div>
-    </div>
-
+	
 </body>
 </html>
+
+	

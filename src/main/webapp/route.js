@@ -18,6 +18,11 @@ app.config(function ($routeProvider) {
           
             
           })
+        .when("/welcome",
+        {
+        	 templateUrl : "welcome.html",
+        })
+        
         .otherwise({
             redirectTo : "/login"
         });

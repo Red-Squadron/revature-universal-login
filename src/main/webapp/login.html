@@ -1,40 +1,4 @@
-<!-- TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
-	This page needs consistent validation.
-	I'm partial to displaying js errors below the fields, but I'm not the boss of you.
--->
-<!DOCTYPE html>
-<html ng-app='login' lang='en'>
-<head>
-<meta charset="ISO-8859-1" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
-<!--Favicon 3 scales-->
-<link href="https://3g4d13k75x47q7v53surz1gi-wpengine.netdna-ssl.com/wp-content/themes/revature/imgs/favicon.ico" rel="icon" type="image/x-icon">
-<link rel="icon" href="https://3g4d13k75x47q7v53surz1gi-wpengine.netdna-ssl.com/wp-content/themes/revature/imgs/favicon_192.png">
-<link rel="apple-touch-icon" href="https://3g4d13k75x47q7v53surz1gi-wpengine.netdna-ssl.com/wp-content/themes/revature/imgs/favicon_192.png">
-<!-- Style Imports -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-
-<link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
-<link href="css/main.css" rel=stylesheet>
-<!-- Font Awsome -->
-<script src="https://use.fontawesome.com/4f359afa1f.js"></script>
-<!-- Angular import -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
-<script src='js/module.js'></script>
-<script src='js/loginCTRL.js'></script>
-<script src='js/registerCTRL.js'></script>
-</head>
-
-
-<body>
-	
 	<div class="container">
     <form id="loginForm" class="form-group" ng-controller='loginCtrl'>
 
@@ -54,11 +18,11 @@
       </div>
       <br>
       {{loginSuccess}}
+	  
       <br>
       <input id="login-button" type="button" class="input-lg" value="Login" ng-click="validateLogin(userName, passPhrase)">
+      <br>
+       <a href="#welcome" id="click" ng-click="validateLogin(userName, passPhrase)">OKAY</h1>
 	  </form>
 	</div>
-	
-</body>
-</html>
 
