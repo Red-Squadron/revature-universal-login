@@ -1,11 +1,9 @@
-/* This style sheet applies to the entire login page and changeInfo*/
-
+/* Single-Page-Application */
 
 * {
 	font-family: 'futura-pt', 'Questrial', sans-serif;
 }
 
-/* Nav bar */
 nav {
 	display: flex;
 	flex-direction: row;
@@ -41,34 +39,6 @@ nav {
 	outline: none;
 }
 
-.modal label {
-	font-size: 1em;
-}
-
-#closeModal {
-	font-size: 2.5em;
-	position: absolute;
-	top: 12px;
-	right: 25px;
-}
-
-#closeModal:focus {
-	outline: none;
-}
-
-label {
-	font-size: 1.5em;
-	font-weight: lighter;
-}
-
-.form-group label{
-	font-size: 1.5em;
-}
-
-/* Body */
-h1, h2, h3, h4, h5, h6 {
-	text-align: center;
-}
 
 input {
 	margin-bottom: 10px;
@@ -84,22 +54,21 @@ form {
 	text-align: center;
 }
 
-/* Login form */
-
-.sign-in-outer {
+.side-line-outer {
 	margin-top:; border-top: 1px solid silver; margin: 20px 16px 0 16px;
 }
-.sign-in-inner {
+.side-line-inner {
 	position: relative; top: -14px; background: #fff; padding: 5px 15px; font-size: 20px;
 }
 
+/* Login form */
+
 #login_username:focus, #login_password:focus{
-        border: 1px solid #f26925;
+        border: 2px solid #f26925;
         box-shadow: 5px 5px 0px #f26925;
 }
 
-
-#login-button {
+#login-button, #register-button {
     background-color:#f26925 ;
     -moz-border-radius:10px;
     -webkit-border-radius:10px;
@@ -114,24 +83,6 @@ form {
     line-height: 0px;
 }
 
-#register-button {
-    background-color: #42a5f5;
-    /*-moz-border-radius:10px;
-    -webkit-border-radius:10px;*/
-    /*border-radius:10px;*/
-    border:3px solid #42a5f5 ;
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff ;
-    font-size:15px;
-    text-decoration:none;
-    height:40px;
-    line-height: 0px;
-}
-
-
-
-/* Left aligns the labels above the input fields */
 #loginForm {
 
 .field {
@@ -141,14 +92,9 @@ form {
 }
 
 
-
-
-
-
 #loginForm {
 	padding-top: 2%;
 }
-
 
 .icon-remove-sign, .req, .wrong {
 	color: red!important;
@@ -203,14 +149,16 @@ form {
     padding-bottom: 10px;
     color: white;
     display: inline-block;
-  width: 30px;
-  height: 30px;
+  	width: 30px;
+  	height: 30px;
 }
 
 #footer-brand {
     color: white;
 }
 
-.colorreg{
-	background-color: blue;
+
+.form-horizontal input:focus {
+	border: 2px solid #f26925;
+  	box-shadow: 0px 0px 0px #f26925;
 }
