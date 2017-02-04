@@ -15,13 +15,13 @@ app
     $scope.user = "";
     $scope.user.authLvl = "";
     $scope.user.authTkn = "";
-        
+
     $scope.validateLogin = function(userName, passPhrase) {
         var validateString = "";
         validateString += "userName=" + userName + "&password=" + passPhrase;
-        
-        // If the email address does not contain '@' then nothing will happen
-        //if(userName.includes("@")){ //TODO
+
+        var regemail = /([a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+)@([a-zA-Z]+)\.([a-z]{2,})$/;
+		    if(regemail.test(userName)){
             $http({
                 method: 'POST',
                 url: 'RULServlet/login',
@@ -29,20 +29,20 @@ app
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function(userInfo) {
                 if(userInfo.valid === "true") {
-                    //$scope.user.authLvl = userInfo.authLvl;
+                    $scope.user.authLvl = userInfo.authLvl;
                     $scope.user.authTkn = userInfo.authTkn;
                     $scope.loginSuccess = "Successfully logged in!";
-                   // $rootScope.success = "success";
-            
+                    $rootScope.success = "success";
+
                     var b =document.getElementById("click").click();
-                   
+
                     //TODO cookie implementation instead of in scope
                 } else
                     $scope.loginSuccess = "Wrong email/password!";
-                
+
             })
-        //} else {
-            // EMAIL DOES NOT CONTAIN AN @
-        //}
+        } else {
+            EMAIL DOES NOT CONTAIN AN @
+        }
     };
 });
