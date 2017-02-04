@@ -64,7 +64,7 @@ form {
 /* Login form */
 
 #login_username:focus, #login_password:focus{
-        border: 2px solid #f26925;
+        border: 1px solid #f26925;
         box-shadow: 5px 5px 0px #f26925;
 }
 
@@ -137,7 +137,6 @@ form {
     width: 100%;
     background-color: #474c55  ;
     text-align: center;
-    /*color: #f26925 ;*/
 }
 
 #footer-links a {
