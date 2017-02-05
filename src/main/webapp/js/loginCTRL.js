@@ -42,7 +42,7 @@ app
 
             })
         } else {
-            console.log("Invalid email!");
+        	$scope.loginSuccess = "Invalid email!";
         }
     };
 });

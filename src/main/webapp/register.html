@@ -1,39 +1,52 @@
-	<div>
+	<div class="container">
 	<div ng-controller="registerCtrl">
-	<h3><a href="#welcome"> Go Back</a></h3>
-	
+
 			<form id="registrationForm">
-					<label for="username">First Name<span class="req">&nbsp;*</span></label>
-					<br>
-					<input name="firstName" class="input-sm" ng-model="firstName" type="text" placeholder="First Name" required/>
-					<br>
-					<label for="username">Middle Name</label>
-					<br>
-					<input name="middleName" class="input-sm" ng-model="middleName" type="text" placeholder="Middle Name"/>
-					<br>
-					<label for="username">Last Name<span class="req">&nbsp;*</span></label>
-					<br>
-					<input name="lastName" class="input-sm" ng-model="lastName" type="text" placeholder="Last Name" required/>
-					<br>
-					<label for="phoneNumber">Phone</label>
-					<br>
-					<input name="phoneNumber" class="input-sm" ng-model="phoneNumber" type="tel" placeholder="Phone"/>
-					<br>
-					<label for="username">Email<span class="req">&nbsp;*</span></label>
-					<br>
-					<input id="reg_username" name="username" class="input-sm" ng-model="userName" type="email" placeholder="Email" required/>
-					<br>
-					<label for="username">Password<span class="req">&nbsp;*</span></label>
-					<br>
-					<input name="password" class="input-sm" ng-model="passPhrase" type="password" placeholder="Password" required/>
-					<br>
-					<label for="username">Re-enter Password<span class="req">&nbsp;*</span></label>
-					<br>
-					<input name="passwordConfirm" class="input-sm" ng-model="passPhraseConfirm" type="password" placeholder="Re-enter Password" required/>
-					<br>
-					{{pass}}
-					<br>
-					<button type="submit" class="input-sm" ng-click="registerUser(userName, firstName, lastName, middleName, phoneNumber, passPhrase, passPhraseConfirm)">Register</button>
-				</form>
+				<div class="side-line-outer">
+						<span class="side-line-inner">Registration </span>
 				</div>
+
+				<div class="col-sm-offset-2 col-sm-8 form-horizontal" role="form">
+					<div class="row">
+						<div class="form-group">
+							<div class="col-sm-4">
+								<input class="input-lg form-control " name="firstName" ng-model="firstName" placeholder="First Name" required/>
+							</div>
+							<div class="col-sm-4" >
+								<input class="input-lg form-control" name="middleName" ng-model="middleName"  placeholder="Middle Name"/>
+							</div>
+							<div class="col-sm-4" >
+								<input class="input-lg form-control" name="lastName" ng-model="lastName" placeholder="Last Name" required/>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-6"> 
+								<input class="input-lg form-control" name="phoneNumber" ng-model="phoneNumber" type="tel" placeholder="Phone"/>
+							</div>
+							<div class="col-sm-6">
+								<input class="input-lg form-control" id="reg_username" name="username" ng-model="userName" type="email" placeholder="Email" required/>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-6"> 
+								<input class="input-lg form-control" name="password" ng-model="passPhrase" type="password" placeholder="Password" required/>
+							</div>
+							<div class="col-sm-6"> 
+								<input class="input-lg form-control" name="passwordConfirm" ng-model="passPhraseConfirm" type="password" placeholder="Re-enter Password" required/>
+							</div>
+						</div>
+						<!-- <br>
+						{{pass}}
+						<br> -->
+					</div>
+
+
+				<br>
+				<div class="row">
+					<input id="register-button" type="button" class="input-lg" value="Submit" ng-click="registerUser(userName, firstName, lastName, middleName, phoneNumber, passPhrase, passPhraseConfirm)" />
+				</div>
+
+			</div>
+				</form>
+</div>
 </div>

@@ -1,28 +1,27 @@
+<div class="container">
+	<form id="loginForm" class="form-group" ng-controller='loginCtrl'>
+		<div class="side-line-outer">
+			<span class="side-line-inner">Sign-In </span>
+		</div>
+		<div class="input-group col-sm-4 col-sm-offset-4">
+			<span class="input-group-addon" id="basic-addon1"><i
+				class="glyphicon glyphicon-user"></i></span> <input type="email"
+				id="login_username" name="username" class="input-lg form-control"
+				ng-model="userName" placeholder="Email" required autofocus>
+		</div>
+		<br>
+		<div class="input-group col-sm-4 col-sm-offset-4">
+			<span class="input-group-addon" id="basic-addon1"><i
+				class="glyphicon glyphicon-lock"></i></span> <input type="password"
+				id="login_password" name="password" class="input-lg form-control"
+				ng-model="passPhrase" placeholder="Password" required>
+		</div>
+		<br>
+		<span ng-bind="loginSuccess"></span> 
+		
+		<br> 
+		<input id="login-button" type="button" class="input-lg" value="Login" ng-click="validateLogin(userName, passPhrase)">
+	</form>
+</div>
 
-	<div class="container">
-    <form id="loginForm" class="form-group" ng-controller='loginCtrl'>
-
-      <div class="sign-in-outer">
-          <span class="sign-in-inner">Sign-In </span>
-      </div>
-
-      <div class="input-group col-sm-4 col-sm-offset-4">
-          <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
-          <input type="email" id="login_username" name="username" class="input-lg form-control" ng-model="userName" placeholder="Email" required autofocus>                             
-      </div>
-      <br>
-
-      <div class="input-group col-sm-4 col-sm-offset-4">
-          <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-lock"></i></span>
-          <input type="password" id="login_password" name="password" class="input-lg form-control" ng-model="passPhrase" placeholder="Password" required>
-      </div>
-      <br>
-      <span ng-bind="loginSuccess"></span>
-	  
-      <br>
-      <input id="login-button" type="button" class="input-lg" value="Login" ng-click="validateLogin(userName, passPhrase)">
-      <br>
-       <a href="#welcome" id="click" ng-click="validateLogin(userName, passPhrase)">OKAY</h1>
-	  </form>
-	</div>
 
