@@ -9,7 +9,7 @@ describe('Register Test', function() {
 	var pass = element(by.name('password'));
 	var passConfirm = element(by.name('passwordConfirm'));
 	var submitButton = element(by.className('input-sm'));
-	var success = element(by.binding('pass'));
+	var success = element(by.binding('passs'));
 
   beforeEach(function() {
     browser.get('http://localhost:7001/Revature_Universal_Login/login.html');
