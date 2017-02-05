@@ -16,7 +16,12 @@ describe('Login Test', function() {
 			
 			goButton.click();
 			
-			expect(element(by.binding('loginSuccess')).getText()).toEqual(data.responseText);
+			if(element(by.binding('side-line-inner')).getText().includes("Sign-In")){
+				expect(element(by.binding("loginSuccess")).toEqual(data.responseText))
+			}else{
+				expect(element(by.binding('side-line-inner')).getText().toEqual(data.title))
+			}
+			
 		  });
     });
 	
