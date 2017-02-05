@@ -1,0 +1,16 @@
+<div class="container">
+    <div ng-controller="registerCtrl">
+        <form id="registrationForm">
+            <div class="side-line-outer">
+                <span class="side-line-inner">Change Phone Number</span>
+            </div>
+            <div class="col-sm-offset-4 col-sm-4" role="form">
+                <input class="input-lg form-control" name="newphone" ng-model="passPhrase" type="password" placeholder="New phone number" required/>
+                <br>
+                <div class="row">
+                    <input id="register-button" type="button" class="input-lg" value="Update" ng-click="registerUser(newphone)" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
