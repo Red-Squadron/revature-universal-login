@@ -8,14 +8,14 @@ describe('Register Test', function() {
 	
 	it('Should have the correct corner button', function(){
 		browser.get('http://ec2-54-161-12-137.compute-1.amazonaws.com:8081/Revature_Universal_Login/index.html');
-		cornerBtn.click()
-		expect(cornerBtn.getText().toEqual('Log In'))
+		cornerBtn.click();
+		expect (cornerBtn.getText()).toEqual('Log In');
 	});
 	
 	
 	testData.forEach( function (data) {
 		browser.get('http://ec2-54-161-12-137.compute-1.amazonaws.com:8081/Revature_Universal_Login/index.html');
-		cornerBtn.click()
+		cornerBtn.click();
 		var fname = element(by.name(data.fName));
 		var mname = element(by.name(data.lName));
 		var lname = element(by.name(data.mName));
@@ -32,11 +32,15 @@ describe('Register Test', function() {
 			phone.sendKeys(data.phoneData);
 			username.sendKeys(data.userNameData);
 			pass.sendKeys(data.passData);
-			passconfirm.sendKeys(data.passConfirmData);
+			passConfirm.sendKeys(data.passConfirmData);
 			
-			submitButton.click()
+			submitButton.click();
 			
-			expect(success.getText().toEqual(data.success))
+			if(element(by.className('side-line-inner')).getText()==="Registration"){
+				expect (success.getText()).toEqual(data.success);
+			}else{
+				expect (element(by.className('side-line-inner')).getText()).toEqual(data.title);
+			}
 		});
 		
 	});
