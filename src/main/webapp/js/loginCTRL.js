@@ -10,7 +10,7 @@
  * Establishes user session
  */
 app
-.controller('loginCtrl', function($scope, $http) {
+.controller('loginCtrl', ["$scope", "$http", function($scope, $http) {
     $scope.loginSuccess = "";
     $scope.user = {};
     $scope.user.authLvl = "";
@@ -44,4 +44,4 @@ app
         	$scope.loginSuccess = "Invalid email!";
         }
     };
-});
+}]);
