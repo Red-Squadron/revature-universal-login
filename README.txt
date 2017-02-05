@@ -34,7 +34,7 @@ If you have conflicts, you'll need to resolve them. Hopefully we can avoid that 
 
 Merging your completed branch with the gitlab repo:
 
-Use the gitlab webpage to send a merge request, don't mess about in git bash.
+Use the github webpage to send a merge request, don't mess about in git bash.
 
 
 
