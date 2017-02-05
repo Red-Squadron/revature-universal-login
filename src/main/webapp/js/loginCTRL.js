@@ -12,7 +12,7 @@
 app
 .controller('loginCtrl', function($scope, $http) {
     $scope.loginSuccess = "";
-    $scope.user = "";
+    $scope.user = {};
     $scope.user.authLvl = "";
     $scope.user.authTkn = "";
 
@@ -32,7 +32,6 @@ app
                     $scope.user.authLvl = userInfo.authLvl;
                     $scope.user.authTkn = userInfo.authTkn;
                     $scope.loginSuccess = "Successfully logged in!";
-                    $rootScope.success = "success";
 
                     var b =document.getElementById("click").click();
 

@@ -7,13 +7,15 @@
         "mName": "middleName",
         "mNameData": "",
         "phoneNumber": "phoneNumber",
-        "phoneNumberData": "",
+        "phoneNumberData": 9998887777,
         "userName": "reg_username",
         "userNameData":"",
         "pass": "password",
         "passData":"",
         "passConfirm": "passwordConfirm",
         "passConfirmData":"",
-        "success": ""
+        "success": "",
+        "responseText": "",
+        "title": "Registration"
     }
 ]
