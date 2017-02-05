@@ -1,0 +1,35 @@
+[ 
+    {
+        "userId": "login_username",
+        "userData": "matteck@email.com",
+        "passId": "login_password",
+        "passData":"mylongpass",
+        "buttonId": "login-button",
+        "responseText": "",
+        "title" : "Welcome, associate"
+    },
+    {
+        "userId": "login_username",
+        "userData": "matteck@email.com",
+        "passId": "login_password",
+        "passData":"mywrongpass",
+        "buttonId": "login-button",
+        "responseText": "Wrong email/password!"
+    },
+    {
+        "userId": "login_username",
+        "userData": "wrong@email.com",
+        "passId": "login_password",
+        "passData":"mylongpass",
+        "buttonId": "login-button",
+        "responseText": "Wrong email/password!"
+    },
+    {
+        "userId": "login_username",
+        "userData": "wrong@email.com",
+        "passId": "login_password",
+        "passData":"mywrongpass",
+        "buttonId": "login-button",
+        "responseText": "Wrong email/password!"
+    }
+]
