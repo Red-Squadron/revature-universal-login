@@ -3,32 +3,33 @@
         "userId": "login_username",
         "userData": "matteck@email.com",
         "passId": "login_password",
-        "passData" :"mylongpass",
-        "loginButton" : "login-button",
-        "responseText" : "Successfully logged in!"
+        "passData":"mylongpass",
+        "buttonId": "login-button",
+        "responseText": "",
+        "title" : "Welcome, associate"
     },
     {
         "userId": "login_username",
         "userData": "matteck@email.com",
         "passId": "login_password",
-        "passData" :"mywrongpass",
-        "loginButton" : "login-button",
-        "responseText" : "Wrong email/password!"
+        "passData":"mywrongpass",
+        "buttonId": "login-button",
+        "responseText": "Wrong email/password!"
     },
     {
         "userId": "login_username",
         "userData": "wrong@email.com",
         "passId": "login_password",
-        "passData" :"mylongpass",
-        "loginButton" : "login-button",
-        "responseText" : "Wrong email/password!"
+        "passData":"mylongpass",
+        "buttonId": "login-button",
+        "responseText": "Wrong email/password!"
     },
     {
         "userId": "login_username",
         "userData": "wrong@email.com",
         "passId": "login_password",
-        "passData" :"mywrongpass",
-        "loginButton" : "login-button",
-        "responseText" : "Wrong email/password!!"
+        "passData":"mywrongpass",
+        "buttonId": "login-button",
+        "responseText": "Wrong email/password!"
     }
 ]

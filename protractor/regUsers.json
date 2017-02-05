@@ -1,0 +1,19 @@
+[ 
+    {
+    	"fName": "firstName",
+        "fNameData": "matt",
+        "lName": "lastName",
+        "lNameData": "ecker",
+        "mName": "middleName",
+        "mNameData": "",
+        "phoneNumber": "phoneNumber",
+        "phoneNumberData": "",
+        "userName": "reg_username",
+        "userNameData":"",
+        "pass": "password",
+        "passData":"",
+        "passConfirm": "passwordConfirm",
+        "passConfirmData":"",
+        "success": ""
+    }
+]

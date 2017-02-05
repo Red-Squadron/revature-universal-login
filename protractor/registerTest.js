@@ -1,29 +1,44 @@
 
+var testData = require('./regUsers.json');
+
 describe('Register Test', function() {
-	var registerBtn = element(by.id('registerBtn'));
-	var fname = element(by.name('firstName'));
-	var mname = element(by.name('middleName'));
-	var lname = element(by.name('lastName'));
-	var phone = element(by.name('phoneNumber'));
-	var username = element(by.name('username'));
-	var pass = element(by.name('password'));
-	var passConfirm = element(by.name('passwordConfirm'));
-	var submitButton = element(by.className('input-sm'));
-	var success = element(by.binding('passs'));
-
-  beforeEach(function() {
-    browser.get('http://localhost:7001/Revature_Universal_Login/login.html');
-    registerBtn.click();
-  });
-
-  it('should have a title', function() {
-	    expect(browser.getTitle()).toEqual('Login');
-	  });
-  
-  it('Should fail with no info', function() {
-	  submitBtn.click();
-	  expect(success.getText()).toEqual('Checking');
-  });
-
+	var cornerBtn = element(by.id('cornerBtn'));
+	var submitButton = element(by.id('register-button'));
+	var success = element(by.binding('pass'));
+	
+	it('Should have the correct corner button', function(){
+		browser.get('http://ec2-54-161-12-137.compute-1.amazonaws.com:8081/Revature_Universal_Login/index.html');
+		cornerBtn.click()
+		expect(cornerBtn.getText().toEqual('Log In'))
+	});
+	
+	
+	testData.forEach( function (data) {
+		browser.get('http://ec2-54-161-12-137.compute-1.amazonaws.com:8081/Revature_Universal_Login/index.html');
+		cornerBtn.click()
+		var fname = element(by.name(data.fName));
+		var mname = element(by.name(data.lName));
+		var lname = element(by.name(data.mName));
+		var phone = element(by.name(data.phoneNumber));
+		var username = element(by.id(data.userName));
+		var pass = element(by.name(data.pass));
+		var passConfirm = element(by.name(data.passConfirm));
+		
+		it('Should have a functioning registration system', function() {
+			
+			fname.sendKeys(data.fNameData);
+			mname.sendKeys(data.lNameData);
+			lname.sendKeys(data.mNameData);
+			phone.sendKeys(data.phoneData);
+			username.sendKeys(data.userNameData);
+			pass.sendKeys(data.passData);
+			passconfirm.sendKeys(data.passConfirmData);
+			
+			submitButton.click()
+			
+			expect(success.getText().toEqual(data.success))
+		});
+		
+	});
 
 });

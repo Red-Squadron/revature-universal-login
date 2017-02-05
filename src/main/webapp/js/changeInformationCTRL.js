@@ -3,46 +3,48 @@
  * Allows user to change their password and/or phone number.
  * User must supply their email and current password to change information.
  */
-var ciModule = angular.module('changeInformationApp', []);
-ciModule.controller('changeInformationCtrl', function($scope, $http){
+
+//error here
+app.controller('changeInformationCtrl', function($scope, $http){
 	$scope.incorrectPassword = "";
 	$scope.badFormat = "";
 	$scope.notEqual = "";
 	$scope.phoneBadFormat = "";
 	$scope.successMessage = "";
-	
+
 	/**
 	 * Function used to update a user's password
-	 * 
+	 *
 	 * $scope.userEmailModel: The user's email address
 	 * $scope.currentPasswordModel: The user's current password
 	 * $scope.firstPasswordModel: The user's requested new password
 	 * $scope.secondPasswordModel: Re-entered password for confirmation
-	 * 
+	 *
 	 * $scope.incorrectPassword: Shows an error message if the user's current password is incorrect
 	 * $scope.badFormat: Shows an error message if the new password does not match validations
 	 * $scope.notEqual: Shows an error message if the first and second new passwords do not match
 	 * $scope.successMessage: Shows a success message if the $http.post succeeds
 	 */
+
 	$scope.formChangePassword = function(){
 		$scope.incorrectPassword = "";
 		$scope.badFormat = "";
 		$scope.notEqual = "";
 		$scope.successMessage = "";
-		
+
 		// Checks if the current password is correct for the user's email
 		var validatePassword = false;
 		//var validateStr = $scope.userEmailModel + ":" + $scope.currentPasswordModel;
-		var validateStr = "authTkn="+ $scope.user.authTkn;/*TODO replace this when use cookies*/ 
+		var validateStr = "authTkn="+ $scope.user.authTkn;/*TODO replace this when use cookies*/
 		$http({
-	        method: 'POST',
-	        url: 'RULServlet/authenticate',
-	        data: validateStr,
-	        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(){
+					method: 'POST',
+					url: 'RULServlet/authenticate',
+					data: validateStr,
+					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+				}).success(function(){
 			validatePassword = true;
 		});
-		
+
 		// Checks if the requested password matches validations
 		if(false){ // PUT VALIDATEPASSWORD HERE WHEN WE KNOW IT WORKS
 			$scope.incorrectPassword = "Incorrect password!";
@@ -67,14 +69,14 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 			});
 		}
 	};
-	
+
 	/**
 	 * Function used to update a user's password
-	 * 
+	 *
 	 * $scope.userEmailModel: The user's email address
 	 * $scope.currentPasswordModel: The user's current password
 	 * $scope.phoneChangeModel: The user's requested new phone number
-	 * 
+	 *
 	 * $scope.incorrectPassword: Shows an error message if the user's current password is incorrect
 	 * $scope.phoneBadFormat: Shows an error message if the phone number does not match validations
 	 * $scope.successMessage: Shows a success message if the $http.post succeeds
@@ -83,27 +85,16 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 		$scope.incorrectPassword = "";
 		$scope.phoneBadFormat = "";
 		$scope.successMessage = "";
-		
-		// Checks if the current password is correct for the user's email
-		var validatePassword = false;
-		var validateStr = "userEmail=" + $scope.userEmailModel + "&password=" + $scope.currentPasswordModel;
-		$http({
-	        method: 'POST',
-	        url: 'RULServlet/login',
-	        data: validateStr,
-	        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(){
-			validatePassword = true;
-		});
-		
+
 		// Checks if the requested new phone number matches validations
 		if(false){// PUT VALIDATEPASSWORD HERE WHEN WE KNOW IT WORKS
 			$scope.incorrectPassword = "Incorrect password!";
-		} else if(false){// CHECK PHONE NUMBER AGAINST VALIDATIONS
+		} else if(validatePhoneFormat($scope.phoneChangeModel)){// CHECK PHONE NUMBER AGAINST VALIDATIONS
 			$scope.phoneBadFormat = "Invalid phone number! Use ########## format."
+			console.log("Invalid phone number! Use ########## format.")
 		} else {
-			var phoneStr = "userEmail=" + $scope.userEmailModel + 
-							"&authTok=" + $scope.user.authTkn/*TODO replace this when use cookies*/ + 
+			var phoneStr = "userEmail=" + $scope.userEmailModel +
+							"&authTok=" + $scope.user.authTkn/*TODO replace this when use cookies*/ +
 							"&infoType=" + "phone"/*TODO change according to info being changed*/ +
 							"&newInfo=" + $scope.phoneChangeModel;
 			$http({
@@ -115,30 +106,20 @@ ciModule.controller('changeInformationCtrl', function($scope, $http){
 				$scope.successMessage = "Phone number successfully changed!";
 			});
 		}
+
 	};
 });
 
+// Checks if phone number follows ########## format
+var validatePhoneFormat = function(str) {
+	var rephone = /[0-9]{10}/;
+	return rephone.text(str);
+}
+
 // Checks if the passed string contains a number
 var containsNumber = function(str){
-	if(str.includes('0')){
-		return true;
-	} else if(str.includes('1')){
-		return true;
-	} else if(str.includes('2')){
-		return true;
-	} else if(str.includes('3')){
-		return true;
-	} else if(str.includes('4')){
-		return true;
-	} else if(str.includes('5')){
-		return true;
-	} else if(str.includes('6')){
-		return true;
-	} else if(str.includes('7')){
-		return true;
-	} else if(str.includes('8')){
-		return true;
-	} else if(str.includes('9')){
+	var renum = /[0-9]+/;
+	if (renum.test(str)) {
 		return true;
 	} else {
 		return false;
@@ -147,65 +128,6 @@ var containsNumber = function(str){
 
 // Checks if the passed string contains a special character
 var containsSpecial = function(str){
-	if(str.includes('-')){
-		return true;
-	} else if(str.includes('=')){
-		return true;
-	} else if(str.includes('[')){
-		return true;
-	} else if(str.includes(']')){
-		return true;
-	} else if(str.includes('\\')){
-		return true;
-	} else if(str.includes(';')){
-		return true;
-	} else if(str.includes(',')){
-		return true;
-	} else if(str.includes('.')){
-		return true;
-	} else if(str.includes('/')){
-		return true;
-	} else if(str.includes('~')){
-		return true;
-	} else if(str.includes('!')){
-		return true;
-	} else if(str.includes('@')){
-		return true;
-	} else if(str.includes('#')){
-		return true;
-	} else if(str.includes('$')){
-		return true;
-	} else if(str.includes('%')){
-		return true;
-	} else if(str.includes('^')){
-		return true;
-	} else if(str.includes('&')){
-		return true;
-	} else if(str.includes('*')){
-		return true;
-	} else if(str.includes('(')){
-		return true;
-	} else if(str.includes(')')){
-		return true;
-	} else if(str.includes('_')){
-		return true;
-	} else if(str.includes('+')){
-		return true;
-	} else if(str.includes('{')){
-		return true;
-	} else if(str.includes('}')){
-		return true;
-	} else if(str.includes('|')){
-		return true;
-	} else if(str.includes(':')){
-		return true;
-	} else if(str.includes('<')){
-		return true;
-	} else if(str.includes('>')){
-		return true;
-	} else if(str.includes('?')){
-		return true;
-	} else {
-		return false;
-	}
+	var respecial = /[-=\[\]\\\;\,\.\/~!@#\$%\^&\*()\_\+{}\|:<>\?]+/;
+	return respecial.test(str);
 };
