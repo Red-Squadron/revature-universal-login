@@ -5,7 +5,8 @@
         "passId": "login_password",
         "passData":"mylongpass",
         "buttonId": "login-button",
-        "responseText": "Successfully logged in!"
+        "responseText": "",
+        "title" : "Welcome, associate"
     },
     {
         "userId": "login_username",
