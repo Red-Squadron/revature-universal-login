@@ -5,7 +5,7 @@
  */
 
 //error here
-app.controller('changeInformationCtrl', function($scope, $http){
+app.controller('changeInformationCtrl', ["$scope", "$http", function($scope, $http) {
 	$scope.incorrectPassword = "";
 	$scope.badFormat = "";
 	$scope.notEqual = "";
@@ -108,7 +108,7 @@ app.controller('changeInformationCtrl', function($scope, $http){
 		}
 
 	};
-});
+}]);
 
 // Checks if phone number follows ########## format
 var validatePhoneFormat = function(str) {
