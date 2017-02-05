@@ -3,31 +3,55 @@
 * {
 	font-family: 'futura-pt', 'Questrial', sans-serif;
 }
-
-nav {
-	display: flex;
-	flex-direction: row;
-	flex-basis: 20%;
-	justify-content: space-between;
-	align-items: center;
-	align-content: flex-end;
-	padding-top: 1.5%;
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #474c55;
 }
 
-#registerBtn {
-	background-color:#f26925;
-	-moz-border-radius:28px;
-	-webkit-border-radius:28px;
-	border-radius:28px;
-	border:3px solid #f26925;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-size:15px;
-	text-decoration:none;
-	height: 39px;
-	line-height: 0px;
+.navbar-default {
+	margin: 10px;
+}
 
+html,
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+}
+
+#wrapper {
+	min-height:100%;
+	position:relative;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	overflow: hidden;
+	
+	
+}
+.container {
+	padding-bottom:100px;
+}
+
+.navbar-default {
+	background: white;
+}
+
+
+#registerBtn {
+	
+	background-color:#f26925 ;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    border:3px solid #f26925 ;
+    display:block;
+    cursor:pointer;
+    color:#ffffff ;
+    font-size:15px;
+    text-decoration:none;
+    text-align: center;
+    height:40px;
+    line-height: 7px;
 }
 
 #registerBtn:hover {
@@ -132,11 +156,14 @@ form {
 
 /* Footer */
 #footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
     background-color: #474c55  ;
     text-align: center;
+    height: 100px;
 }
 
 #footer-links a {
@@ -161,3 +188,5 @@ form {
 	border: 2px solid #f26925;
   	box-shadow: 0px 0px 0px #f26925;
 }
+
+

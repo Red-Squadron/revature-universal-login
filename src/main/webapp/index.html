@@ -30,28 +30,54 @@
 </head>
 
 <body>
-	<div class="container">
-		<nav>
-			<a href="https://revature.com/">
-				<img src="img/revatureLogo.png" width="125" height="39"/>
-			</a>
-			<a href="#register">
-				<button type="button" id="registerBtn" class="btn btn-info btn-lg" formtarget="_blank">
-				Sign-Up
-				</button>
-			</a>
-		</nav>
-	</div>
-
-
-	<!-- Horizonal line below nav -->
+<div id="wrapper">
+<!-- 
+	<nav class="navbar navbar-default">
+  		<div class="container-fluid">
+	    	<ul class="nav navbar-nav">
+	    		<li><a href="https://revature.com/"><img src="img/revatureLogo.png" width="125" height="39"/></a></li>
+	    	</ul>
+	    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>                        
+	      	</button>
+      		<div class="collapse navbar-collapse">
+		      	<ul class="nav navbar-nav navbar-right">
+		    		<li><a href="#register"><button type="button" id="registerBtn" class="btn btn-info btn-lg" formtarget="_blank">Sign-Up</button></a></li>
+		      	</ul>
+      		</div>
+  		</div>
+	</nav>
+-->
+<nav class="navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+	  <a class="revature-logo" href="https://revature.com/"><img src="img/revatureLogo.png" width="125" height="39"/></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    
+      <ul class="nav navbar-nav navbar-right">
+	  	<li><a id="registerBtn" href="#register">Sign-Up</a></li>	
+      </ul>
+    </div>
+  </div>
+</nav>	
 	<hr>
+	<div class="container">
 
-	<div class="container-fluid">
+
+	
+
+	
 	<!-- This is where the partial views go in -->
 	<div ng-view></div>
 	</div>
-
 
 	<div id="footer" >
 	<div class="row" id="footer-icons">
@@ -74,6 +100,6 @@
 	    </div>
 	    </div>
 	</div>
-
+</div>
 </body>
 </html>
