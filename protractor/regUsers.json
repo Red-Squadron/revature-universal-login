@@ -1,9 +1,9 @@
 [ 
     {
     	"fName": "firstName",
-        "fNameData": "",
+        "fNameData": "matt",
         "lName": "lastName",
-        "lNameData": "",
+        "lNameData": "ecker",
         "mName": "middleName",
         "mNameData": "",
         "phoneNumber": "phoneNumber",
