@@ -70,11 +70,11 @@ public class UserDAO {
 				
 				//Create RULUser object for token
 				user = new RULUser();
-				user.emailaddress = rs.getString("userEmail");
-				user.firstname = rs.getString("firstName");
-				user.lastname = rs.getString("lastName");
-				user.middlename = rs.getString("middleName");
-				user.authlevel = rs.getString("permissions");
+				user.setEmailaddress(rs.getString("userEmail"));
+				user.setFirstname(rs.getString("firstName"));
+				user.setLastname(rs.getString("lastName"));
+				user.setMiddlename(rs.getString("middleName"));
+				user.setAuthlevel(rs.getString("permissions"));
 				
 				rs.close();
 				checkLogin.close();

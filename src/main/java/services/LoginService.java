@@ -34,7 +34,7 @@ public class LoginService {
 			//TODO generate a cookie holding the authTkn
 			responseJson = "{ \"valid\": \"true\", " + 
 							"\"authTkn\": \"" + authTkn +
-							"\", \"authLvl\": \"" + usr.authlevel + "\" }";
+							"\", \"authLvl\": \"" + usr.getAuthlevel() + "\" }";
 		}
 		
 		response.setContentType("application/json");

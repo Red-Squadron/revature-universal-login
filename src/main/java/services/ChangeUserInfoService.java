@@ -26,7 +26,7 @@ public class ChangeUserInfoService {
 		
 		try {
 			userSession = sessMan.getSession(request.getParameter("authTkn"));
-			userName = userSession.emailaddress;
+			userName = userSession.getEmailaddress();
 			
 			switch(request.getParameter("infoType")){
 				case "phone": success = Boolean.toString(dao.updatePhone(userName, request.getParameter("newInfo")));

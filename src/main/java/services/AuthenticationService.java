@@ -26,7 +26,7 @@ public class AuthenticationService {
 		
 		try {
 			userSession = sessMan.getSession(request.getParameter("authTkn"));
-			responseJson = userSession.authlevel;
+			responseJson = userSession.getAuthlevel();
 			userSession.refresh();
 			//TODO refresh the cookie
 		} catch (NoSuchSessionException e) {

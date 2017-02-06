@@ -39,7 +39,7 @@ public class SessionManagement {
 	 */
 	public String createSession(RULUser usr){
 		String authtoken;
-		authtoken = BCrypt.hashpw(usr.emailaddress+usr.authlevel+usr.creation, BCrypt.gensalt());
+		authtoken = BCrypt.hashpw(usr.getEmailaddress()+usr.getAuthlevel()+usr.creation, BCrypt.gensalt());
 		authmap.put(authtoken, usr);
 		return authtoken;
 	}
