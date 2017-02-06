@@ -69,6 +69,5 @@ public class SessionManagement {
 			if(usr.timeOut())
 				authmap.remove(authtoken);
 		});
-		//System.gc();
 	}
 }
