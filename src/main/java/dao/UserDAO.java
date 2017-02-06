@@ -25,7 +25,7 @@ public class UserDAO {
 	private Connection conn;
 	private static UserDAO singleton = null;
 	public Logger LOGGER;
-	
+
 	/**
 	 * Private constructor for UserDao class.
 	 * Is only called once.
@@ -67,26 +67,30 @@ public class UserDAO {
 			PreparedStatement checkLogin = conn.prepareStatement("select * from userregistration where useremail = ?");
 			checkLogin.setString(1, email);
 			ResultSet rs = checkLogin.executeQuery();
-			if(rs.next()){
-			String hashedpw = rs.getString("passwd");
-			if(BCrypt.checkpw(password, hashedpw)){
-				
-				//Create RULUser object for token
-				user = new RULUser();
-				user.setEmailaddress(rs.getString("userEmail"));
-				user.setFirstname(rs.getString("firstName"));
-				user.setLastname(rs.getString("lastName"));
-				user.setMiddlename(rs.getString("middleName"));
-				user.setAuthlevel(rs.getString("permissions"));
-				
-				rs.close();
-				checkLogin.close();
-				return user;}
-			} else{
-				rs.close();
-				checkLogin.close();
-				return user;
+			if(rs.next()) {
+					String hashedpw = rs.getString("passwd");
+					if(BCrypt.checkpw(password, hashedpw)){
+
+						//Create RULUser object for token
+						user = new RULUser();
+						user.setEmailaddress(rs.getString("userEmail"));
+						user.setFirstname(rs.getString("firstName"));
+						user.setLastname(rs.getString("lastName"));
+						user.setMiddlename(rs.getString("middleName"));
+						user.setAuthlevel(rs.getString("permissions"));
+
+						rs.close();
+						checkLogin.close();
+						return user;
+					}
+			} else {
+					rs.close();
+					checkLogin.close();
+					return user;
 			}
+
+			rs.close();
+			checkLogin.close();
 		} catch (SQLException e) {
 						LOGGER.info(Arrays.toString(e.getStackTrace()));
 		}
@@ -105,39 +109,41 @@ public class UserDAO {
 	 * @return true if registration is successful, false if registration is not successful.
 	 */
 	public boolean registerUser(String email, String firstName, String middleName, String lastName, String phone, String password) {
-		
+
 		String permission = checkUserExistence(email, firstName, lastName);
 		if ("".equals(permission))
 			return false;
-		
-		try{
-			CallableStatement registerUser = conn.prepareCall("{call add_new_user(?, ?, ?, ?, ?, ?, ?, ?)}");
-			
-			registerUser.setString(1, email);
-			registerUser.setString(2, firstName);
-			registerUser.setString(3, middleName);
-			registerUser.setString(4, lastName);
-			registerUser.setString(5, phone);
-			//TODO Move crypto out to service classes for this method?
-			String hash = BCrypt.hashpw(password, BCrypt.gensalt());
-			registerUser.setString(6, hash);
-			registerUser.setString(7, permission);
-			registerUser.registerOutParameter(8, Types.INTEGER);
-			registerUser.executeUpdate();
-			
-			if (registerUser.getInt(8) == 1) {
-				registerUser.close();
-				return true;
-			} else {
-				registerUser.close();
-				return false;
-			}
+
+		try {
+				CallableStatement registerUser = conn.prepareCall("{call add_new_user(?, ?, ?, ?, ?, ?, ?, ?)}");
+
+				registerUser.setString(1, email);
+				registerUser.setString(2, firstName);
+				registerUser.setString(3, middleName);
+				registerUser.setString(4, lastName);
+				registerUser.setString(5, phone);
+				//TODO Move crypto out to service classes for this method?
+				String hash = BCrypt.hashpw(password, BCrypt.gensalt());
+				registerUser.setString(6, hash);
+				registerUser.setString(7, permission);
+				registerUser.registerOutParameter(8, Types.INTEGER);
+				registerUser.executeUpdate();
+
+				if (registerUser.getInt(8) == 1) {
+					registerUser.close();
+					return true;
+				} else {
+					registerUser.close();
+					return false;
+				}
+
+				//registerUser.close();
 		} catch(SQLException e) {
 			LOGGER.info(Arrays.toString(e.getStackTrace()));
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Updates the password associated with given email if not the same as previous 3 passwords for this email.
 	 * @param email Provide unique email.
@@ -146,24 +152,24 @@ public class UserDAO {
 	 */
 	public boolean updatePassword(String email, String password) {
 		try {
-			
+
 			PreparedStatement checkPassword = conn.prepareStatement("select passwd from userregistration where useremail=?");
 			checkPassword.setString(1, email);
 			ResultSet rs = checkPassword.executeQuery();
 			rs.next();
 			String oldpass = rs.getString(1);
-			
+
 			//Reject same password
-			if(BCrypt.checkpw(password, oldpass)){
+			if(BCrypt.checkpw(password, oldpass)) {
 				rs.close();
 				checkPassword.close();
 				return false;
 			}
-			
+
 			checkPassword = conn.prepareStatement("select pastpass from passwordhistory where useremail = ?");
 			checkPassword.setString(1, email);
 			rs = checkPassword.executeQuery();
-			
+
 			int totalpasswords = 0;
 			while(rs.next()){
 				totalpasswords++;
@@ -171,19 +177,22 @@ public class UserDAO {
 					rs.close();
 					checkPassword.close();
 					return false;
-				}	
+				}
 			}
-			
-			/* TODO Implement a trigger to delete the oldest value from password history (if there are too many, current max is 3) and add new value on update to userregistration table; 
+
+			rs.close();
+			checkPassword.close();
+
+			/* TODO Implement a trigger to delete the oldest value from password history (if there are too many, current max is 3) and add new value on update to userregistration table;
 			 * much faster execution directly on table, and doesn't require all these messy JDBC statements.
 			*/
-			
+
 			PreparedStatement updatePassQuery = conn.prepareStatement("update userregistration set passwd = ? where useremail = ?");
 			updatePassQuery.setString(1, password);
 			updatePassQuery.setString(2, email);
 			updatePassQuery.execute();
 			updatePassQuery.close();
-			
+
 			//If there are more than 3 results from passhistory, delete the oldest one.
 			if(totalpasswords>=3){
 				updatePassQuery = conn.prepareStatement("delete (select * from passhistory where useremail = ? order by add_stamp asc) where row_num<=1");
@@ -191,19 +200,19 @@ public class UserDAO {
 				updatePassQuery.execute();
 				updatePassQuery.close();
 			}
-			
+
 			updatePassQuery = conn.prepareStatement("insert into passhistory (useremail, pastpass, add_stamp) values (?, ?, systimestamp");
 			updatePassQuery.setString(1, email);
 			updatePassQuery.setString(2, oldpass);
 			updatePassQuery.execute();
 			updatePassQuery.close();
-			
+
 		} catch (SQLException e) {
 						LOGGER.info(Arrays.toString(e.getStackTrace()));
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Updates the current phone number associated with given email.
 	 * @param email Provide unique email.
@@ -226,12 +235,14 @@ public class UserDAO {
 				updatePhone.close();
 				return false;
 			}
+
+			//updatePhone.close();
 		} catch (SQLException e) {
 						LOGGER.info(Arrays.toString(e.getStackTrace()));
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Checks against salesforce table to see if the combination of email, firstName, lastName exist.
 	 * @param email Provide unique email.
@@ -242,7 +253,7 @@ public class UserDAO {
 	public String checkUserExistence(String email, String firstName, String lastName) {
 		try {
 			CallableStatement checkUser = conn.prepareCall("{call check_user_existence(?, ?, ?, ?, ?)}");
-			
+
 			checkUser.setString(1, email);
 			checkUser.setString(2, firstName);
 			checkUser.setString(3, lastName);
@@ -258,12 +269,14 @@ public class UserDAO {
 				checkUser.close();
 				return "";
 			}
+
+			//checkUser.close();
 		} catch (SQLException e) {
 						LOGGER.info(Arrays.toString(e.getStackTrace()));
 		}
 		return "";
 	}
-	
+
 	/**
 	 * This deletes password history and user account from RUL database.
 	 * Does not affect salesforce.
@@ -273,7 +286,7 @@ public class UserDAO {
 	public boolean deleteRegisteredUser(String email){
 		try {
 			CallableStatement deleteUser = conn.prepareCall("{call delete_user_registration(?,?)}");
-			
+
 			deleteUser.setString(1, email);
 			deleteUser.registerOutParameter(2, Types.INTEGER);
 			deleteUser.executeUpdate();
@@ -285,10 +298,12 @@ public class UserDAO {
 				deleteUser.close();
 				return false;
 			}
+
+			//deleteUser.close();
 		} catch (SQLException e) {
 						LOGGER.info(Arrays.toString(e.getStackTrace()));
 		}
-		
+
 		return false;
 	}
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app='myApp' lang='en'>
+<html ng-app='myApp' ng-controller="navCTRL" lang='en'>
 <head>
     <meta charset="ISO-8859-1" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +9,16 @@
     <link rel="apple-touch-icon" href="https://3g4d13k75x47q7v53surz1gi-wpengine.netdna-ssl.com/wp-content/themes/revature/imgs/favicon_192.png">
     <!-- End of Favicon -->
     <title>Welcome!</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Boostrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+    <!-- Custom CSS -->
     <link href="css/main.css" rel=stylesheet>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Font Awsome -->
     <script src="https://use.fontawesome.com/4f359afa1f.js"></script>
     <!-- Anglar import -->
@@ -25,6 +29,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-cookies.min.js"></script>
     <script src='route.js'></script>
     <script src='js/session.js'></script>
+    <script src='js/navCTRL.js'></script>
     <script src='js/loginCTRL.js'></script>
     <script src='js/registerCTRL.js'></script>
     <script src='js/changeInformationCTRL.js'></script>
@@ -47,7 +52,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
 	            <ul class="nav navbar-nav navbar-right">
-	            	<li><a id="cornerBtn" href="#register">Sign-Up</a></li>
+	            	<li><a id="cornerBtn" ng-href="{{ linkURL }}"><span ng-bind="linkName"></span></a></li>
 	            </ul>
             </div>
         </div>
