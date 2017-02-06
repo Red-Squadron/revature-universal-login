@@ -28,7 +28,7 @@ app.config(function ($routeProvider) {
            controller : "updatePhoneCtrl"
         })
         .otherwise({
-            redirectTo : "/login"
+        	templateUrl : "404.html",
         });
 
 });

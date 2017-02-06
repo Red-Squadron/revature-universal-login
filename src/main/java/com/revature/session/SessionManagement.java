@@ -19,7 +19,7 @@ public class SessionManagement {
 	private static SessionManagement manager;
 	
 	private SessionManagement(){
-		authmap = new HashMap<String, RULUser>();
+		authmap = new HashMap<>();
 	}
 	
 	/**
@@ -39,7 +39,7 @@ public class SessionManagement {
 	 */
 	public String createSession(RULUser usr){
 		String authtoken;
-		authtoken = BCrypt.hashpw(usr.emailaddress+usr.authlevel+usr.creation, BCrypt.gensalt());
+		authtoken = BCrypt.hashpw(usr.getEmailaddress()+usr.getAuthlevel()+usr.creation, BCrypt.gensalt());
 		authmap.put(authtoken, usr);
 		return authtoken;
 	}
@@ -50,11 +50,11 @@ public class SessionManagement {
 	 * @return RULUser User associated with authorization token
 	 */
 	public RULUser getSession(String authtoken) throws SessionManagementException{
-		if(authmap.containsKey(authtoken))
-			if(authmap.get(authtoken).timeOut()){
-				authmap.remove(authtoken);
-				throw new SessionTimeOutException();
-			}
+		if((authmap.containsKey(authtoken))&&(authmap.get(authtoken).timeOut()))
+		{
+			authmap.remove(authtoken);
+			throw new SessionTimeOutException();
+		}
 		if(!authmap.containsKey(authtoken))
 			throw new NoSuchSessionException();
 		return authmap.get(authtoken);
@@ -69,6 +69,6 @@ public class SessionManagement {
 			if(usr.timeOut())
 				authmap.remove(authtoken);
 		});
-		System.gc();
+		//System.gc();
 	}
 }
