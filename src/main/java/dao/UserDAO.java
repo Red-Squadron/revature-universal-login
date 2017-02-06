@@ -92,7 +92,7 @@ public class UserDAO {
 			rs.close();
 			checkLogin.close();
 		} catch (SQLException e) {
-						LOGGER.info(Arrays.toString(e.getStackTrace()));
+				LOGGER.info(Arrays.toString(e.getStackTrace()));
 		}
 		return user;
 	}
