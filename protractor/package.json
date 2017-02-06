@@ -1,3 +1,15 @@
-"scripts":{
-    "postinstall": "node ./webdriver.manager.fix.js"
+{
+  "name": "revature-universal-login",
+  "version": "1.0.0",
+  "description": "Revature Universal Login Portal",
+  "main": "conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "protractor": "^5.1.0",
+    "webdriver-manager": "^12.0.1"
+  }
 }
