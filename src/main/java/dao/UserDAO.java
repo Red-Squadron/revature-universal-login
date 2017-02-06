@@ -38,9 +38,9 @@ public class UserDAO {
 
 			conn = DriverManager.getConnection(url, username, pass);
 		} catch (SQLException e) {
-			LOGGER.info(e.getMessage()+"\nFailed to connect to database at url : " + url);
+			LOGGER.info(e.toString()+"\nFailed to connect to database at url : " + url);
 		} catch (ClassNotFoundException e) {
-			LOGGER.info(e.getMessage()+"\nFailed to find oracle driver");
+			LOGGER.info(e.toString()+"\nFailed to find oracle driver");
 		}
 	}
 
@@ -91,7 +91,7 @@ public class UserDAO {
 			rs.close();
 			checkLogin.close();
 		} catch (SQLException e) {
-			LOGGER.info(e.getMessage());
+			LOGGER.info(e.toString());
 		}
 		return user;
 	}
@@ -138,7 +138,7 @@ public class UserDAO {
 
 				//registerUser.close();
 		} catch(SQLException e) {
-			LOGGER.info(e.getMessage());
+			LOGGER.info(e.toString());
 		}
 		return false;
 	}
@@ -207,7 +207,7 @@ public class UserDAO {
 			updatePassQuery.close();
 
 		} catch (SQLException e) {
-			LOGGER.info(e.getMessage());
+			LOGGER.info(e.toString());
 		}
 		return false;
 	}
@@ -237,7 +237,7 @@ public class UserDAO {
 
 			//updatePhone.close();
 		} catch (SQLException e) {
-			LOGGER.info(e.getMessage());
+			LOGGER.info(e.toString());
 		}
 		return false;
 	}
@@ -271,7 +271,7 @@ public class UserDAO {
 
 			//checkUser.close();
 		} catch (SQLException e) {
-			LOGGER.info(e.getMessage());
+			LOGGER.info(e.toString());
 		}
 		return "";
 	}
@@ -300,7 +300,7 @@ public class UserDAO {
 
 			//deleteUser.close();
 		} catch (SQLException e) {
-			LOGGER.info(e.getMessage());
+			LOGGER.info(e.toString());
 		}
 
 		return false;

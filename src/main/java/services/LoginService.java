@@ -13,6 +13,9 @@ import com.revature.session.SessionManagement;
 import dao.UserDAO;
 
 public class LoginService {
+	
+	private 
+	
 	/**
 	 * Validates login for a user.
 	 * @param email Provide unique email.
