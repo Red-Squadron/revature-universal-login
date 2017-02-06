@@ -6,7 +6,7 @@ function removeHtmlStorage(name) {
 
 function setHtmlStorage(name, value, expires) {
 
-    if (expires==undefined || expires=='null') { var expires = 3600; } // default: 1h
+    if (expires==undefined || expires=='null') { var expires = 3600; } // default: 1h if Not Defined
 
     var date = new Date();
     var schedule = Math.round((date.setSeconds(date.getSeconds()+expires))/1000);

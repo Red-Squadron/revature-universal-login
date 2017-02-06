@@ -27,11 +27,13 @@ module
     				$scope.loginSuccess = "Successfully logged in!";
     				
     				
+    				
     		//stores the information in html5  session storage, if the tab is closed then the  storage is deleted
     				
-    				setHtmlStorage(autholevel,userInfo.authLvl)
-    				localStorage.loggedIn = $scope.user.authLvl;
-    				localStorage.loggedIn = $scope.user.authtkn;
+    		
+    				setHtmlStorage(authoLevel,userInfo.authLvl)
+    				setHtmlStorage(authToken,userInfo.authoTkn)
+    				
     				
     				
     				//TODO cookie implementation instead of in scope
