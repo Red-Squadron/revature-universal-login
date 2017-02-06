@@ -13,7 +13,6 @@ describe('Change Pass Test', function() {
 		var newPassConfirm = element(by.id(data.newPassConfirmId));
 		
 		var loginBtn = element(by.id(""));
-		var logoutBtn = element(by.id(""));
 		var changePassBtn = element(by.id(""));
 		var confirmPass = element(by.id(""));
 		
@@ -36,18 +35,9 @@ describe('Change Pass Test', function() {
 			
 			var titleText = element(by.className('side-line-inner')).getText();
 			
-			 //unsuccesful
 			if(titleText === "Update Password"){
-				expect (element(by.binding("message")).getText()).toEqual(data.responseText);
-			}else{//succesful
-				
-				logoutBtn.click() //logout
-				
-				username.sendKeys(data.userData);
-				password.sendKeys(data.newPassData);
-				
-				loginBtn.click();
-				
+				expect (element(by.binding("loginSuccess")).getText()).toEqual(data.responseText);
+			}else{
 				expect (titleText).toEqual(data.title);
 			}
 			
