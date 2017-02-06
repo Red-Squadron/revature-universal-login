@@ -2,6 +2,7 @@ package services;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,13 @@ import com.revature.session.RULUser;
 import com.revature.session.SessionManagement;
 
 public class AuthenticationService {
+	
+	private static Logger LOGGER;
+	
+	private AuthenticationService(){
+		
+	}
+	
 	/**
 	 * Authenticates authorization token against active sessions.
 	 * @param authTkn token to validate.
@@ -30,10 +38,13 @@ public class AuthenticationService {
 			userSession.refresh();
 			//TODO refresh the cookie
 		} catch (NoSuchSessionException e) {
+			LOGGER.info(e.getMessage());
 			responseJson = "{authTkn: notLoggedIn}";
 		} catch (SessionTimeOutException e) {
+			LOGGER.info(e.getMessage());
 			responseJson ="{authTkn: timedOut}";
 		} catch (SessionManagementException e) {
+			LOGGER.info(e.getMessage());
 			responseJson = "{authTkn: borked}";
 		}
 
