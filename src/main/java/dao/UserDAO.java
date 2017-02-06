@@ -136,7 +136,7 @@ public class UserDAO {
 					return false;
 				}
 
-				registerUser.close();
+				//registerUser.close();
 		} catch(SQLException e) {
 			LOGGER.info(e.getMessage());
 		}
@@ -235,7 +235,7 @@ public class UserDAO {
 				return false;
 			}
 
-			updatePhone.close();
+			//updatePhone.close();
 		} catch (SQLException e) {
 			LOGGER.info(e.getMessage());
 		}
@@ -269,7 +269,7 @@ public class UserDAO {
 				return "";
 			}
 
-			checkUser.close();
+			//checkUser.close();
 		} catch (SQLException e) {
 			LOGGER.info(e.getMessage());
 		}
@@ -298,7 +298,7 @@ public class UserDAO {
 				return false;
 			}
 
-			deleteUser.close();
+			//deleteUser.close();
 		} catch (SQLException e) {
 			LOGGER.info(e.getMessage());
 		}
