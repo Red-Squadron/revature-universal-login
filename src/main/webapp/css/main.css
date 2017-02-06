@@ -14,7 +14,7 @@ nav {
 	padding-top: 1.5%;
 }
 
-#registerBtn {
+#cornerBtn {
 	background-color:#f26925;
 	-moz-border-radius:28px;
 	-webkit-border-radius:28px;
@@ -30,12 +30,12 @@ nav {
 
 }
 
-#registerBtn:hover {
+#cornerBtn:hover {
 	background-color:#ffffff;
 	color:#f26925;
 }
 
-#registerBtn:focus {
+#cornerBtn:focus {
 	outline: none;
 }
 
@@ -160,4 +160,27 @@ form {
 .form-horizontal input:focus {
 	border: 2px solid #f26925;
   	box-shadow: 0px 0px 0px #f26925;
+}
+
+/*This ends the good,tested code */
+input.ng-pristine + ul#strength {
+    display:none;
+}
+ul#strength {
+    display:inline;
+    list-style:none;
+    margin:auto;
+    padding:0;
+    vertical-align:2px;
+}
+.point:last {
+    margin:0 !important;
+}
+.point {
+    background:#DDD;
+    border-radius:2px;
+    display:inline-block;
+    height:5px;
+    margin-right:1px;
+    width:20px;
 }

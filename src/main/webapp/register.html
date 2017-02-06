@@ -20,7 +20,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<div class="col-sm-6"> 
+							<div class="col-sm-6">
 								<input class="input-lg form-control" name="phoneNumber" ng-model="phoneNumber" type="tel" placeholder="Phone"/>
 							</div>
 							<div class="col-sm-6">
@@ -28,11 +28,13 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<div class="col-sm-6"> 
-								<input class="input-lg form-control" name="password" ng-model="passPhrase" type="password" placeholder="Password" required/>
+							<div class="col-sm-6">
+								<input class="input-lg form-control" name="password" ng-model="passPhrase" type="password" placeholder="Password" required/><br>
+								<ul id="strength" check-strength="pw"></ul>
 							</div>
-							<div class="col-sm-6"> 
-								<input class="input-lg form-control" name="passwordConfirm" ng-model="passPhraseConfirm" type="password" placeholder="Re-enter Password" required/>
+							<div class="col-sm-6">
+								<input class="input-lg form-control" name="passwordConfirm" ng-model="passPhraseConfirm" type="password" placeholder="Re-enter Password" required/><br>
+								<ul id="strength" check-strength="pw"></ul>
 							</div>
 						</div>
 						<span ng-bind="pass"></span>

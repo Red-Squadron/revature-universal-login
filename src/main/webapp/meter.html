@@ -27,9 +27,10 @@
     <script src='js/loginCTRL.js'></script>
     <script src='js/registerCTRL.js'></script>
     <script src='js/changeInformationCTRL.js'></script>
+    <script src='js/meterCTRL.js'></script>
 </head>
 
-<body>
+<body ng-controller="stageController">
     <div class="container">
         <nav>
             <a href="https://revature.com/">
@@ -49,7 +50,17 @@
 
     <div class="container-fluid">
         <!-- This is where the partial views go in -->
-        <div ng-view></div>
+        <!-- <div ng-view></div> -->
+
+<!-- Test goes here -->
+        <form name="myForm" novalidate>
+          <label for="pw">Type a password</label><br/>
+            <input type="password" ng-model="pw" name="pw" id="pw" /><br>
+            <ul id="strength" check-strength="pw"></ul>
+        </form>
+
+<!--  End of test -->
+
     </div>
 
 
