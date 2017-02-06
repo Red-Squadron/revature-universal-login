@@ -8,6 +8,8 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 pom.properties
+protractor/node_modules/
+npm-debug.log
 
 
 # Exclude maven wrapper
