@@ -42,7 +42,10 @@ public class UserDAO {
 			LOGGER.info(e.getStackTrace() +"\nFailed to connect to database at url : " + url);
 		} catch (ClassNotFoundException e) {
 			LOGGER.info(e.getStackTrace()+"\nFailed to find oracle driver");
+		}catch(Exception e){
+			throw new RuntimeException(e);
 		}
+			
 	}
 
 	/**
@@ -92,7 +95,7 @@ public class UserDAO {
 			rs.close();
 			checkLogin.close();
 		} catch (SQLException e) {
-				LOGGER.info(Arrays.toString(e.getStackTrace()));
+			LOGGER.info(Arrays.toString(e.getStackTrace()));
 		}
 		return user;
 	}
