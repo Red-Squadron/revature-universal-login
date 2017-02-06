@@ -3,6 +3,7 @@ package services;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,10 +32,14 @@ public class LoginService {
 		else {
 			SessionManagement sess = SessionManagement.getSessionManager();
 			String authTkn = sess.createSession(usr);
+           
 			//TODO generate a cookie holding the authTkn
 			responseJson = "{ \"valid\": \"true\", " + 
 							"\"authTkn\": \"" + authTkn +
 							"\", \"authLvl\": \"" + usr.authlevel + "\" }";
+			
+            Cookie ck = new Cookie("username",responseJson);
+            response.addCookie(ck);
 		}
 		
 		response.setContentType("application/json");
