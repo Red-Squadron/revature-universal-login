@@ -13,7 +13,7 @@ app.controller('navCTRL', ["$scope", "$http", "$rootScope", "$location", functio
            $scope.linkURL = $location.absUrl().substring(0,$location.absUrl().indexOf('updatepassword')) + "welcome";
        } else if($location.url() === "/updatephone") {
            $scope.linkName = "Profile";
-           $scope.linkURL =  $location.absUrl().substring(0,$location.absUrl().indexOf('updatepassword')) + "welcome";
+           $scope.linkURL =  $location.absUrl().substring(0,$location.absUrl().indexOf('updatephone')) + "welcome";
        } else if($location.url() === "/") {
            $scope.linkName = "Sign-Up";
            $scope.linkURL = $location.absUrl() + "register";
