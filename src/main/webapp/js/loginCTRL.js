@@ -28,9 +28,9 @@ app
                     $scope.loginSuccess = "Successfully logged in!";
 
                     //var b =document.getElementById("click").click();
-                  
-                    setHtmlStorage(authoLevel,userInfo.authLvl)
-    				        setHtmlStorage(authToken,userInfo.authoTkn)
+
+                    setHtmlStorage('authoLevel',userInfo.authLvl)
+    				        setHtmlStorage('authToken',userInfo.authoTkn)
 
                     //TODO cookie implementation instead of in scope
                 } else
