@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -87,7 +88,7 @@ public class UserDAO {
 				return user;
 			}
 		} catch (SQLException e) {
-			LOGGER.info(e.getStackTrace().toString());
+						LOGGER.info(Arrays.toString(e.getStackTrace()));
 		}
 		return user;
 	}
@@ -132,7 +133,7 @@ public class UserDAO {
 				return false;
 			}
 		} catch(SQLException e) {
-			LOGGER.info(e.getStackTrace().toString());
+			LOGGER.info(Arrays.toString(e.getStackTrace()));
 		}
 		return false;
 	}
@@ -198,7 +199,7 @@ public class UserDAO {
 			updatePassQuery.close();
 			
 		} catch (SQLException e) {
-			LOGGER.info(e.getStackTrace().toString());
+						LOGGER.info(Arrays.toString(e.getStackTrace()));
 		}
 		return false;
 	}
@@ -226,7 +227,7 @@ public class UserDAO {
 				return false;
 			}
 		} catch (SQLException e) {
-			LOGGER.info(e.getStackTrace().toString());
+						LOGGER.info(Arrays.toString(e.getStackTrace()));
 		}
 		return false;
 	}
@@ -258,7 +259,7 @@ public class UserDAO {
 				return "";
 			}
 		} catch (SQLException e) {
-			LOGGER.info(e.getStackTrace().toString());
+						LOGGER.info(Arrays.toString(e.getStackTrace()));
 		}
 		return "";
 	}
@@ -285,7 +286,7 @@ public class UserDAO {
 				return false;
 			}
 		} catch (SQLException e) {
-			LOGGER.info(e.getStackTrace().toString());
+						LOGGER.info(Arrays.toString(e.getStackTrace()));
 		}
 		
 		return false;
