@@ -3,14 +3,8 @@
  * Expects AJAX response as json {userName: String, authLvl: String, valid: String}
  * Establishes user session
  */
-
-/**
- * Reads user input, AJAX Posts as string userName:password
- * Expects AJAX response as json {userName: String, authLvl: String, valid: String}
- * Establishes user session
- */
 app
-.controller('loginCtrl', function($scope, $http) {
+.controller('loginCtrl', ["$scope", "$http", function($scope, $http) {
     $scope.loginSuccess = "";
     $scope.user = {};
     $scope.user.authLvl = "";
@@ -33,7 +27,10 @@ app
                     $scope.user.authTkn = userInfo.authTkn;
                     $scope.loginSuccess = "Successfully logged in!";
 
-                    var b =document.getElementById("click").click();
+                    //var b =document.getElementById("click").click();
+
+                    //setHtmlStorage('authoLevel',userInfo.authLvl)
+    				        //setHtmlStorage('authToken',userInfo.authoTkn)
 
                     //TODO cookie implementation instead of in scope
                 } else
@@ -44,4 +41,4 @@ app
         	$scope.loginSuccess = "Invalid email!";
         }
     };
-});
+}]);

@@ -2,7 +2,7 @@
  * Reads user input, AJAX Posts as json
  * {userName: String, passphrase: String, firstName: String, middleName:<String,undefined;>}
  */
-app.controller('registerCtrl', function($scope, $http) {
+app.controller('registerCtrl', ["$scope", "$http", function($scope, $http) {
 	$scope.pass = "Checking";
 	$scope.registerUser = function(userName, firstName, lastName, middleName, phoneNumber, passPhrase, passPhraseConfirm) {
 
@@ -54,7 +54,7 @@ app.controller('registerCtrl', function($scope, $http) {
 			}
 		}
 	};
-});
+}]);
 
 
 //Checks if the passed string contains a number
