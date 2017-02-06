@@ -23,7 +23,7 @@ import com.revature.session.RULUser;
 public class UserDAO {
 	private Connection conn;
 	private static UserDAO singleton = null;
-	private Logger LOGGER;
+	public Logger LOGGER;
 	
 	/**
 	 * Private constructor for UserDao class.
@@ -38,9 +38,9 @@ public class UserDAO {
 
 			conn = DriverManager.getConnection(url, username, pass);
 		} catch (SQLException e) {
-			LOGGER.info(e.toString()+"\nFailed to connect to database at url : " + url);
+			LOGGER.info(e.getStackTrace() +"\nFailed to connect to database at url : " + url);
 		} catch (ClassNotFoundException e) {
-			LOGGER.info(e.toString()+"\nFailed to find oracle driver");
+			LOGGER.info(e.getStackTrace()+"\nFailed to find oracle driver");
 		}
 	}
 
@@ -87,7 +87,7 @@ public class UserDAO {
 				return user;
 			}
 		} catch (SQLException e) {
-			LOGGER.info(e.toString());
+			LOGGER.info(e.getStackTrace().toString());
 		}
 		return user;
 	}
@@ -132,7 +132,7 @@ public class UserDAO {
 				return false;
 			}
 		} catch(SQLException e) {
-			LOGGER.info(e.toString());
+			LOGGER.info(e.getStackTrace().toString());
 		}
 		return false;
 	}
@@ -198,7 +198,7 @@ public class UserDAO {
 			updatePassQuery.close();
 			
 		} catch (SQLException e) {
-			LOGGER.info(e.toString());
+			LOGGER.info(e.getStackTrace().toString());
 		}
 		return false;
 	}
@@ -226,7 +226,7 @@ public class UserDAO {
 				return false;
 			}
 		} catch (SQLException e) {
-			LOGGER.info(e.toString());
+			LOGGER.info(e.getStackTrace().toString());
 		}
 		return false;
 	}
@@ -258,7 +258,7 @@ public class UserDAO {
 				return "";
 			}
 		} catch (SQLException e) {
-			LOGGER.info(e.toString());
+			LOGGER.info(e.getStackTrace().toString());
 		}
 		return "";
 	}
@@ -285,7 +285,7 @@ public class UserDAO {
 				return false;
 			}
 		} catch (SQLException e) {
-			LOGGER.info(e.toString());
+			LOGGER.info(e.getStackTrace().toString());
 		}
 		
 		return false;
