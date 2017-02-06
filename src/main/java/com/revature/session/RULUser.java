@@ -10,11 +10,11 @@ import java.time.LocalDateTime;
  */
 public class RULUser {
 
-	public String firstname;
-	public String lastname;
-	public String emailaddress;
-	public String middlename;
-	public String authlevel;
+	private String firstname;
+	private String lastname;
+	private String emailaddress;
+	private String middlename;
+	private String authlevel;
 	LocalDateTime creation;
 	
 	/**
@@ -53,6 +53,76 @@ public class RULUser {
 	 */
 	public void refresh(){
 		creation = LocalDateTime.now();
+	}
+
+	/**
+	 * @return
+	 */
+	public String getFirstname() {
+		return firstname;
+	}
+
+	/**
+	 * @param firstname
+	 */
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getLastname() {
+		return lastname;
+	}
+
+	/**
+	 * @param lastname
+	 */
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getEmailaddress() {
+		return emailaddress;
+	}
+
+	/**
+	 * @param emailaddress
+	 */
+	public void setEmailaddress(String emailaddress) {
+		this.emailaddress = emailaddress;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getMiddlename() {
+		return middlename;
+	}
+
+	/**
+	 * @param middlename
+	 */
+	public void setMiddlename(String middlename) {
+		this.middlename = middlename;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getAuthlevel() {
+		return authlevel;
+	}
+
+	/**
+	 * @param authlevel
+	 */
+	public void setAuthlevel(String authlevel) {
+		this.authlevel = authlevel;
 	}
 	
 }

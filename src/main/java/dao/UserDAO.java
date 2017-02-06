@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.logging.Logger;
 
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -22,7 +23,8 @@ import com.revature.session.RULUser;
 public class UserDAO {
 	private Connection conn;
 	private static UserDAO singleton = null;
-
+	private Logger LOGGER;
+	
 	/**
 	 * Private constructor for UserDao class.
 	 * Is only called once.
@@ -36,9 +38,9 @@ public class UserDAO {
 
 			conn = DriverManager.getConnection(url, username, pass);
 		} catch (SQLException e) {
-			System.out.println("Failed to connect to database at url : " + url);
+			LOGGER.info(e.getMessage()+"\nFailed to connect to database at url : " + url);
 		} catch (ClassNotFoundException e) {
-			System.out.println("Failed to find oracle driver");
+			LOGGER.info(e.getMessage()+"\nFailed to find oracle driver");
 		}
 	}
 
@@ -91,7 +93,7 @@ public class UserDAO {
 			rs.close();
 			checkLogin.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.info(e.getMessage());
 		}
 		return user;
 	}
@@ -110,7 +112,7 @@ public class UserDAO {
 	public boolean registerUser(String email, String firstName, String middleName, String lastName, String phone, String password) {
 
 		String permission = checkUserExistence(email, firstName, lastName);
-		if (permission.equals(""))
+		if ("".equals(permission))
 			return false;
 
 		try{
@@ -136,7 +138,7 @@ public class UserDAO {
 				return false;
 			}
 		} catch(SQLException e) {
-			e.printStackTrace();
+			LOGGER.info(e.getMessage());
 		}
 		return false;
 	}
@@ -204,7 +206,7 @@ public class UserDAO {
 			updatePassQuery.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.info(e.getMessage());
 		}
 		return false;
 	}
@@ -234,7 +236,7 @@ public class UserDAO {
 
 			updatePhone.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.info(e.getMessage());
 		}
 		return false;
 	}
@@ -268,7 +270,7 @@ public class UserDAO {
 
 			checkUser.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.info(e.getMessage());
 		}
 		return "";
 	}
@@ -297,7 +299,7 @@ public class UserDAO {
 
 			deleteUser.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.info(e.getMessage());
 		}
 
 		return false;
