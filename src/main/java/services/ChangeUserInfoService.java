@@ -16,6 +16,10 @@ import dao.UserDAO;
 
 public class ChangeUserInfoService {
 
+	private ChangeUserInfoService(){
+		
+	}
+	
 	public static void changeUserInfo(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		UserDAO dao = UserDAO.getUserDAO();
 		SessionManagement sessMan = SessionManagement.getSessionManager();
@@ -30,6 +34,9 @@ public class ChangeUserInfoService {
 			
 			switch(request.getParameter("infoType")){
 				case "phone": success = Boolean.toString(dao.updatePhone(userName, request.getParameter("newInfo")));
+					break;
+				default:
+					//should go 404?
 					break;
 			}
 			

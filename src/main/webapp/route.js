@@ -30,7 +30,7 @@ app.config(function ($routeProvider) {
         })
 
         .otherwise({
-            redirectTo : "/login"
+        	templateUrl : "404.html",
         });
 
 });
