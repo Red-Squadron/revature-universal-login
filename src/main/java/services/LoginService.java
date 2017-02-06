@@ -14,7 +14,9 @@ import dao.UserDAO;
 
 public class LoginService {
 	
-	private 
+	private LoginService(){
+		
+	}
 	
 	/**
 	 * Validates login for a user.
