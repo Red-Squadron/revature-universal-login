@@ -1,9 +1,9 @@
-/* This style sheet applies to the entire login page and changeInfo*/
+/* Single-Page-Application */
 
 * {
 	font-family: 'futura-pt', 'Questrial', sans-serif;
 }
-/* Nav bar */
+
 nav {
 	display: flex;
 	flex-direction: row;
@@ -14,7 +14,7 @@ nav {
 	padding-top: 1.5%;
 }
 
-#registerBtn {
+#cornerBtn {
 	background-color:#f26925;
 	-moz-border-radius:28px;
 	-webkit-border-radius:28px;
@@ -24,11 +24,12 @@ nav {
 	cursor:pointer;
 	color:#ffffff;
 	font-size:15px;
-	padding: 12px 30px;
 	text-decoration:none;
-	font-weight:600;
+	height: 39px;
+	line-height: 0px;
+
 }
-	
+
 #registerBtn:hover {
 	background-color:#ffffff;
 	color:#f26925;
@@ -38,33 +39,6 @@ nav {
 	outline: none;
 }
 
-.modal label {
-	font-size: 1em;
-}
-
-#closeModal {
-	font-size: 2.5em;
-	position: absolute;
-	top: 12px;
-	right: 25px;
-}
-
-#closeModal:focus {
-	outline: none;
-}
-
-label {
-	font-size: 2em;
-}
-
-.form-group label{
-	font-size: 1.5em;
-}
-
-/* Body */
-h1, h2, h3, h4, h5, h6 {
-	text-align: center;
-}
 
 input {
 	margin-bottom: 10px;
@@ -80,31 +54,43 @@ form {
 	text-align: center;
 }
 
-<<<<<<< HEAD
-/* Left aligns the labels above the input fields */
+.side-line-outer {
+	margin-top:; border-top: 1px solid silver; margin: 20px 16px 0 16px;
+}
+.side-line-inner {
+	position: relative; top: -14px; background: #fff; padding: 5px 15px; font-size: 20px;
+}
+
+/* Login form */
+
+#login_username:focus, #login_password:focus{
+        border: 1px solid #f26925;
+        box-shadow: 5px 5px 0px #f26925;
+}
+
+#login-button, #register-button {
+    background-color:#f26925 ;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    border:3px solid #f26925 ;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff ;
+    font-size:15px;
+    text-decoration:none;
+    height:40px;
+    line-height: 0px;
+}
+
 #loginForm {
-=======
+
 .field {
 	text-align: center;
 	display: block;
+ }
 }
 
-/* Left aligns the labels above the input fields */
-/*#loginForm {
->>>>>>> d40b2da5d8f32f7974af5b944e9744ade4faa6d7
-	padding-top: 2%;
-	width: 40%;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-<<<<<<< HEAD
-    text-align: center;
-}
-=======
-    text-align: left;
-} */
->>>>>>> d40b2da5d8f32f7974af5b944e9744ade4faa6d7
 
 #loginForm {
 	padding-top: 2%;
@@ -119,25 +105,59 @@ form {
 }
 
 /* Placeholders have different css values depending on the browser */
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+
+/* Chrome/Opera/Safari */
+::-webkit-input-placeholder {
 	text-align: left;
 	padding-left: 2px;
 }
-::-moz-placeholder { /* Firefox 19+ */
+
+/* Firefox 19+ */
+::-moz-placeholder {
 	text-align: left;
 	padding-left: 2px;
 }
-:-ms-input-placeholder { /* IE 10+ */
+
+/* IE 10+ */
+:-ms-input-placeholder {
 	text-align: left;
 	padding-left: 2px;
 }
-:-moz-placeholder { /* Firefox 18- */
+
+/* Firefox 18- */
+:-moz-placeholder {
 	text-align: left;
 	padding-left: 2px;
 }
 
 /* Footer */
-footer {
-	text-align: right;
-	color: #888888;
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #474c55  ;
+    text-align: center;
+}
+
+#footer-links a {
+    color: #f26925 ;
+}
+
+.fa{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    display: inline-block;
+  	width: 30px;
+  	height: 30px;
+}
+
+#footer-brand {
+    color: white;
+}
+
+
+.form-horizontal input:focus {
+	border: 2px solid #f26925;
+  	box-shadow: 0px 0px 0px #f26925;
 }

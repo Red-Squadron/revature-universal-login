@@ -1,0 +1,48 @@
+
+			<form id="registrationForm">
+				<div class="side-line-outer">
+						<span class="side-line-inner">Registration </span>
+				</div>
+
+				<div class="col-sm-offset-2 col-sm-8 form-horizontal" role="form">
+					<div class="row">
+						<div class="form-group">
+							<div class="col-sm-4">
+								<input class="input-lg form-control " name="firstName" ng-model="firstName" placeholder="First Name" required/>
+							</div>
+							<div class="col-sm-4" >
+								<input class="input-lg form-control" name="middleName" ng-model="middleName"  placeholder="Middle Name"/>
+							</div>
+							<div class="col-sm-4" >
+								<input class="input-lg form-control" name="lastName" ng-model="lastName" placeholder="Last Name" required/>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-6">
+								<input class="input-lg form-control" name="phoneNumber" ng-model="phoneNumber" type="tel" placeholder="Phone"/>
+							</div>
+							<div class="col-sm-6">
+								<input class="input-lg form-control" id="reg_username" name="username" ng-model="userName" type="email" placeholder="Email" required/>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-6">
+								<input class="input-lg form-control" name="password" ng-model="passPhrase" type="password" placeholder="Password" required/>
+							</div>
+							<div class="col-sm-6">
+								<input class="input-lg form-control" name="passwordConfirm" ng-model="passPhraseConfirm" type="password" placeholder="Re-enter Password" required/>
+							</div>
+						</div>
+						<span ng-bind="pass"></span>
+					</div>
+
+
+				<br>
+				<div class="row">
+					<input id="register-button" type="button" class="input-lg" value="Submit" ng-click="registerUser(userName, firstName, lastName, middleName, phoneNumber, passPhrase, passPhraseConfirm)" />
+				</div>
+
+			</div>
+				</form>
+</div>
+
