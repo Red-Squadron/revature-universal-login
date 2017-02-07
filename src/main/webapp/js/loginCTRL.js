@@ -10,7 +10,7 @@ app
     $scope.user.authLvl = "";
     $scope.user.authTkn = "";
 
-    $scope.validateLogin = function(userName, passPhrase, view) {
+    $scope.validateLogin = function(userName, passPhrase) {
         var validateString = "";
         validateString += "userName=" + userName + "&password=" + passPhrase;
 
