@@ -220,7 +220,7 @@ public class UserDAO {
 		CallableStatement updatePhone = null;
 		try {
 			updatePhone = conn.prepareCall("{call update_phone(?,?,?)}");
-
+			
 			updatePhone.setString(1, email);
 			updatePhone.setString(2, number);
 			updatePhone.registerOutParameter(3, Types.INTEGER);
@@ -236,6 +236,8 @@ public class UserDAO {
 		} catch (SQLException e) {
 			updatePhone.close();
 			logger.log(Level.SEVERE, e.getMessage(),e);
+		}catch(NullPointerException e){
+			logger.log(Level.SEVERE, "I have no idea how you did this....",e);
 		}
 		return false;
 	}
