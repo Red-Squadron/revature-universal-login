@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import dao.UserDAO;
 
 public class RegistrationService {
+	
+	private RegistrationService(){
+		
+	}
+	
 	public static void register(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		UserDAO dao = UserDAO.getUserDAO();
 		Boolean success;
