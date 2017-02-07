@@ -32,12 +32,8 @@ public class ChangeUserInfoService {
 			userSession = sessMan.getSession(request.getParameter("authTkn"));
 			userName = userSession.getEmailaddress();
 			
-			switch(request.getParameter("infoType")){
-				case "phone": success = Boolean.toString(dao.updatePhone(userName, request.getParameter("newInfo")));
-					break;
-				default:
-					//should go 404?
-					break;
+			if("phone".equals(request.getParameter("infoType")){
+				success = Boolean.toString(dao.updatePhone(userName, request.getParameter("newInfo")));
 			}
 			
 		} catch (NoSuchSessionException e) {
