@@ -9,6 +9,7 @@ app
     $scope.user = {};
     $scope.user.authLvl = "";
     $scope.user.authTkn = "";
+    $scope.role =gethtmlstorage()
 
     $scope.validateLogin = function(userName, passPhrase) {
         var validateString = "";
@@ -29,7 +30,7 @@ app
                     $scope.changeView('welcome');
 
                     setHtmlStorage('authoLevel',userInfo.authLvl)
-    				        setHtmlStorage('authToken',userInfo.authoTkn)
+    				setHtmlStorage('authToken',userInfo.authoTkn)
     				  
                 } else
                     $scope.loginSuccess = "Wrong email/password!";
