@@ -53,7 +53,7 @@ public class LoginService {
 		}
 
 		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		out.write(responseJson);
 		out.flush();
