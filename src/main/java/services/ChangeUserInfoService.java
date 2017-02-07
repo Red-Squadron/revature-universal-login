@@ -18,7 +18,7 @@ import dao.UserDAO;
 
 public class ChangeUserInfoService {
 
-	private static Logger LOGGER;
+	private static Logger logger;
 	
 	private ChangeUserInfoService(){
 		
@@ -41,13 +41,13 @@ public class ChangeUserInfoService {
 			}
 			
 		} catch (NoSuchSessionException e) {
-			LOGGER.log(Level.SEVERE, e.getMessage() + " : notLoggedIn", e);
+			logger.log(Level.SEVERE, e.getMessage() + " : notLoggedIn", e);
 			success = "notLoggedIn";
 		} catch (SessionTimeOutException e) {
-			LOGGER.log(Level.FINE, e.getMessage() + " : timedOut", e);
+			logger.log(Level.FINE, e.getMessage() + " : timedOut", e);
 			success ="timedOut";
 		} catch (SessionManagementException e) {
-			LOGGER.log(Level.SEVERE, e.getMessage() + " : borked", e);
+			logger.log(Level.SEVERE, e.getMessage() + " : borked", e);
 			success = "borked";
 		}
 		
@@ -58,11 +58,11 @@ public class ChangeUserInfoService {
 		out.close();
 	}
 
-	public static Logger getLOGGER() {
-		return LOGGER;
+	public static Logger getlogger() {
+		return logger;
 	}
 
-	public static void setLOGGER(Logger lOGGER) {
-		LOGGER = lOGGER;
+	public static void setlogger(Logger l) {
+		logger = l;
 	}
 }

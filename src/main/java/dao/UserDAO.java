@@ -24,7 +24,7 @@ import com.revature.session.RULUser;
 public class UserDAO {
 	private Connection conn;
 	private static UserDAO singleton = null;
-	private Logger LOGGER;
+	private Logger logger;
 
 	/**
 	 * Private constructor for UserDao class.
@@ -39,9 +39,9 @@ public class UserDAO {
 
 			conn = DriverManager.getConnection(url, username, pass);
 		} catch (SQLException e) {
-			LOGGER.log(Level.SEVERE, "\nFailed to connect to database at url : " + url, e);
+			logger.log(Level.SEVERE, "\nFailed to connect to database at url : " + url, e);
 		} catch (ClassNotFoundException e) {
-			LOGGER.log(Level.SEVERE, "\nFailed to find oracle driver", e);
+			logger.log(Level.SEVERE, "\nFailed to find oracle driver", e);
 		}
 			
 	}
@@ -93,7 +93,7 @@ public class UserDAO {
 			rs.close();
 			checkLogin.close();
 		} catch (SQLException e) {
-			LOGGER.log(Level.SEVERE, e.getMessage(), e);
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 		return user;
 	}
@@ -140,7 +140,7 @@ public class UserDAO {
 
 				//registerUser.close();
 		} catch(SQLException e) {
-			LOGGER.log(Level.SEVERE, e.getMessage(),e);
+			logger.log(Level.SEVERE, e.getMessage(),e);
 		}
 		return false;
 	}
@@ -209,7 +209,7 @@ public class UserDAO {
 			updatePassQuery.close();
 
 		} catch (SQLException e) {
-			LOGGER.log(Level.SEVERE, e.getMessage(),e);
+			logger.log(Level.SEVERE, e.getMessage(),e);
 		}
 		return false;
 	}
@@ -239,7 +239,7 @@ public class UserDAO {
 
 			//updatePhone.close();
 		} catch (SQLException e) {
-			LOGGER.log(Level.SEVERE, e.getMessage(),e);
+			logger.log(Level.SEVERE, e.getMessage(),e);
 		}
 		return false;
 	}
@@ -273,7 +273,7 @@ public class UserDAO {
 
 			//checkUser.close();
 		} catch (SQLException e) {
-			LOGGER.log(Level.SEVERE, e.getMessage(),e);
+			logger.log(Level.SEVERE, e.getMessage(),e);
 		}
 		return "";
 	}
@@ -302,17 +302,17 @@ public class UserDAO {
 
 			//deleteUser.close();
 		} catch (SQLException e) {
-			LOGGER.log(Level.SEVERE, e.getMessage(),e);
+			logger.log(Level.SEVERE, e.getMessage(),e);
 		}
 
 		return false;
 	}
 
-	public Logger getLOGGER() {
-		return LOGGER;
+	public Logger getlogger() {
+		return logger;
 	}
 
-	public void setLOGGER(Logger lOGGER) {
-		LOGGER = lOGGER;
+	public void setlogger(Logger l) {
+		logger = l;
 	}
 }

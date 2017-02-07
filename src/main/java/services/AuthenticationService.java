@@ -16,7 +16,7 @@ import com.revature.session.SessionManagement;
 
 public class AuthenticationService {
 	
-	private static Logger LOGGER;
+	private static Logger logger;
 	
 	private AuthenticationService(){
 		
@@ -39,13 +39,13 @@ public class AuthenticationService {
 			userSession.refresh();
 			//TODO refresh the cookie
 		} catch (NoSuchSessionException e) {
-			LOGGER.log(Level.SEVERE, e.getMessage(), e);
+			logger.log(Level.SEVERE, e.getMessage(), e);
 			responseJson = "{authTkn: notLoggedIn}";
 		} catch (SessionTimeOutException e) {
-			LOGGER.log(Level.FINE, e.getMessage(), e);
+			logger.log(Level.FINE, e.getMessage(), e);
 			responseJson ="{authTkn: timedOut}";
 		} catch (SessionManagementException e) {
-			LOGGER.log(Level.SEVERE, e.getMessage(), e);
+			logger.log(Level.SEVERE, e.getMessage(), e);
 			responseJson = "{authTkn: borked}";
 		}
 
@@ -56,11 +56,11 @@ public class AuthenticationService {
 		out.close();
 	}
 
-	public static Logger getLOGGER() {
-		return LOGGER;
+	public static Logger getlogger() {
+		return logger;
 	}
 
-	public static void setLOGGER(Logger lOGGER) {
-		LOGGER = lOGGER;
+	public static void setlogger(Logger l) {
+		logger = l;
 	}
 }
