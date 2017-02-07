@@ -17,9 +17,13 @@ app.controller('navCTRL', ["$scope", "$http", "$rootScope", "$location", functio
        } else if($location.url() === "/") {
            $scope.linkName = "Sign-Up";
            $scope.linkURL = $location.absUrl() + "register";
+           // Remove user info
+           localStorage.removeItem('authoLevel');
+           localStorage.removeItem('authToken');
        } else {
            $scope.linkName = "Login";
            $scope.linkURL = $location.absUrl().substring(0,$location.absUrl().indexOf('index.html#'))+"index.html#";
        }
    })
+
 }])
