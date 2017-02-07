@@ -27,11 +27,10 @@ app
                     $scope.user.authTkn = userInfo.authTkn;
                     $scope.loginSuccess = "Successfully logged in!";
                     $scope.changeView('welcome');
-                    //var b =document.getElementById("click").click();
-
-                    //setHtmlStorage('authoLevel',userInfo.authLvl)
-    				        //setHtmlStorage('authToken',userInfo.authoTkn)
-
+                    
+                    setHtmlStorage('authoLevel',userInfo.authLvl)
+    				setHtmlStorage('authToken',userInfo.authoTkn)
+    				  
                     //TODO cookie implementation instead of in scope
                 } else
                     $scope.loginSuccess = "Wrong email/password!";
