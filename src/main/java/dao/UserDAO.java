@@ -233,8 +233,6 @@ public class UserDAO {
 				updatePhone.close();
 				return false;
 			}
-
-			//updatePhone.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(),e);
 		}finally{

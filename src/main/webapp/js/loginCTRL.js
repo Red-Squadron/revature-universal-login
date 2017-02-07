@@ -10,7 +10,7 @@ app
     $scope.user.authLvl = "";
     $scope.user.authTkn = "";
 
-    $scope.validateLogin = function(userName, passPhrase, view) {
+    $scope.validateLogin = function(userName, passPhrase) {
         var validateString = "";
         validateString += "userName=" + userName + "&password=" + passPhrase;
 
@@ -26,13 +26,11 @@ app
                     $scope.user.authLvl = userInfo.authLvl;
                     $scope.user.authTkn = userInfo.authTkn;
                     $scope.loginSuccess = "Successfully logged in!";
-                    $scope.changeView(view);
-                    //var b =document.getElementById("click").click();
+                    $scope.changeView('welcome');
 
-                    //setHtmlStorage('authoLevel',userInfo.authLvl)
-    					//setHtmlStorage('authToken',userInfo.authoTkn)
-
-                    //TODO cookie implementation instead of in scope
+                    setHtmlStorage('authoLevel',userInfo.authLvl)
+    				setHtmlStorage('authToken',userInfo.authoTkn)
+    				  
                 } else
                     $scope.loginSuccess = "Wrong email/password!";
 

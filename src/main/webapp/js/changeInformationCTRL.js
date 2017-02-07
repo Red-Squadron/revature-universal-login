@@ -1,48 +1,3 @@
-// Checks if phone number follows ########## format
-var validatePhoneFormat = function(str) {
-	var rephone = /[0-9]{10}/;
-	return rephone.text(str);
-}
-
-// Checks if the passed string contains a number
-var containsNumber = function(str){
-	var renum = /[0-9]+/;
-	return renum.test(str);
-};
-
-// Checks if the passed string contains a special character
-var containsSpecial = function(str){
-	var respecial = /[-=\[\]\\\;\,\.\/~!@#\$%\^&\*()\_\+{}\|:<>\?]+/;
-	return respecial.test(str);
-};
-
-var validatePasswordFormat = function(firstPassword, secondPassword) {
-	var result = {pass: true, err: ""};
-	if(firstPassword !== secondPassword){
-		result.pass = false;
-		result.err = "Passwords not equal";
-	} else if(firstPassword.length < 8){
-		result.pass = false;
-		result.err = "Password must be at least eight characters!";
-	} else if(firstPassword.length > 75){
-		result.pass = false;
-		result.err = "Password must be at most seventy-five characters!";
-	} else if(firstPassword === firstPassword.toLowerCase()){
-		result.pass = false;
-		result.err = "Password must contain at least one uppercase letter!";
-	} else if(firstPassword === firstPassword.toUpperCase()){
-		result.pass = false;
-		result.err = "Password must contain at least one lowercase letter!";
-	} else if(!containsNumber(firstPassword)){
-		result.pass = false;
-		result.err = "Password must contain at least one number!";
-	} else if(!containsSpecial(firstPassword)){
-		result.pass = false;
-		result.err = "Password must contain at least one special character!"
-	}
-	return result;
-}
-
 /**
  * Controller for change information page.
  * Allows user to change their password and/or phone number.
@@ -50,7 +5,7 @@ var validatePasswordFormat = function(firstPassword, secondPassword) {
  */
 
 //error here
-app.controller('changeInformationCtrl', ["$scope", "$http", function($scope, $http) {
+app.controller('changeInformationCtrl', ["$scope", "$http", "formValidationSvc", function($scope, $http, formValidationSvc) {
 	$scope.incorrectPassword = "";
 	$scope.badFormat = "";
 	$scope.notEqual = "";
@@ -86,10 +41,9 @@ app.controller('changeInformationCtrl', ["$scope", "$http", function($scope, $ht
 					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 				}).success(function(){
 		});
-		var validationResult = validatePasswordFormat($scope.firstPasswordModel, $scope.secondPasswordModel);
+		var validationResult = formValidationSvc.validatePasswordFormat($scope.firstPasswordModel, $scope.secondPasswordModel);
 		if(validationResult.pass === false){
 			$scope.badFormat = validationResult.err;
-			console.log(validationResult.err);
 		} else {
 			var passwordStr = "userEmail="+$scope.userEmailModel + "&password=" + $scope.firstPasswordModel;
 			 $http.post("RULServlet/changeUserPassword", passwordStr).success(function(){
@@ -116,7 +70,7 @@ app.controller('changeInformationCtrl', ["$scope", "$http", function($scope, $ht
 
 		// Checks if the requested new phone number matches validations
 		// PUT VALIDATEPASSWORD HERE WHEN WE KNOW IT WORKS
-		if(validatePhoneFormat($scope.phoneChangeModel)){// CHECK PHONE NUMBER AGAINST VALIDATIONS
+		if(formValidationSvc.validatePhoneFormat($scope.phoneChangeModel)){// CHECK PHONE NUMBER AGAINST VALIDATIONS
 			$scope.phoneBadFormat = "Invalid phone number! Use ########## format."
 		} else {
 			var phoneStr = "userEmail=" + $scope.userEmailModel +
