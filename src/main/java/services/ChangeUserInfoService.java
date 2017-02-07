@@ -2,6 +2,7 @@ package services;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,6 +50,8 @@ public class ChangeUserInfoService {
 		} catch (SessionManagementException e) {
 			logger.log(Level.SEVERE, e.getMessage() + " : borked", e);
 			success = "borked";
+		} catch (SQLException e) {
+			logger.log(Level.SEVERE, "Could not update Phone", e);
 		}
 		
 		response.setContentType("html/text");
