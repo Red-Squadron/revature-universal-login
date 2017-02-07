@@ -40,3 +40,5 @@ testng.iml
 
 # OS X
 *.DS_Store
+/protractor/
+/src/

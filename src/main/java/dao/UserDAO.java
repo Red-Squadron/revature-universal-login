@@ -7,8 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.Arrays;
 import java.util.logging.Logger;
+import java.util.logging.Level;
 
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -24,7 +24,7 @@ import com.revature.session.RULUser;
 public class UserDAO {
 	private Connection conn;
 	private static UserDAO singleton = null;
-	public Logger LOGGER;
+	private Logger LOGGER;
 
 	/**
 	 * Private constructor for UserDao class.
@@ -39,11 +39,9 @@ public class UserDAO {
 
 			conn = DriverManager.getConnection(url, username, pass);
 		} catch (SQLException e) {
-			LOGGER.info(e.getStackTrace() +"\nFailed to connect to database at url : " + url);
+			LOGGER.log(Level.SEVERE, "\nFailed to connect to database at url : " + url, e);
 		} catch (ClassNotFoundException e) {
-			LOGGER.info(e.getStackTrace()+"\nFailed to find oracle driver");
-		}catch(Exception e){
-			throw new RuntimeException(e);
+			LOGGER.log(Level.SEVERE, "\nFailed to find oracle driver", e);
 		}
 			
 	}
@@ -95,7 +93,7 @@ public class UserDAO {
 			rs.close();
 			checkLogin.close();
 		} catch (SQLException e) {
-			LOGGER.info(Arrays.toString(e.getStackTrace()));
+			LOGGER.log(Level.SEVERE, e.getMessage(), e);
 		}
 		return user;
 	}
@@ -142,7 +140,7 @@ public class UserDAO {
 
 				//registerUser.close();
 		} catch(SQLException e) {
-			LOGGER.info(Arrays.toString(e.getStackTrace()));
+			LOGGER.log(Level.SEVERE, e.getMessage(),e);
 		}
 		return false;
 	}
@@ -211,7 +209,7 @@ public class UserDAO {
 			updatePassQuery.close();
 
 		} catch (SQLException e) {
-						LOGGER.info(Arrays.toString(e.getStackTrace()));
+			LOGGER.log(Level.SEVERE, e.getMessage(),e);
 		}
 		return false;
 	}
@@ -241,7 +239,7 @@ public class UserDAO {
 
 			//updatePhone.close();
 		} catch (SQLException e) {
-						LOGGER.info(Arrays.toString(e.getStackTrace()));
+			LOGGER.log(Level.SEVERE, e.getMessage(),e);
 		}
 		return false;
 	}
@@ -275,7 +273,7 @@ public class UserDAO {
 
 			//checkUser.close();
 		} catch (SQLException e) {
-						LOGGER.info(Arrays.toString(e.getStackTrace()));
+			LOGGER.log(Level.SEVERE, e.getMessage(),e);
 		}
 		return "";
 	}
@@ -304,9 +302,17 @@ public class UserDAO {
 
 			//deleteUser.close();
 		} catch (SQLException e) {
-						LOGGER.info(Arrays.toString(e.getStackTrace()));
+			LOGGER.log(Level.SEVERE, e.getMessage(),e);
 		}
 
 		return false;
+	}
+
+	public Logger getLOGGER() {
+		return LOGGER;
+	}
+
+	public void setLOGGER(Logger lOGGER) {
+		LOGGER = lOGGER;
 	}
 }
