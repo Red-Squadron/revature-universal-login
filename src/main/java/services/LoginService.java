@@ -2,10 +2,8 @@ package services;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -46,10 +44,6 @@ public class LoginService {
 							"\"authTkn\": \"" + authTkn +
 							"\", \"authLvl\": \"" + usr.getAuthlevel() + "\" }";
 			
-            Cookie ck = new Cookie("username",responseJson);
-            ck.setSecure(true);
-            logger.log(Level.FINEST, ck.toString());
-            response.addCookie(ck);
 		}
 		
 		response.setContentType("application/json");
