@@ -9,7 +9,6 @@ app
     $scope.user = {};
     $scope.user.authLvl = "";
     $scope.user.authTkn = "";
-    $scope.role =gethtmlstorage()
 
     $scope.validateLogin = function(userName, passPhrase) {
         var validateString = "";
