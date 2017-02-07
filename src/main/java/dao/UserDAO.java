@@ -43,7 +43,7 @@ public class UserDAO {
 		} catch (ClassNotFoundException e) {
 			logger.log(Level.SEVERE, "\nFailed to find oracle driver", e);
 		}
-			
+
 	}
 
 	/**
@@ -137,8 +137,6 @@ public class UserDAO {
 					registerUser.close();
 					return false;
 				}
-
-				//registerUser.close();
 		} catch(SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(),e);
 		}
@@ -270,8 +268,6 @@ public class UserDAO {
 				checkUser.close();
 				return "";
 			}
-
-			//checkUser.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(),e);
 		}
@@ -299,8 +295,6 @@ public class UserDAO {
 				deleteUser.close();
 				return false;
 			}
-
-			//deleteUser.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(),e);
 		}
