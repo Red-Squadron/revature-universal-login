@@ -18,12 +18,16 @@ app.controller('navCTRL', ["$scope", "$http", "$rootScope", "$location", functio
            $scope.linkName = "Sign-Up";
            $scope.linkURL = $location.absUrl() + "register";
            // Remove user info
-           localStorage.removeItem('authoLevel');
-           localStorage.removeItem('authToken');
+           localStorage.clear();
        } else {
-           $scope.linkName = "Login";
-           $scope.linkURL = $location.absUrl().substring(0,$location.absUrl().indexOf('index.html#'))+"index.html#";
+           // Assuming this will be the 404 page
+           if(localStorage.getItem('authoLevel') == null) {
+               $scope.linkName = "Login";
+               $scope.linkURL = $location.absUrl().substring(0,$location.absUrl().indexOf('index.html#'))+"index.html#";
+           } else {
+               $scope.linkName = "Profile";
+               $scope.linkURL = $location.absUrl().substring(0,$location.absUrl().indexOf('index.html#'))+"index.html#/welcome";
+           }
        }
    })
-
 }])
