@@ -27,7 +27,7 @@ body {
 }
 
 
-#cornerBtn {
+#cornerBtn{
 
 	background-color:#f26925 ;
     -moz-border-radius:10px;
@@ -43,6 +43,22 @@ body {
     height:40px;
     line-height: 7px;
 }
+ #updatebtns, #updatebtns2 {
+ 	background-color:#f26925 ;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    border:3px solid #f26925 ;
+    display:block;
+    cursor:pointer;
+    color:#ffffff ;
+    font-size:14px;
+    text-decoration:none;
+    text-align: center;
+    height:40px;
+    line-height: 35px;
+ 
+ }
 
 #cornerBtn:hover {
 	background-color:#ffffff;
@@ -53,7 +69,10 @@ body {
 	outline: none;
 }
 
-
+#noStyles
+{
+	list-style: none;
+}
 input {
 	margin-bottom: 10px;
 	text-align: left;
@@ -178,3 +197,17 @@ text-align: center;
 	border: 2px solid #f26925;
   	box-shadow: 0px 0px 0px #f26925;
 }
+
+.bg-1 {
+    background-color:#ffffff ;
+   
+    color: #000000;
+}
+.bg-2 {
+    background-color:#ffffff ;
+	text-align: center;
+    color: #000000;
+}
+.bg-3 {
+    background-color: #ffffff; /* White */
+    color: #555555;
