@@ -8,9 +8,9 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.revature.RULexceptions.NoSuchSessionException;
-import com.revature.RULexceptions.SessionManagementException;
-import com.revature.RULexceptions.SessionTimeOutException;
+import com.revature.exceptions.NoSuchSessionException;
+import com.revature.exceptions.SessionManagementException;
+import com.revature.exceptions.SessionTimeOutException;
 import com.revature.session.RULUser;
 import com.revature.session.SessionManagement;
 

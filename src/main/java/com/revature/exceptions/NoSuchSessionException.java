@@ -1,4 +1,4 @@
-package com.revature.RULexceptions;
+package com.revature.exceptions;
 
 public class NoSuchSessionException extends SessionManagementException{
 	/**

@@ -2,11 +2,11 @@ package com.revature.session;
 
 import java.util.HashMap;
 
-import com.revature.RULexceptions.NoSuchSessionException;
-import com.revature.RULexceptions.SessionManagementException;
-import com.revature.RULexceptions.SessionTimeOutException;
-
 import org.mindrot.jbcrypt.BCrypt;
+
+import com.revature.exceptions.NoSuchSessionException;
+import com.revature.exceptions.SessionManagementException;
+import com.revature.exceptions.SessionTimeOutException;
 
 /**
  * Class containing session management related methods for use by servlets.
