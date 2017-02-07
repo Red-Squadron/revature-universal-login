@@ -2,6 +2,8 @@ package services;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +18,8 @@ import dao.UserDAO;
 
 public class ChangeUserInfoService {
 
+	private static Logger LOGGER;
+	
 	private ChangeUserInfoService(){
 		
 	}
@@ -37,10 +41,13 @@ public class ChangeUserInfoService {
 			}
 			
 		} catch (NoSuchSessionException e) {
+			LOGGER.log(Level.SEVERE, e.getMessage() + " : notLoggedIn", e);
 			success = "notLoggedIn";
 		} catch (SessionTimeOutException e) {
+			LOGGER.log(Level.FINE, e.getMessage() + " : timedOut", e);
 			success ="timedOut";
 		} catch (SessionManagementException e) {
+			LOGGER.log(Level.SEVERE, e.getMessage() + " : borked", e);
 			success = "borked";
 		}
 		
@@ -49,5 +56,13 @@ public class ChangeUserInfoService {
 		out.write(success);
 		out.flush();
 		out.close();
+	}
+
+	public static Logger getLOGGER() {
+		return LOGGER;
+	}
+
+	public static void setLOGGER(Logger lOGGER) {
+		LOGGER = lOGGER;
 	}
 }
