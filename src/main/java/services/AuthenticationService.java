@@ -2,6 +2,7 @@ package services;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,13 +39,13 @@ public class AuthenticationService {
 			userSession.refresh();
 			//TODO refresh the cookie
 		} catch (NoSuchSessionException e) {
-			LOGGER.info(e.getMessage());
+			LOGGER.log(Level.SEVERE, e.getMessage(), e);
 			responseJson = "{authTkn: notLoggedIn}";
 		} catch (SessionTimeOutException e) {
-			LOGGER.info(e.getMessage());
+			LOGGER.log(Level.FINE, e.getMessage(), e);
 			responseJson ="{authTkn: timedOut}";
 		} catch (SessionManagementException e) {
-			LOGGER.info(e.getMessage());
+			LOGGER.log(Level.SEVERE, e.getMessage(), e);
 			responseJson = "{authTkn: borked}";
 		}
 
@@ -53,5 +54,13 @@ public class AuthenticationService {
 		out.write(responseJson);
 		out.flush();
 		out.close();
+	}
+
+	public static Logger getLOGGER() {
+		return LOGGER;
+	}
+
+	public static void setLOGGER(Logger lOGGER) {
+		LOGGER = lOGGER;
 	}
 }

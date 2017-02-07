@@ -2,6 +2,8 @@ package services;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,8 @@ import com.revature.session.SessionManagement;
 import dao.UserDAO;
 
 public class LoginService {
+	
+	private static Logger LOGGER;
 	
 	private LoginService(){
 		
@@ -26,7 +30,7 @@ public class LoginService {
 	 * @throws IOException 
 	 */
 	public static void login(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		String responseJson = "";
+		String responseJson;
 		UserDAO dao = UserDAO.getUserDAO();
 		RULUser usr = dao.validateLogin(request.getParameter("userName"),
 				request.getParameter("password"));
@@ -38,22 +42,28 @@ public class LoginService {
 			SessionManagement sess = SessionManagement.getSessionManager();
 			String authTkn = sess.createSession(usr);
            
-			//TODO generate a cookie holding the authTkn
 			responseJson = "{ \"valid\": \"true\", " + 
 							"\"authTkn\": \"" + authTkn +
 							"\", \"authLvl\": \"" + usr.getAuthlevel() + "\" }";
 			
             Cookie ck = new Cookie("username",responseJson);
             response.addCookie(ck);
-
 		}
 		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		out.write(responseJson);
-		System.out.println("response from login "+responseJson);
+		LOGGER.log(Level.INFO, "response from login "+responseJson);
 		out.flush();
 		out.close();
+	}
+
+	public static Logger getLOGGER() {
+		return LOGGER;
+	}
+
+	public static void setLOGGER(Logger lOGGER) {
+		LOGGER = lOGGER;
 	}
 }
