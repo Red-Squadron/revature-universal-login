@@ -4,13 +4,13 @@
  * Establishes user session
  */
 app
-.controller('loginCtrl', ["$scope", "$http", function($scope, $http) {
+.controller('loginCtrl', ["$scope", "$http", "$location", function($scope, $http, $location) {
     $scope.loginSuccess = "";
     $scope.user = {};
     $scope.user.authLvl = "";
     $scope.user.authTkn = "";
 
-    $scope.validateLogin = function(userName, passPhrase) {
+    $scope.validateLogin = function(userName, passPhrase, view) {
         var validateString = "";
         validateString += "userName=" + userName + "&password=" + passPhrase;
 
@@ -26,7 +26,7 @@ app
                     $scope.user.authLvl = userInfo.authLvl;
                     $scope.user.authTkn = userInfo.authTkn;
                     $scope.loginSuccess = "Successfully logged in!";
-
+                    $scope.changeView(view);
                     //var b =document.getElementById("click").click();
 
                     //setHtmlStorage('authoLevel',userInfo.authLvl)
@@ -40,5 +40,9 @@ app
         } else {
         	$scope.loginSuccess = "Invalid email!";
         }
+    };
+
+    $scope.changeView = function(view) {
+      $location.path(view);
     };
 }]);
