@@ -48,6 +48,7 @@ public class LoginService {
 
             Cookie ck = new Cookie("username",responseJson);
             ck.setSecure(true);
+            logger.log(Level.FINEST, ck.toString());
             response.addCookie(ck);
 		}
 
