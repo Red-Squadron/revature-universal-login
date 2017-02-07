@@ -37,7 +37,6 @@ public class AuthenticationService {
 			userSession = sessMan.getSession(request.getParameter("authTkn"));
 			responseJson = userSession.getAuthlevel();
 			userSession.refresh();
-			//TODO refresh the cookie
 		} catch (NoSuchSessionException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 			responseJson = "{authTkn: notLoggedIn}";

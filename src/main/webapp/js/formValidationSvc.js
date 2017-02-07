@@ -14,6 +14,7 @@ app.service('formValidationSvc', function() {
   	return rephone.text(str);
   }
 
+  //complex ifs to ensure specific messaging
   this.validatePasswordFormat = function(firstPassword, secondPassword) {
     var result = {pass: true, err: ""};
     if(firstPassword !== secondPassword){
