@@ -16,7 +16,7 @@ import dao.UserDAO;
 
 public class LoginService {
 	
-	private static Logger LOGGER;
+	private static Logger logger;
 	
 	private LoginService(){
 		
@@ -47,6 +47,7 @@ public class LoginService {
 							"\", \"authLvl\": \"" + usr.getAuthlevel() + "\" }";
 			
             Cookie ck = new Cookie("username",responseJson);
+            ck.setSecure(true);
             response.addCookie(ck);
 		}
 		
@@ -54,16 +55,16 @@ public class LoginService {
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		out.write(responseJson);
-		LOGGER.log(Level.INFO, "response from login "+responseJson);
+		logger.log(Level.INFO, "response from login "+responseJson);
 		out.flush();
 		out.close();
 	}
 
-	public static Logger getLOGGER() {
-		return LOGGER;
+	public static Logger getlogger() {
+		return logger;
 	}
 
-	public static void setLOGGER(Logger lOGGER) {
-		LOGGER = lOGGER;
+	public static void setlogger(Logger l) {
+		logger = l;
 	}
 }
