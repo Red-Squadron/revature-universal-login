@@ -15,8 +15,6 @@ import org.mindrot.jbcrypt.BCrypt;
 import com.revature.session.RULUser;
 
 /**
- * TODO Streamline and abstract functionality for password changes where possible. Additional task tags placed in suggested locations.
- * TODO Test functionality after crypto implementation. Several additional queries are being used now.
  * Singleton Class for accessing RUL database.
  * @author David
  *
@@ -123,7 +121,6 @@ public class UserDAO {
 				registerUser.setString(3, middleName);
 				registerUser.setString(4, lastName);
 				registerUser.setString(5, phone);
-				//TODO Move crypto out to service classes for this method?
 				String hash = BCrypt.hashpw(password, BCrypt.gensalt());
 				registerUser.setString(6, hash);
 				registerUser.setString(7, permission);
@@ -217,10 +214,12 @@ public class UserDAO {
 	 * @param email Provide unique email.
 	 * @param number Provide new phone number as String.
 	 * @return true if phone number is updated, false if phone number is not updated.
+	 * @throws SQLException 
 	 */
-	public boolean updatePhone(String email, String number) {
+	public boolean updatePhone(String email, String number) throws SQLException {
+		CallableStatement updatePhone = null;
 		try {
-			CallableStatement updatePhone = conn.prepareCall("{call update_phone(?,?,?)}");
+			updatePhone = conn.prepareCall("{call update_phone(?,?,?)}");
 
 			updatePhone.setString(1, email);
 			updatePhone.setString(2, number);
@@ -238,6 +237,8 @@ public class UserDAO {
 			//updatePhone.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(),e);
+		}finally{
+			updatePhone.close();
 		}
 		return false;
 	}
