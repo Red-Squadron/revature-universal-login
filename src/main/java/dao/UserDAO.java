@@ -217,9 +217,8 @@ public class UserDAO {
 	 * @throws SQLException 
 	 */
 	public boolean updatePhone(String email, String number) throws SQLException {
-		CallableStatement updatePhone = null;
+		CallableStatement updatePhone = conn.prepareCall("{call update_phone(?,?,?)}");
 		try {
-			updatePhone = conn.prepareCall("{call update_phone(?,?,?)}");
 
 			updatePhone.setString(1, email);
 			updatePhone.setString(2, number);
