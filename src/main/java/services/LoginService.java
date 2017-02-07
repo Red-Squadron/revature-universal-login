@@ -55,7 +55,6 @@ public class LoginService {
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		out.write(responseJson);
-		logger.log(Level.INFO, "response from login "+responseJson);
 		out.flush();
 		out.close();
 	}
