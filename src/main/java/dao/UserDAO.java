@@ -234,10 +234,8 @@ public class UserDAO {
 				return false;
 			}
 		} catch (SQLException e) {
+			updatePhone.close();
 			logger.log(Level.SEVERE, e.getMessage(),e);
-		}finally{
-			if(!updatePhone.equals(null))
-				updatePhone.close();
 		}
 		return false;
 	}
