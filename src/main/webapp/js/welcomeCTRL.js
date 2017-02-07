@@ -1,3 +1,6 @@
 app.controller('welcomeCtrl', ["$scope", function($scope) {
-	$scope.role = getHtmlStorage('authToken');
+	
+	$scope.role = getHtmlStorage('authLevel');
+	
+	
 }]);
