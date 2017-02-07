@@ -26,7 +26,7 @@ app
                     $scope.user.authLvl = userInfo.authLvl;
                     $scope.user.authTkn = userInfo.authTkn;
                     $scope.loginSuccess = "Successfully logged in!";
-                    $scope.changeView(view);
+                    $scope.changeView('welcome');
                     //var b =document.getElementById("click").click();
 
                     //setHtmlStorage('authoLevel',userInfo.authLvl)
