@@ -34,7 +34,7 @@ public class RULServlet extends HttpServlet {
 	 */
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
+    	//unused
 	}
 
 	/**
@@ -56,6 +56,8 @@ public class RULServlet extends HttpServlet {
 					break;
 				case "changeUserPassword": ChangeUserPasswordService.changeUserPassword(request, response);
 					break;
+				default:
+					throw new IOException(); 
 			}
 		}catch(IOException e){
 			logger.log(Level.SEVERE, e.getMessage(), e);

@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import dao.UserDAO;
 
 public class ChangeUserPasswordService {
+	
+	private ChangeUserPasswordService(){
+		
+	}
+	
 	public static void changeUserPassword(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		Boolean success;
 		
