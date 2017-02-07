@@ -6,7 +6,9 @@ function removeHtmlStorage(name) {
 
 function setHtmlStorage(name, value, expires) {
 
-    if (expires===undefined || expires===null) { expires = 3600; } // default: 1h if Not Defined
+    if (expires===undefined || expires===null) { 
+    	expires = 3600; 
+    } // default: 1h if Not Defined
 
     var date = new Date();
     var schedule = Math.round((date.setSeconds(date.getSeconds()+expires))/1000);
@@ -22,7 +24,9 @@ function statusHtmlStorage(name) {
 
     // Get Schedule
     var stored_time = localStorage.getItem(name+'_time');
-    if (stored_time===undefined || stored_time===null) { stored_time = 0; }
+    if (stored_time===undefined || stored_time===null) { 
+    	stored_time = 0;
+    }
 
     // Expired
     if (stored_time < current) {

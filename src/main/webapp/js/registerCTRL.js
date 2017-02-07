@@ -18,8 +18,8 @@ app.controller('registerCtrl', ["$scope", "$http", "formValidationSvc", function
     	        data: data,
     	        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 	        }).success(function(isRegistered) {
-				if(isRegistered === "true") { //TODO client side visual verification needed
-					$scope.pass = "success, you registered";
+				if(isRegistered === "true") { 
+					$scope.pass = "Success ! You are registered !";
 				}
 				else
 					$scope.pass = firstName + " " +lastName+" with email: "+userName+" does not exist, please contact Revature";

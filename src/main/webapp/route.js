@@ -34,7 +34,7 @@ app.config(function ($routeProvider) {
 });
 
 app.run(function($rootScope, $location) {
-  $rootScope.$on("$routeChangeStart", function(event, next, current) {
+  $rootScope.$on("$routeChangeStart", function(event, next) {
 
     if (localStorage.getItem('authoLevel') == null) {
       // no logged user, redirect to /login
