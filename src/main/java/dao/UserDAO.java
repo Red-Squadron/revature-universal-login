@@ -188,7 +188,8 @@ public class UserDAO {
 			// TODO Implement a trigger to delete the 3rd oldest value from password history
 
 			PreparedStatement updatePassQuery = conn.prepareStatement("update userregistration set passwd = ? where useremail = ?");
-			updatePassQuery.setString(1, password);
+			String hash = BCrypt.hashpw(password, BCrypt.gensalt());
+			updatePassQuery.setString(1, hash);
 			updatePassQuery.setString(2, email);
 			updatePassQuery.execute();
 			updatePassQuery.close();
@@ -209,6 +210,8 @@ public class UserDAO {
 
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(),e);
+		} catch (NullPointerException e) {
+			logger.log(Level.SEVERE, "Null pointer", e);
 		}
 		return false;
 	}
@@ -218,7 +221,7 @@ public class UserDAO {
 	 * @param email Provide unique email.
 	 * @param number Provide new phone number as String.
 	 * @return true if phone number is updated, false if phone number is not updated.
-	 * @throws SQLException 
+	 * @throws SQLException
 	 */
 	public boolean updatePhone(String email, String number) throws SQLException {
 		CallableStatement updatePhone = conn.prepareCall("{call update_phone(?,?,?)}");

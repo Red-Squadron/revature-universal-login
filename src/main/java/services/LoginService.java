@@ -39,7 +39,6 @@ public class LoginService {
 		else {
 			SessionManagement sess = SessionManagement.getSessionManager();
 			String authTkn = sess.createSession(usr);
-
 			responseJson = "{ \"valid\": \"true\", " +
 							"\"authTkn\": \"" + authTkn +
 							"\", \"authLvl\": \"" + usr.getAuthlevel() + "\" }";
