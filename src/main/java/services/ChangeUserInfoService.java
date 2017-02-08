@@ -52,6 +52,8 @@ public class ChangeUserInfoService {
 			success = "borked";
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, "Could not update Phone", e);
+		} catch (NullPointerException e) {
+			logger.log(Level.SEVERE, "Null pointer", e);
 		}
 		
 		response.setContentType("html/text");

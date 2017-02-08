@@ -29,8 +29,8 @@ app
                     $scope.changeView('welcome');
 
                     setHtmlStorage('authoLevel',userInfo.authLvl)
-    				setHtmlStorage('authToken',userInfo.authoTkn)
-    				  
+    				setHtmlStorage('authToken',userInfo.authTkn)
+
                 } else
                     $scope.loginSuccess = "Wrong email/password!";
 

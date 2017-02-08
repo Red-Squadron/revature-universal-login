@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 import dao.UserDAO;
 
 public class ChangeUserPasswordService {
-	
+
 	private ChangeUserPasswordService(){
-		
+
 	}
-	
+
 	public static void changeUserPassword(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		Boolean success;
-		
+
 		UserDAO dao = UserDAO.getUserDAO();
-		success = dao.updatePassword(request.getParameter("userName"), request.getParameter("password"));
+		success = dao.updatePassword(request.getParameter("userEmail"), request.getParameter("password"));
 
 		response.setContentType("html/text");
 		PrintWriter out = response.getWriter();
