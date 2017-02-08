@@ -43,7 +43,7 @@ public class RULServlet extends HttpServlet {
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String requestedService = request.getRequestURI();
-		int x	= requestedService.indexOf("/") + 1;
+		int x	= requestedService.lastIndexOf("/") + 1;
 
 		requestedService	= requestedService.substring(x);
 
