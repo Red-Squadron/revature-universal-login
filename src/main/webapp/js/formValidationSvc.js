@@ -10,8 +10,8 @@ app.service('formValidationSvc', function() {
   }
 
   this.validatePhoneFormat = function(str) {
-  	var rephone = /[0-9]{10}/;
-  	return rephone.text(str);
+  	var rephone = /^[0-9]{10}$/;
+  	return rephone.test(str);
   }
 
   //complex ifs to ensure specific messaging
