@@ -109,7 +109,13 @@ public class UserDAO {
 	 */
 	public boolean registerUser(String email, String firstName, String middleName, String lastName, String phone, String password) {
 
-		String permission = checkUserExistence(email, firstName, lastName);
+		String permission = "";
+		try {
+			permission = checkUserExistence(email, firstName, lastName);
+		} catch (SQLException e1) {
+			logger.log(Level.SEVERE, e1.getMessage(),e1);
+		}
+
 		if ("".equals(permission))
 			return false;
 
@@ -179,9 +185,7 @@ public class UserDAO {
 			rs.close();
 			checkPassword.close();
 
-			/* TODO Implement a trigger to delete the oldest value from password history (if there are too many, current max is 3) and add new value on update to userregistration table;
-			 * much faster execution directly on table, and doesn't require all these messy JDBC statements.
-			*/
+			// TODO Implement a trigger to delete the 3rd oldest value from password history
 
 			PreparedStatement updatePassQuery = conn.prepareStatement("update userregistration set passwd = ? where useremail = ?");
 			updatePassQuery.setString(1, password);
@@ -219,7 +223,6 @@ public class UserDAO {
 	public boolean updatePhone(String email, String number) throws SQLException {
 		CallableStatement updatePhone = conn.prepareCall("{call update_phone(?,?,?)}");
 		try {
-
 			updatePhone.setString(1, email);
 			updatePhone.setString(2, number);
 			updatePhone.registerOutParameter(3, Types.INTEGER);
@@ -245,11 +248,11 @@ public class UserDAO {
 	 * @param firstName Provide first name.
 	 * @param lastName Provide last name.
 	 * @return Permission level of checked user if user exist, otherwise empty string "".
+	 * @throws SQLException 
 	 */
-	public String checkUserExistence(String email, String firstName, String lastName) {
+	public String checkUserExistence(String email, String firstName, String lastName) throws SQLException {
+		CallableStatement checkUser = conn.prepareCall("{call check_user_existence(?, ?, ?, ?, ?)}");
 		try {
-			CallableStatement checkUser = conn.prepareCall("{call check_user_existence(?, ?, ?, ?, ?)}");
-
 			checkUser.setString(1, email);
 			checkUser.setString(2, firstName);
 			checkUser.setString(3, lastName);
@@ -266,6 +269,7 @@ public class UserDAO {
 				return "";
 			}
 		} catch (SQLException e) {
+			checkUser.close();
 			logger.log(Level.SEVERE, e.getMessage(),e);
 		}
 		return "";
