@@ -42,8 +42,11 @@ public class RULServlet extends HttpServlet {
 	 */
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String requestedService = request.getRequestURI().substring(37);
-		
+		String requestedService = request.getRequestURI();
+		int x	= requestedService.indexOf("/") + 1;
+
+		requestedService	= requestedService.substring(x);
+
 		try{
 			switch(requestedService){
 				case "login": LoginService.login(request, response);
@@ -57,7 +60,7 @@ public class RULServlet extends HttpServlet {
 				case "changeUserPassword": ChangeUserPasswordService.changeUserPassword(request, response);
 					break;
 				default:
-					throw new IOException(); 
+					throw new IOException();
 			}
 		}catch(IOException e){
 			logger.log(Level.SEVERE, e.getMessage(), e);
