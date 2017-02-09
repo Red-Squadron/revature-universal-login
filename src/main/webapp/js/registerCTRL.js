@@ -16,12 +16,12 @@ app.controller('registerCtrl', ["$scope", "$http", "formValidationSvc", function
     	        url: 'RULServlet/register',
     	        data: data,
     	        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-	        }).success(function(isRegistered) {
-				if(isRegistered === "true") { 
+	        }).success(function(isNotRegistered) {
+				if(isNotRegistered === "true") { 
 					$scope.pass = "Success ! You are registered !";
 				}
 				else
-					$scope.pass = firstName + " " +lastName+" with email: "+userName+" does not exist, please contact Revature";
+					$scope.pass = "Unable to register this account. Either you are already registered, or this is not a valid email.";
 			}).error(function() {
 				$scope.pass = "Something has gone wrong with the server. Please try again later."
 			})

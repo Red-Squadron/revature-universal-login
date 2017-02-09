@@ -18,6 +18,7 @@ public class RegistrationService {
 		UserDAO dao = UserDAO.getUserDAO();
 		Boolean success;
 
+		//TODO registerUser should return a string that describes why a failure may have happened.
 		success = dao.registerUser(request.getParameter("userEmail"), request.getParameter("firstName"),
 				request.getParameter("middleName"), request.getParameter("lastName"),
 				request.getParameter("phoneNumber"), request.getParameter("password"));

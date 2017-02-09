@@ -1,3 +1,0 @@
-"scripts":{
-    "postinstall": "node ./webdriver.manager.fix.js"
-}

@@ -106,6 +106,7 @@ public class UserDAO {
 	 * @param phone Provide phone number as String.
 	 * @param password Provide current password.
 	 * @return true if registration is successful, false if registration is not successful.
+	 * TODO this function should return a string the describes a failure
 	 */
 	public boolean registerUser(String email, String firstName, String middleName, String lastName, String phone, String password) {
 
