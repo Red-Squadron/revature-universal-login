@@ -10,7 +10,6 @@ app.controller('registerCtrl', ["$scope", "$http", "formValidationSvc", function
 		if (validationResult.pass === false) {
 			$scope.pass = validationResult.err;
 		} else {
-			$scope.pass = "start Register";
 			var data = "userEmail="+userName+"&firstName="+firstName+"&lastName="+lastName+"&middleName="+middleName+"&phoneNumber="+phoneNumber+"&password="+passPhrase;
 			$http({
     	        method: 'POST',
@@ -23,6 +22,8 @@ app.controller('registerCtrl', ["$scope", "$http", "formValidationSvc", function
 				}
 				else
 					$scope.pass = firstName + " " +lastName+" with email: "+userName+" does not exist, please contact Revature";
+			}).error(function() {
+				$scope.pass = "Something has gone wrong with the server. Please try again later."
 			})
 		}
 
