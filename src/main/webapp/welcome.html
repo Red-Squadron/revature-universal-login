@@ -1,47 +1,25 @@
-<div class="container">
+<form>
+    <div class="side-line-outer">
+        <span class="side-line-inner">Welcome <span ng-bind='role'></span></span>
+    </div>
+</form>
 
-	<form>
-		<div class="side-line-outer">
-			<span class="side-line-inner">Welcome <span ng-bind='role'></span></span>
-		</div>
-	</form>
-	<div class="container-fluid bg-1 text-center">
-		<h3></h3>
-		<img
-			src="https://kenanfellows.org/wp-content/uploads/2016/02/blank-profile-picture-973460_960_720.png"
-			class="img-circle" alt="Revature Employee" height=150 width=150>
+<div class="text-center">
+    <!--Profile Image-->
+    <div class="row profile-img">
+        <img src="img/blank_profile.png" class="img-circle center-block" alt="Revature Employee" height=150 width=150>
+    </div>
+    <div class="text-center">
+        <h3>To update your password and phone number :</h3>
+    </div>
 
-	</div>
-
-	<div class="container-fluid bg-2 text-center">
-
-
-		<div class="row">
-
-			<div class="col-lg-12">
-				<h3 class="page-header">To update your password and phone
-					number : </h3>
-			</div>
-			<div class="col-sm-3 col-xs-3"></div>
-			<div class="col-sm-3 col-xs-3">
-
-				<a id="updatebtns" href="#updatepassword">Update Password</a>
-
-
-			</div>
-			<div class="col-sm-3 col-xs-3">
-
-				<a id="updatebtns2" href="#updatephone">Update Phone</a>
-
-			</div>
-
-			<div class="col-sm-3 col-xs-3"></div>
-
-		</div>
-	</div>
-
-
-	<div class="col-sm-offset-2 col-sm-8 form-horizontal">
-		<div class="col-sm-6"></div>
-
-	</div>
+	<!--Update Button Row-->
+    <div class="row updatebtnrow">
+        <div class="col-sm-offset-2 col-sm-4">
+            <a type="button" class="updatebtns input-lg" href="#updatepassword">Update Password</a>
+        </div>
+        <div class="col-sm-4">
+            <a type="button" class="updatebtns input-lg" href="#updatephone">Update Phone</a>
+        </div>
+    </div>
+</div>
