@@ -1,19 +1,15 @@
-<div class="container">
-    <div>
-        <form id="registrationForm">
-            <div class="side-line-outer">
-                <span class="side-line-inner">Change Phone Number</span>
-            </div>
-            <div class="col-sm-offset-4 col-sm-4" role="form">
-                <input class="input-lg form-control" name="email" ng-model="email" placeholder="Email" required/>
-                <input class="input-lg form-control" name="oldpassword" ng-model="oldPassPhrase" type="password" placeholder="Old Password" required/>
-                <input class="input-lg form-control" name="newphone" ng-model="newPhoneNumber" type="tel" placeholder="New phone number" required/>
-                <br>
-                <div id="phoneChangeDiv">{{phoneResult}}</div>
-                <div class="row">
-                    <input id="register-button" type="button" class="input-lg" value="Update" ng-click="formChangePhoneNumber()" />
-                </div>
-            </div>
-        </form>
+<form id="registrationForm">
+    <div class="side-line-outer">
+        <span class="side-line-inner">Change Phone Number</span>
     </div>
-</div>
+    <div class="col-sm-offset-4 col-sm-4" role="form">
+        <input class="input-lg form-control" name="email" ng-model="email" placeholder="Email" required/>
+        <input class="input-lg form-control" name="oldpassword" ng-model="oldPassPhrase" type="password" placeholder="Old Password" required/>
+        <input class="input-lg form-control" name="newphone" ng-model="newPhoneNumber" type="tel" placeholder="New phone number" required/>
+        <br>
+        <div id="phoneChangeDiv">{{phoneResult}}</div>
+        <div class="row">
+            <input id="register-button" type="button" class="input-lg" value="Update" ng-click="formChangePhoneNumber()" />
+        </div>
+    </div>
+</form>

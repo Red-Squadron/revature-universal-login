@@ -43,22 +43,24 @@ body {
     height:40px;
     line-height: 7px;
 }
- #updatebtns, #updatebtns2 {
- 	background-color:#f26925 ;
-    -moz-border-radius:10px;
-    -webkit-border-radius:10px;
-    border-radius:10px;
-    border:3px solid #f26925 ;
-    display:block;
-    cursor:pointer;
-    color:#ffffff ;
-    font-size:14px;
-    text-decoration:none;
+
+.updatebtns, .updatebtns:hover {
+	background-color: #f26925;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: 3px solid #f26925;
+    display: block;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 14px;
+    text-decoration: none;
     text-align: center;
-    height:40px;
-    line-height: 35px;
- 
+    height: 40px;
+    line-height: 15px;
+		margin-bottom: 10px;
  }
+
 
 #cornerBtn:hover {
 	background-color:#ffffff;
@@ -192,22 +194,16 @@ text-align: center;
     color: white;
 }
 
-
-.form-horizontal input:focus {
-	border: 2px solid #f26925;
+.form-horizontal input:focus,
+.col-sm-offset-4.col-sm-4 input:focus {
+	border: 1px solid #f26925;
   	box-shadow: 0px 0px 0px #f26925;
 }
 
-.bg-1 {
-    background-color:#ffffff ;
-   
-    color: #000000;
+.profile-img {
+	padding: 20px;
 }
-.bg-2 {
-    background-color:#ffffff ;
-	text-align: center;
-    color: #000000;
+
+.updatebtnrow {
+	padding: 20px;
 }
-.bg-3 {
-    background-color: #ffffff; /* White */
-    color: #555555;
